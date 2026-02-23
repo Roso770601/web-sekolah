@@ -2,229 +2,214 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SDN 1 SUKAMANAH</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah</title>
+  <meta name="description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
+  <meta name="keywords" content="SDN 1 Sukamanah, Sekolah Dasar, Sekolah Negeri, Pendidikan, Fasilitas Sekolah, Program Sekolah">
+  <meta name="author" content="SDN 1 Sukamanah">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah">
+  <meta property="og:description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:url" content="https://sdn1sukamanah.netlify.app/">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah">
+  <meta name="twitter:description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
+  <meta name="twitter:image" content="logo.png">
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- CSS asli kamu -->
+  <link rel="stylesheet" href="style.css">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
 }
 
-body {
-  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-              url('gambar-sekolah.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-  line-height: 1.6;
+html{
+  scroll-behavior:smooth;
 }
 
-/* Supaya semua section transparan */
-section,
-header,
-footer {
-  background: transparent;
+body{
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('gambar-sekolah.jpg') no-repeat center center fixed;
+  background-size:cover;
+  color:#fff;
+  line-height:1.6;
 }
-.logo-area {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-/* Header tetap jelas */
+
 /* ================= HEADER ================= */
-/* ======= HEADER ======= */
-header {
-  display: flex;                   /* horizontal layout */
-  justify-content: space-between;  /* logo+judul di kiri, nav di kanan */
-  align-items: center;             /* vertikal rata tengah */
-  padding: 20px 10%;
-   
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 10%;
 }
 
-/* ===== LOGO DAN JUDUL ===== */
-.logo-area {
-  display: flex;           /* horizontal */
-  align-items: center;     /* logo dan tulisan sejajar vertikal */
-  gap: 12px;               /* jarak logo dan tulisan */
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-.logo-area img {
-  width: 50px;             /* ukuran logo kecil */
-  height: 50px;
-  object-fit: contain;
+.logo-area img{
+  width:50px;
+  height:50px;
+  object-fit:contain;
 }
 
-.logo-area h1 {
-  font-size: 55px;         /* tulisan besar tapi proporsional */
-  font-weight: 800;
-  color: #ffeb3b;
-  text-transform: uppercase;
-  text-shadow: 3px 3px 10px rgba(0,0,0,0.7),
-               0 0 20px rgba(255,235,59,0.6);
-  margin: 0;               /* hapus margin atas/bawah */
-  transition: 0.3s;
+.logo-area h1{
+  font-size:55px;
+  font-weight:800;
+  color:#ffeb3b;
+  text-transform:uppercase;
+  text-shadow:
+    3px 3px 10px rgba(0,0,0,0.7),
+    0 0 20px rgba(255,235,59,0.6);
+  transition:0.3s;
 }
 
-.logo-area h1:hover {
-  transform: scale(1.05);  /* efek hover */
+.logo-area h1:hover{
+  transform:scale(1.05);
 }
 
-/* ===== NAVIGASI ===== */
-nav a {
-  color: #ffeb3b;
-  margin-left: 20px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
+nav a{
+  color:#ffeb3b;
+  margin-left:20px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
 }
 
-nav a:hover {
-  color: white;
+nav a:hover{
+  color:white;
 }
 
-/* NAMA SEKOLAH */
-header h1 {
-  font-size: 55px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #ffeb3b;
-  text-shadow: 
-      3px 3px 10px rgba(0,0,0,0.7),
-      0 0 20px rgba(255,235,59,0.6);
-  transition: 0.3s;
+/* ================= HERO ================= */
+.hero{
+  padding:120px 10%;
+  text-align:center;
 }
 
-header h1:hover {
-  transform: scale(1.05);
+.hero h2{
+  font-size:42px;
+  margin-bottom:20px;
 }
 
-/* Warna teks */
-.section-title,
-.card h3 {
-  color: #ffeb3b;
+.hero p{
+  font-size:18px;
+  margin-bottom:30px;
 }
 
-/* Card diberi efek kaca */
-.card {
-  background: rgba(255,255,255,0.9);
-  color: #333;
-  backdrop-filter: blur(5px);
+.btn{
+  background:#ffd54f;
+  color:#333;
+  padding:12px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
 }
 
-/* Testimonial tetap ada efek */
-.testimonial {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 70px 10%;
-  text-align: center;
-}
-
-.hero h2 {
-  font-size: 42px;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-
-.btn {
-  background: #ffd54f;
-  color: #333;
-  padding: 12px 25px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #ffb300;
-  transform: scale(1.05);
+.btn:hover{
+  background:#ffb300;
+  transform:scale(1.05);
 }
 
 /* ================= SECTION ================= */
-section {
-  padding: 70px 10%;
+section{
+  padding:70px 10%;
+  background:transparent;
 }
 
-.section-title {
-  text-align: center;
-  margin-bottom: 40px;
-  color: #1e88e5;
+.section-title{
+  text-align:center;
+  margin-bottom:40px;
+  color:#ffeb3b;
 }
 
-.cards {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+.cards{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
 }
 
-.card {
-  background: white;
-  padding: 25px;
-  flex: 1;
-  min-width: 250px;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  transition: 0.3s;
+.card{
+  background:rgba(255,255,255,0.9);
+  color:#333;
+  backdrop-filter:blur(5px);
+  padding:25px;
+  flex:1;
+  min-width:250px;
+  border-radius:15px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  transition:0.3s;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.15);
 }
 
-.card h3 {
-  margin-bottom: 15px;
-  color: #1976d2;
+.card h3{
+  margin-bottom:15px;
+  color:#1976d2;
 }
 
 /* ================= TESTIMONIAL ================= */
-.testimonial {
-  background: linear-gradient(to right, #1976d2, #42a5f5);
-  color: white;
-  padding: 70px 10%;
-  text-align: center;
-  line-height: 1.6;
+.testimonial{
+  background:linear-gradient(to right, #1976d2, #42a5f5);
+  padding:70px 10%;
+  text-align:center;
+  color:white;
 }
 
-.testimonial strong {
-  display: block;
-  margin-bottom: 30px;
-  color: #ffeb3b;
+.testimonial strong{
+  display:block;
+  margin-bottom:30px;
+  color:#ffeb3b;
 }
 
 /* ================= FOOTER ================= */
-footer {
-  background: #1a237e;
-  color: #ddd;
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
+footer{
+  background:#1a237e;
+  color:#ddd;
+  text-align:center;
+  padding:20px;
+  font-size:14px;
+  border-top:2px solid rgba(255,255,255,0.1);
 }
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){
-  .hero h2 {
-    font-size: 28px;
+  header{
+    flex-direction:column;
+    text-align:center;
   }
-  header {
-    flex-direction: column;
-    text-align: center;
+
+  nav{
+    margin-top:10px;
   }
-  nav {
-    margin-top: 10px;
+
+  .hero h2{
+    font-size:28px;
   }
 }
 
 </style>
 </head>
-
-<body>
+body>
 
 <header>
   <div class="logo-area">
@@ -330,4 +315,4 @@ footer {
 </footer>
 
 </body>
-</html>
+</html
