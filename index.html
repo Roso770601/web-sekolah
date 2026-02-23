@@ -2,214 +2,78 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah</title>
-  <meta name="description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
-  <meta name="keywords" content="SDN 1 Sukamanah, Sekolah Dasar, Sekolah Negeri, Pendidikan, Fasilitas Sekolah, Program Sekolah">
-  <meta name="author" content="SDN 1 Sukamanah">
+<title>SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah</title>
+<meta name="description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
+<meta name="keywords" content="SDN 1 Sukamanah, Sekolah Dasar, Sekolah Negeri, Pendidikan, Fasilitas Sekolah, Program Sekolah">
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah">
-  <meta property="og:description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
-  <meta property="og:image" content="logo.png">
-  <meta property="og:url" content="https://sdn1sukamanah.netlify.app/">
-  <meta property="og:type" content="website">
+<!-- Open Graph / Facebook -->
+<meta property="og:url" content="https://sdn1sukamanah.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah">
+<meta property="og:description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
+<meta property="og:image" content="https://sdn1sukamanah.netlify.app/logo.png">
+<meta property="og:image:alt" content="Logo SDN 1 Sukamanah">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah">
-  <meta name="twitter:description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
-  <meta name="twitter:image" content="logo.png">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah">
+<meta name="twitter:description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
+<meta name="twitter:image" content="https://sdn1sukamanah.netlify.app/logo.png">
 
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-  <!-- CSS asli kamu -->
-  <link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="style.css">
 
 <style>
-
 /* ================= GLOBAL ================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
+*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
 body{
-  background:
-    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-    url('gambar-sekolah.jpg') no-repeat center center fixed;
-  background-size:cover;
-  color:#fff;
-  line-height:1.6;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('gambar-sekolah.jpg') no-repeat center center fixed;
+  background-size:cover; color:#fff; line-height:1.6;
 }
 
 /* ================= HEADER ================= */
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 10%;
-}
-
-.logo-area{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo-area img{
-  width:50px;
-  height:50px;
-  object-fit:contain;
-}
-
-.logo-area h1{
-  font-size:55px;
-  font-weight:800;
-  color:#ffeb3b;
-  text-transform:uppercase;
-  text-shadow:
-    3px 3px 10px rgba(0,0,0,0.7),
-    0 0 20px rgba(255,235,59,0.6);
-  transition:0.3s;
-}
-
-.logo-area h1:hover{
-  transform:scale(1.05);
-}
-
-nav a{
-  color:#ffeb3b;
-  margin-left:20px;
-  text-decoration:none;
-  font-weight:600;
-  transition:0.3s;
-}
-
-nav a:hover{
-  color:white;
-}
+header{display:flex; justify-content:space-between; align-items:center; padding:20px 10%;}
+.logo-area{display:flex; align-items:center; gap:12px;}
+.logo-area img{width:50px; height:50px; object-fit:contain;}
+.logo-area h1{font-size:55px; font-weight:800; color:#ffeb3b; text-transform:uppercase; text-shadow:3px 3px 10px rgba(0,0,0,0.7),0 0 20px rgba(255,235,59,0.6); transition:0.3s;}
+.logo-area h1:hover{transform:scale(1.05);}
+nav a{color:#ffeb3b; margin-left:20px; text-decoration:none; font-weight:600; transition:0.3s;}
+nav a:hover{color:white;}
 
 /* ================= HERO ================= */
-.hero{
-  padding:120px 10%;
-  text-align:center;
-}
-
-.hero h2{
-  font-size:42px;
-  margin-bottom:20px;
-}
-
-.hero p{
-  font-size:18px;
-  margin-bottom:30px;
-}
-
-.btn{
-  background:#ffd54f;
-  color:#333;
-  padding:12px 25px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:600;
-  transition:0.3s;
-}
-
-.btn:hover{
-  background:#ffb300;
-  transform:scale(1.05);
-}
+.hero{padding:120px 10%; text-align:center;}
+.hero h2{font-size:42px; margin-bottom:20px;}
+.hero p{font-size:18px; margin-bottom:30px;}
+.btn{background:#ffd54f; color:#333; padding:12px 25px; border-radius:30px; text-decoration:none; font-weight:600; transition:0.3s;}
+.btn:hover{background:#ffb300; transform:scale(1.05);}
 
 /* ================= SECTION ================= */
-section{
-  padding:70px 10%;
-  background:transparent;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:40px;
-  color:#ffeb3b;
-}
-
-.cards{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-.card{
-  background:rgba(255,255,255,0.9);
-  color:#333;
-  backdrop-filter:blur(5px);
-  padding:25px;
-  flex:1;
-  min-width:250px;
-  border-radius:15px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.08);
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 15px 35px rgba(0,0,0,0.15);
-}
-
-.card h3{
-  margin-bottom:15px;
-  color:#1976d2;
-}
+section{padding:70px 10%; background:transparent;}
+.section-title{text-align:center; margin-bottom:40px; color:#ffeb3b;}
+.cards{display:flex; gap:20px; flex-wrap:wrap;}
+.card{background:rgba(255,255,255,0.9); color:#333; backdrop-filter:blur(5px); padding:25px; flex:1; min-width:250px; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.08); transition:0.3s;}
+.card:hover{transform:translateY(-8px); box-shadow:0 15px 35px rgba(0,0,0,0.15);}
+.card h3{margin-bottom:15px; color:#1976d2;}
 
 /* ================= TESTIMONIAL ================= */
-.testimonial{
-  background:linear-gradient(to right, #1976d2, #42a5f5);
-  padding:70px 10%;
-  text-align:center;
-  color:white;
-}
-
-.testimonial strong{
-  display:block;
-  margin-bottom:30px;
-  color:#ffeb3b;
-}
+.testimonial{background:linear-gradient(to right, #1976d2, #42a5f5); padding:70px 10%; text-align:center; color:white;}
+.testimonial strong{display:block; margin-bottom:30px; color:#ffeb3b;}
 
 /* ================= FOOTER ================= */
-footer{
-  background:#1a237e;
-  color:#ddd;
-  text-align:center;
-  padding:20px;
-  font-size:14px;
-  border-top:2px solid rgba(255,255,255,0.1);
-}
+footer{background:#1a237e; color:#ddd; text-align:center; padding:20px; font-size:14px; border-top:2px solid rgba(255,255,255,0.1);}
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){
-  header{
-    flex-direction:column;
-    text-align:center;
-  }
-
-  nav{
-    margin-top:10px;
-  }
-
-  .hero h2{
-    font-size:28px;
-  }
+  header{flex-direction:column; text-align:center;}
+  nav{margin-top:10px;}
+  .hero h2{font-size:28px;}
 }
-
 </style>
 </head>
-body>
+<body>
 
 <header>
   <div class="logo-area">
@@ -247,7 +111,6 @@ body>
       penyediaan pojok baca di setiap kelas, tantangan membaca bulanan, serta klinik matematika yang menyenangkan, 
       dengan tujuan meningkatkan kemampuan dasar membaca, menulis, dan berhitung sejak dini.</p>
     </div>
-
     <div class="card">
       <h3>Program Ekstrakurikuler</h3>
       <p>Pramuka</p>
@@ -255,7 +118,6 @@ body>
       <p>Karate</p>
       <p>Futsal</p>
     </div>
-
     <div class="card">
       <h3>Pengembangan Karakter</h3>
       <p>Program 7 Kebiasaan Anak Hebat</p>
@@ -271,8 +133,8 @@ body>
   <div class="cards">
     <div class="card">
       <h3>Ruang Praktikum</h3>
-      <p><p>Dilengkapi alat peraga sederhana 
-	  untuk mendukung berbagai kegiatan belajar melalui praktik langsung yang menyenangkan.</p></p>
+      <p>Dilengkapi alat peraga sederhana 
+      untuk mendukung berbagai kegiatan belajar melalui praktik langsung yang menyenangkan.</p>
     </div>
     <div class="card">
       <h3>Perpustakaan</h3>
@@ -287,7 +149,6 @@ body>
 
 <section class="testimonial">
   <h2>Apa Kata Mereka?</h2>
-
   <p>"Sejak putra kami belajar di sini, kemampuan membaca dan berhitungnya meningkat pesat. 
   Guru-gurunya sangat sabar dan perhatian, serta kegiatan sekolah selalu menyenangkan dan mendidik."</p>
   <strong>- Ibu Mariam, Orang Tua Siswa kelas 3</strong>
@@ -315,4 +176,4 @@ body>
 </footer>
 
 </body>
-</html
+</html>
