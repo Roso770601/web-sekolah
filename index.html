@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+<link rel="canonical" href="https://sdn1sukamanah.my.id/">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,18 +10,18 @@
 <meta name="keywords" content="SDN 1 Sukamanah, Sekolah Dasar, Sekolah Negeri, Pendidikan, Fasilitas Sekolah, Program Sekolah">
 
 <!-- Open Graph / Facebook -->
-<meta property="og:url" content="https://sdn1sukamanah.netlify.app/">
+<meta property="og:url" content="https://sdn1sukamanah.my.id/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah">
 <meta property="og:description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
-<meta property="og:image" content="https://sdn1sukamanah.netlify.app/logo.png">
+<meta property="og:image" content="https://sdn1sukamanah.my.id/logo.png">
 <meta property="og:image:alt" content="Logo SDN 1 Sukamanah">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah">
 <meta name="twitter:description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
-<meta name="twitter:image" content="https://sdn1sukamanah.netlify.app/logo.png">
+<meta name="twitter:image" content="https://sdn1sukamanah.my.id/logo.png">
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="style.css">
@@ -47,11 +48,26 @@ nav a:hover{color:white;}
 .hero{padding:120px 10%; text-align:center;}
 .hero h2{font-size:42px; margin-bottom:20px;}
 .hero p{font-size:18px; margin-bottom:30px;}
-.btn{background:#ffd54f; color:#333; padding:12px 25px; border-radius:30px; text-decoration:none; font-weight:600; transition:0.3s;}
-.btn:hover{background:#ffb300; transform:scale(1.05);}
+
+.btn{
+  background:#ffd54f;
+  color:#333;
+  padding:12px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+  box-shadow: 0 0 15px rgba(255,213,79,0.6);
+}
+
+.btn:hover{
+  background:#ffb300;
+  transform:scale(1.05);
+  box-shadow: 0 0 25px rgba(255,179,0,0.9);
+}
 
 /* ================= SECTION ================= */
-section{padding:70px 10%; background:transparent;}
+section{padding:70px 10%; background:transparent;}box-shadow: 0 0 15px rgba(255,213,79,0.6);
 .section-title{text-align:center; margin-bottom:40px; color:#ffeb3b;}
 .cards{display:flex; gap:20px; flex-wrap:wrap;}
 .card{background:rgba(255,255,255,0.9); color:#333; backdrop-filter:blur(5px); padding:25px; flex:1; min-width:250px; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.08); transition:0.3s;}
@@ -64,7 +80,16 @@ section{padding:70px 10%; background:transparent;}
 
 /* ================= FOOTER ================= */
 footer{background:#1a237e; color:#ddd; text-align:center; padding:20px; font-size:14px; border-top:2px solid rgba(255,255,255,0.1);}
+.footer-link {
+    color: #FFD700;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px black;
+    text-decoration: none;
+}
 
+.footer-link:hover {
+    color: white;
+}
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){
   header{flex-direction:column; text-align:center;}
@@ -171,13 +196,10 @@ footer{background:#1a237e; color:#ddd; text-align:center; padding:20px; font-siz
 </section>
 
 <footer>
-  <footer>
   <p>© 2026 SDN 1 Sukamanah</p>
   <p>
   Website Resmi:
-  <a href="https://sdn1sukamanah.my.id" 
-     target="_blank"
-     style="color: #FFD700; font-weight: bold;">
+  <a href="https://sdn1sukamanah.my.id" target="_blank" class="footer-link">
      sdn1sukamanah.my.id
   </a>
 </p>
@@ -185,12 +207,10 @@ footer{background:#1a237e; color:#ddd; text-align:center; padding:20px; font-siz
 <p>
   WhatsApp:
   <a href="https://wa.me/6287734686477" 
-     target="_blank"
-     style="color: #FFD700; font-weight: bold;">
+     target="_blank" class="footer-link">
      0877-3468-6477
   </a>
 </p>
-</footer>
 </footer>
 
 </body>
