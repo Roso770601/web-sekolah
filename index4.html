@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "School",
+  "name": "SDN 1 Sukamanah",
+  "url": "https://sdn1sukamanah.my.id",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. DR. Moch. Hatta No.252",
+    "addressLocality": "Tasikmalaya",
+    "addressCountry": "ID"
+  }
+}
+</script>
+<link rel="canonical" href="https://sdn1sukamanah.my.id/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah</title>
+<meta name="description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
+<meta name="keywords" content="SDN 1 Sukamanah, Sekolah Dasar, Sekolah Negeri, Pendidikan, Fasilitas Sekolah, Program Sekolah">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:url" content="https://sdn1sukamanah.my.id/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah">
+<meta property="og:description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
+<meta property="og:image" content="https://sdn1sukamanah.my.id/logo.png">
+<meta property="og:image:alt" content="Logo SDN 1 Sukamanah">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah">
+<meta name="twitter:description" content="Website resmi SDN 1 Sukamanah. Informasi program sekolah, fasilitas, dan kontak sekolah.">
+<meta name="twitter:image" content="https://sdn1sukamanah.my.id/logo.png">
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ================= GLOBAL ================= */
+*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
+body{
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('gambar-sekolah.jpg') no-repeat center center fixed;
+  background-size:cover; color:#fff; line-height:1.6;
+}
+
+/* Wrapper untuk foto kepala sekolah */
+.kepsek-wrapper {
+  position: absolute;   /* bebas di pojok atas */
+  top: 150px;
+  right: 120px;          /* ganti ke left:20px untuk kiri */
+  width: 400px;         /* lebar foto */
+  z-index: 10;
+  text-align: center;   /* supaya teks nama berada di tengah foto/base */
+}
+
+/* Foto Kepala Sekolah */
+.kepsek-top {
+  width: 100%;
+  height: auto;
+  object-fit: contain;  /* tampil seluruh foto */
+  display: block;
+  
+}
+
+/* Base / Plate di bawah foto */
+.kepsek-base {
+  width: 100%;
+  height: 10px;          /* tinggi base */
+  background: transparent;   /* warna kuning sesuai tema */
+  border-radius: 2px;
+  margin-top: -5px;      /* menempel ke foto */
+}
+
+/* Nama Kepala Sekolah di bawah base */
+.nama-kepala-top {
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;           /* putih agar terlihat di hero gelap */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  line-height: 1.2;
+}
+
+/* Responsif untuk HP */
+@media (max-width:768px) {
+  .kepsek-wrapper {
+    width: 80px;
+    top: 10px;
+    right: 10px;
+  }
+  .kepsek-base {
+    height: 6px;
+    margin-top: -3px;
+  }
+  .nama-kepala-top {
+    font-size: 10px;
+  }
+}
+
+/* ================= HEADER ================= */
+header{display:flex; justify-content:space-between; align-items:center; padding:20px 10%;}
+.logo-area{display:flex; align-items:center; gap:12px;}
+.logo-area img{width:50px; height:50px; object-fit:contain;}
+.logo-area h1{font-size:55px; font-weight:800; color:#ffeb3b; text-transform:uppercase; text-shadow:3px 3px 10px rgba(0,0,0,0.7),0 0 20px rgba(255,235,59,0.6); transition:0.3s;}
+.logo-area h1:hover{transform:scale(1.05);}
+nav a{color:#ffeb3b; margin-left:20px; text-decoration:none; font-weight:600; transition:0.3s;}
+nav a:hover{color:white;}
+
+/* ================= HERO ================= */
+.hero{padding:120px 10%; text-align:center;}
+.hero h2{font-size:42px; margin-bottom:20px;}
+.hero p{font-size:18px; margin-bottom:30px;}
+
+.btn{
+  background:#ffd54f;
+  color:#333;
+  padding:12px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+  box-shadow: 0 0 15px rgba(255,213,79,0.6);
+}
+
+.btn:hover{
+  background:#ffb300;
+  transform:scale(1.05);
+  box-shadow: 0 0 25px rgba(255,179,0,0.9);
+}
+
+/* ================= SECTION ================= */
+section{padding:70px 10%; background:transparent;}box-shadow: 0 0 15px rgba(255,213,79,0.6);
+.section-title{text-align:center; margin-bottom:40px; color:#ffeb3b;}
+.cards{display:flex; gap:20px; flex-wrap:wrap;}
+.card{background:rgba(255,255,255,0.9); color:#333; backdrop-filter:blur(5px); padding:25px; flex:1; min-width:250px; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.08); transition:0.3s;}
+.card:hover{transform:translateY(-8px); box-shadow:0 15px 35px rgba(0,0,0,0.15);}
+.card h3{margin-bottom:15px; color:#1976d2;}
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ffeb3b;
+}
+#kontak .section-title {
+    color: #ffeb3b;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(255,235,59,0.6);
+}
+
+/* ================= TESTIMONIAL ================= */
+.testimonial{background:linear-gradient(to right, #1976d2, #42a5f5); padding:70px 10%; text-align:center; color:white;}
+.testimonial strong{display:block; margin-bottom:30px; color:#ffeb3b;}
+
+/* ================= FOOTER ================= */
+footer{background:#1a237e; color:#ddd; text-align:center; padding:20px; font-size:14px; border-top:2px solid rgba(255,255,255,0.1);}
+.footer-link {
+    color: #FFD700;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px black;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: white;
+}
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+  header{flex-direction:column; text-align:center;}
+  nav{margin-top:10px;}
+  .hero h2{font-size:28px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="kepsek-wrapper">
+  <img src="kepsek.png" alt="Kepala Sekolah SDN 1 Sukamanah" class="kepsek-top">
+  <div class="kepsek-base"></div>
+  <p class="nama-kepala-top"><strong>Cacih Resniasih, S.Pd.SD</strong><br>Kepala Sekolah</p>
+</div>
+  <div class="logo-area">
+    <img src="logo.png" alt="Logo SDN 1 Sukamanah">
+    <h1>SDN 1 SUKAMANAH</h1>
+  </div>
+  <nav>
+    <a href="#tentang">Tentang</a>
+    <a href="#program">Program</a>
+    <a href="#fasilitas">Fasilitas</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Mewujudkan Generasi Cerdas dan Berkarakter</h2>
+  <p>Sekolah unggulan dengan kurikulum modern dan lingkungan belajar yang inspiratif.</p>
+  <a href="#kontak" class="btn">Daftar Sekarang</a>
+</section>
+
+<section id="tentang">
+  <h2 class="section-title">Tentang Sekolah</h2>
+  <p style="text-align:center; max-width:800px; margin:auto;">
+    SDN 1 SUKAMANAH adalah sekolah yang berkomitmen memberikan pendidikan terbaik
+    dengan pendekatan akademik dan karakter untuk membentuk siswa yang siap menghadapi masa depan.
+  </p>
+</section>
+
+<section id="program">
+  <h2 class="section-title">Program Unggulan</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Program Literasi & Numerasi Terpadu</h3>
+      <p>Program Literasi dan Numerasi dilaksanakan melalui pembiasaan membaca 15 menit sebelum pelajaran, 
+      penyediaan pojok baca di setiap kelas, tantangan membaca bulanan, serta klinik matematika yang menyenangkan, 
+      dengan tujuan meningkatkan kemampuan dasar membaca, menulis, dan berhitung sejak dini.</p>
+    </div>
+    <div class="card">
+      <h3>Program Ekstrakurikuler</h3>
+      <p>Pramuka</p>
+      <p>BKC (Bandung Karate Club)</p>
+      <p>Pencak Silat</p>
+      <p>Futsal</p>
+    </div>
+    <div class="card">
+      <h3>Pengembangan Karakter</h3>
+      <p>Program 7 Kebiasaan Anak Hebat</p>
+      <p>Kelas inspirasi (mengundang profesional/orang tua)</p>
+      <p>Proyek sosial (berbagi & peduli)</p>
+      <p>Tujuan: Membentuk kepemimpinan dan empati sejak dini.</p>
+    </div>
+  </div>
+</section>
+
+<section id="fasilitas">
+  <h2 class="section-title">Fasilitas</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Ruang Praktikum</h3>
+      <p>Dilengkapi alat peraga sederhana 
+      untuk mendukung berbagai kegiatan belajar melalui praktik langsung yang menyenangkan.</p>
+    </div>
+    <div class="card">
+      <h3>Perpustakaan</h3>
+      <p>Akses ribuan buku.</p>
+    </div>
+    <div class="card">
+      <h3>Lapangan Olahraga</h3>
+      <p>Fasilitas olahraga lengkap untuk mendukung aktivitas fisik.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <h2>Apa Kata Mereka?</h2>
+  <p>"Sejak putra kami belajar di sini, kemampuan membaca dan berhitungnya meningkat pesat. 
+  Guru-gurunya sangat sabar dan perhatian, serta kegiatan sekolah selalu menyenangkan dan mendidik."</p>
+  <strong>- Ibu Mariam, Orang Tua Siswa kelas 3</strong>
+
+  <p>"Aku senang sekali belajar di sekolah ini! Ada banyak kegiatan seru! 
+  Aku jadi lebih pintar dan percaya diri."</p>
+  <strong>- Dimas, Siswa kelas 5 (2025)</strong>
+
+  <p>"Sekolah ini membekali saya tidak hanya akademik, tapi juga karakter. 
+  Nilai-nilai disiplin, kepedulian, dan kreativitas yang saya pelajari di sini terus membantu saya sampai sekarang."</p>
+  <strong>- Rani, Alumni (1985)</strong>
+</section>
+
+<section id="kontak">
+  <h2 class="section-title">Kontak Kami</h2>
+  <p style="text-align:center;">
+    📍 Jl. DR.Moch. Hatta No.252 Kota Tasikmalaya<br>
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.3469981948106!2d108.22926547588065!3d-7.314860371926517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f50ab6022ff47%3A0x2a2a476471d3123a!2sSDN%201%20Sukamanah!5e0!3m2!1sid!2sid!4v1772513143699!5m2!1sid!2sid" 
+	width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+   
+  </p>
+</section>
+
+<footer>
+  <p>© 2026 SDN 1 Sukamanah</p>
+  <p>
+  Website Resmi:
+  <a href="https://sdn1sukamanah.my.id" target="_blank" class="footer-link">
+     sdn1sukamanah.my.id
+  </a>
+</p>
+
+<p>
+  WhatsApp:
+  <a href="https://wa.me/6287734686477" 
+     target="_blank" class="footer-link">
+     0877-3468-6477
+  </a>
+</p>
+</footer>
+
+</body>
+</html>

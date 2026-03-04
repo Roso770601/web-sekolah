@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Nilai Kelas 2</title>
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+.container{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    width:350px;
+}
+h2{
+    text-align:center;
+}
+input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+button{
+    width:100%;
+    padding:10px;
+    background:#2c7be5;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+button:hover{
+    background:#1a5dc9;
+}
+.result{
+    margin-top:20px;
+    font-size:14px;
+}
+.nilai-table{
+    width:100%;
+    border-collapse:collapse;
+}
+.nilai-table td{
+    padding:5px 0;
+}
+.error{
+    color:red;
+    text-align:center;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Portal Nilai Kelas 2</h2>
+
+    <input type="text" id="nis" placeholder="Masukkan NIS">
+    <input type="date" id="tgl_lahir">
+    <button onclick="cekNilai()">Lihat Nilai</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+async function cekNilai(){
+    const nis = document.getElementById('nis').value.trim();
+    const tgl = document.getElementById('tgl_lahir').value;
+    const resultDiv = document.getElementById('result');
+
+    const response = await fetch('data.json');
+    const data = await response.json();
+
+    const siswa = data.find(s => s.nis === nis && s.tgl_lahir === tgl);
+
+    if(siswa){
+        resultDiv.innerHTML = `
+        <h3>${siswa.nama}</h3>
+        <table class="nilai-table">
+            <tr><td>Matematika</td><td>: ${siswa.matematika}</td></tr>
+            <tr><td>Bahasa Indonesia</td><td>: ${siswa.bahasa_indonesia}</td></tr>
+            <tr><td>PPKn</td><td>: ${siswa.ppkn}</td></tr>
+            <tr><td>IPA</td><td>: ${siswa.ipa}</td></tr>
+            <tr><td>IPS</td><td>: ${siswa.ips}</td></tr>
+        </table>
+        `;
+    } else {
+        resultDiv.innerHTML = `<p class="error">Data tidak ditemukan. Periksa kembali NIS dan Tanggal Lahir.</p>`;
+    }
+}
+</script>
+
+</body>
+</html>

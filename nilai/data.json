@@ -1,0 +1,22 @@
+[
+  {
+    "nis": "201",
+    "nama": "Budi Santoso",
+    "tgl_lahir": "2016-05-12",
+    "matematika": 88,
+    "bahasa_indonesia": 90,
+    "ppkn": 85,
+    "ipa": 87,
+    "ips": 89
+  },
+  {
+    "nis": "202",
+    "nama": "Siti Aisyah",
+    "tgl_lahir": "2016-09-21",
+    "matematika": 92,
+    "bahasa_indonesia": 91,
+    "ppkn": 88,
+    "ipa": 90,
+    "ips": 93
+  }
+]
