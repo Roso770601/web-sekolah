@@ -1,22 +1,262 @@
 [
   {
-    "nis": "201",
-    "nama": "Budi Santoso",
-    "tgl_lahir": "2016-05-12",
-    "matematika": 88,
-    "bahasa_indonesia": 90,
-    "ppkn": 85,
-    "ipa": 87,
-    "ips": 89
+    "nis": "3169362347",
+    "nama": "ABID AQILA PRANAJA",
+    "tgl_lahir": "20160306",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
   },
   {
-    "nis": "202",
-    "nama": "Siti Aisyah",
-    "tgl_lahir": "2016-09-21",
-    "matematika": 92,
-    "bahasa_indonesia": 91,
-    "ppkn": 88,
-    "ipa": 90,
-    "ips": 93
+    "nis": "3168579362",
+    "nama": "ADEEVA AFSHEEN MYESHA",
+    "tgl_lahir": "20161225",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3164961612",
+    "nama": "ARLA VARISHA",
+    "tgl_lahir": "20160826",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3170158262",
+    "nama": "FADHLAN HAMIZAN",
+    "tgl_lahir": "20170220",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3163724061",
+    "nama": "FALISHA AZMYA RAMDHANI",
+    "tgl_lahir": "20161016",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3164886322",
+    "nama": "KALEA KIRANIA WIBAWA",
+    "tgl_lahir": "20161126",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3165854439",
+    "nama": "KAYLA ZULFA ULYA",
+    "tgl_lahir": "20160414",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3176286537",
+    "nama": "KHEISHA SHAKILA ARDANI",
+    "tgl_lahir": "20170826",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3166089239",
+    "nama": "MUHAMAD AKIF AR RASYID",
+    "tgl_lahir": "20161022",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3175299500",
+    "nama": "MUHAMAD WILDAN FAKHRI",
+    "tgl_lahir": "20170414",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3171694569",
+    "nama": "MUHAMMAD FAKHRI AL GIFARI",
+    "tgl_lahir": "20170204",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3173207955",
+    "nama": "MUHAMMAD HAPIDZ SAEPUL HIKMAH",
+    "tgl_lahir": "20170412",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3161153253",
+    "nama": "MUHAMMAD MIRZA HANINDITO",
+    "tgl_lahir": "20160518",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3167620606",
+    "nama": "NAJLA ASYIFA NUR ALIYAH",
+    "tgl_lahir": "20160409",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3162693334",
+    "nama": "NAURA MIKAYLA ANANTA",
+    "tgl_lahir": "20160718",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3165530746",
+    "nama": "RAINA KHANSA SAHARA",
+    "tgl_lahir": "20160724",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3164741962",
+    "nama": "RAIS RAJBANNI HAIKKAL",
+    "tgl_lahir": "20160409",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3163594992",
+    "nama": "RAISA OKTAVIANI BURHANUDIN",
+    "tgl_lahir": "20161006",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3166009493",
+    "nama": "RAKANA SYAHDAN NAOPAL",
+    "tgl_lahir": "20160724",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3165606980",
+    "nama": "RAMMA ARBANY PUTRA HIDAYAT",
+    "tgl_lahir": "20160830",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3164607896",
+    "nama": "RIDHO IRMAWAN",
+    "tgl_lahir": "20161108",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3164415908",
+    "nama": "SHAKILA AFSHEEN ALULA",
+    "tgl_lahir": "20160824",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3162033584",
+    "nama": "SHAZIA AISHA PUTRI",
+    "tgl_lahir": "20160611",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3160735018",
+    "nama": "SYAKHIRA PUTRI FEBRIANTI",
+    "tgl_lahir": "20160225",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3169004346",
+    "nama": "SYAKILA PUTRI RAMADHANI",
+    "tgl_lahir": "20160610",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
+  },
+  {
+    "nis": "3160685001",
+    "nama": "WILDAN MUMTAZ SALIM",
+    "tgl_lahir": "20161001",
+    "matematika": 4.5,
+    "bahasa_indonesia": 8.8,
+    "ppkn": 13.1,
+    "ipa": 17.4,
+    "ips": 21.7
   }
 ]

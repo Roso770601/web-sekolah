@@ -1,0 +1,51 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('gambar-sekolah.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+  margin: 0;
+}
+
+.login-container {
+  background: rgba(255,255,255,0.95);
+  color: #333;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+  width: 350px;
+  text-align: center;
+}
+
+.login-container h2 {
+  color: #1976d2;
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.login-container button {
+  background: #ffd54f;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.login-container button:hover {
+  background: #ffb300;
+  transform: scale(1.05);
+}
