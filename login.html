@@ -51,16 +51,16 @@ Masukkan NISN siswa dan pilih tanggal lahir dari kalender.
 </div>
 
 <script>
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
 
-  const nisn = document.querySelector("input[name='nisn']").value.trim();
-  const tgl = document.querySelector("input[name='tgl_lahir']").value;
+    const nisn = document.querySelector("input[name='nisn']").value.trim();
+    const tgl = document.querySelector("input[name='tgl_lahir']").value;
 
-  localStorage.setItem("nisn", nisn);
-  localStorage.setItem("tgl_lahir", tgl);
+    localStorage.setItem("nisn", nisn);
+    localStorage.setItem("tgl_lahir", tgl);
 
-  window.location.href = "/nilai/index.html";
+    window.location.href = "/nilai/";
 });
 </script>
 
