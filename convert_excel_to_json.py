@@ -5,6 +5,7 @@ import os
 df = pd.read_excel("nilai/data_siswa.xlsx")
 
 # Ubah kolom 'nisn' jadi string
+df = df.rename(columns=lambda x: x.strip())
 df['nisn'] = df['nisn'].astype(str)
 
 data_list = df.to_dict(orient="records")
