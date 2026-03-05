@@ -3,101 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Nilai Kelas 2</title>
+<title>Portal Orang Tua | SDN 1 Sukamanah</title>
+
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
 body{
-    font-family: Arial, sans-serif;
-    background:#f4f6f9;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    margin:0;
+background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
+background-size:cover;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
 }
-.container{
-    background:white;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    width:350px;
+
+.login-box{
+background: rgba(255,255,255,0.1);
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+text-align:center;
+width:100%;
+max-width:400px;
 }
-h2{
-    text-align:center;
+
+.login-box h2{
+color:#ffeb3b;
+margin-bottom:20px;
+text-shadow:1px 1px 5px black;
 }
-input{
-    width:100%;
-    padding:10px;
-    margin:8px 0;
-    border-radius:8px;
-    border:1px solid #ccc;
+
+.login-box p{
+font-size:14px;
+margin-bottom:15px;
 }
-button{
-    width:100%;
-    padding:10px;
-    background:#2c7be5;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
+
+.login-box input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+font-size:16px;
 }
-button:hover{
-    background:#1a5dc9;
+
+.login-box button{
+width:100%;
+padding:12px;
+margin-top:15px;
+background:#ffd54f;
+color:#333;
+border:none;
+border-radius:30px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
 }
-.result{
-    margin-top:20px;
-    font-size:14px;
-}
-.nilai-table{
-    width:100%;
-    border-collapse:collapse;
-}
-.nilai-table td{
-    padding:5px 0;
-}
-.error{
-    color:red;
-    text-align:center;
+
+.login-box button:hover{
+background:#ffb300;
+transform:scale(1.03);
+box-shadow:0 0 20px rgba(255,179,0,0.8);
 }
 </style>
+
 </head>
 <body>
 
-<div class="container">
-    <h2>Portal Nilai Kelas 2</h2>
+<div class="login-box">
 
-    <input type="text" id="nis" placeholder="Masukkan NIS">
-    <input type="text" id="tgl_lahir" placeholder="Masukkan Tanggal Lahir">
-    <button onclick="cekNilai()">Lihat Nilai</button>
+<h2>Portal Wali Murid</h2>
 
-    <div class="result" id="result"></div>
+<p>Masukkan NISN siswa dan pilih tanggal lahir.</p>
+
+<form id="loginForm">
+
+<input type="text" id="nisn" placeholder="Masukkan NISN" required>
+
+<input type="date" id="tgl_lahir" required>
+
+<button type="submit">Lihat Nilai</button>
+
+</form>
+
 </div>
 
 <script>
-async function cekNilai(){
-    const nis = document.getElementById('nis').value.trim();
-    const tgl = document.getElementById('tgl_lahir').value;
-    const resultDiv = document.getElementById('result');
 
-    const response = await fetch('data.json');
-    const data = await response.json();
+document.getElementById('loginForm').addEventListener('submit', function(e){
 
-    const siswa = data.find(s => s.nisn === nis && s.tgl_lahir === tgl);
+e.preventDefault();
 
-    if(siswa){
-        resultDiv.innerHTML = `
-        <h3>${siswa.nama}</h3>
-        <table class="nilai-table">
-            <tr><td>Matematika</td><td>: ${siswa.matematika}</td></tr>
-            <tr><td>Bahasa Indonesia</td><td>: ${siswa.bahasa_indonesia}</td></tr>
-            <tr><td>PPKn</td><td>: ${siswa.ppkn}</td></tr>
-            <tr><td>IPA</td><td>: ${siswa.ipa}</td></tr>
-            <tr><td>IPS</td><td>: ${siswa.ips}</td></tr>
-        </table>
-        `;
-    } else {
-        resultDiv.innerHTML = `<p class="error">Data tidak ditemukan. Periksa kembali NIS dan Tanggal Lahir.</p>`;
-    }
-}
+const nisn = document.getElementById('nisn').value.trim();
+const tgl = document.getElementById('tgl_lahir').value;
+
+localStorage.setItem('nisn', nisn);
+localStorage.setItem('tgl_lahir', tgl);
+
+window.location.href = 'nilai.html';
+
+});
+
 </script>
 
 </body>
