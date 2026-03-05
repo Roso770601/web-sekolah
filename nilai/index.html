@@ -48,7 +48,7 @@ text-align:left;
 
 </div>
 
-<<script>
+<script>
 
 const nisn = localStorage.getItem("nisn");
 const tgl = localStorage.getItem("tgl_lahir");
@@ -65,7 +65,7 @@ let siswa = data.find(s =>
 s.nisn === nisn && s.tgl_lahir === tgl
 );
 
-const card = document.getElementById("nilaiCard");
+const card = document.getElementById("hasil");
 
 if(!siswa){
 card.innerHTML = "Data tidak ditemukan";
@@ -73,16 +73,23 @@ return;
 }
 
 card.innerHTML = `
-<h2>${siswa.nama}</h2>
-<p>NISN : ${siswa.nisn}</p>
-<p>Matematika : ${siswa.matematika}</p>
-<p>Bahasa Indonesia : ${siswa.bahasa_indonesia}</p>
-<p>PPKN : ${siswa.ppkn}</p>
-<p>IPA : ${siswa.ipa}</p>
-<p>IPS : ${siswa.ips}</p>
+<table>
+<tr><td>Nama</td><td>${siswa.nama}</td></tr>
+<tr><td>NISN</td><td>${siswa.nisn}</td></tr>
+<tr><td>Tanggal Lahir</td><td>${siswa.tgl_lahir}</td></tr>
+<tr><td>Matematika</td><td>${siswa.matematika}</td></tr>
+<tr><td>Bahasa Indonesia</td><td>${siswa.bahasa_indonesia}</td></tr>
+<tr><td>PPKN</td><td>${siswa.ppkn}</td></tr>
+<tr><td>IPA</td><td>${siswa.ipa}</td></tr>
+<tr><td>IPS</td><td>${siswa.ips}</td></tr>
+</table>
 `;
 
+})
+.catch(err => {
+document.getElementById("hasil").innerHTML = "Gagal memuat data";
 });
+
 </script>
 
 </body>
