@@ -2,18 +2,34 @@ import pandas as pd
 import json
 import os
 
+# Nama file Excel
+excel_file = "data_siswa.xlsx"  # ganti sesuai nama file Excel kamu
+# Folder tujuan JSON
+output_folder = "nilai"
+output_file = os.path.join(output_folder, "data.json")
+
+# Baca Excel
 df = pd.read_excel("nilai/data_siswa.xlsx")
 
-# Ubah kolom 'nisn' jadi string
-df = df.rename(columns=lambda x: x.strip())
-df['nisn'] = df['nisn'].astype(str)
+# Buat list of dict
+data_list = []
 
-data_list = df.to_dict(orient="records")
+for _, row in df.iterrows():
+    siswa = {
+        "nisn": str(row["nisn"]).strip(),
+        "nama": str(row["nama"]).strip(),
+        "tgl_lahir": str(row["tgl_lahir"]).strip(),
+        "matematika": row["matematika"],
+        "bahasa_indonesia": row["bahasa_indonesia"],
+        "ppkn": row["ppkn"],
+        "ipa": row["ipa"],
+        "ips": row["ips"]
+    }
+    data_list.append(siswa)
 
-if not os.path.exists("nilai"):
-    os.makedirs("nilai")
-
-with open("nilai/data.json", "w", encoding="utf-8") as f:
+# Simpan ke JSON
+os.makedirs(output_folder, exist_ok=True)
+with open(output_file, "w", encoding="utf-8") as f:
     json.dump(data_list, f, indent=2, ensure_ascii=False)
 
-print("data.json berhasil diperbarui di folder 'nilai'")
+print(f"Berhasil membuat JSON di {output_file}")
