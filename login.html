@@ -59,12 +59,8 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
 
     localStorage.setItem('nisn', nisn);
     localStorage.setItem('tgl_lahir', tgl);
-function login() {
-  const nisn = document.getElementById("nisn").value;
-  const tgl = document.getElementById("tgl").value;
 
-  window.location.href = "/nilai/?nisn=" + nisn + "&tgl=" + tgl;
-}
+    window.location.href = "/nilai/";
 });
 </script>
 
