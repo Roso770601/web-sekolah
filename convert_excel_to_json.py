@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # baca excel
-df = pd.read_excel("nilai.xlsx")
+df = pd.read_excel("nilai/data_siswa.xlsx")
 
 # ubah ke list
 data = df.to_dict(orient="records")
