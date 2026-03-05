@@ -1,14 +1,18 @@
 import pandas as pd
 import json
+import os
 
-# baca excel
-df = pd.read_excel("nilai/data_siswa.xlsx")
+df = pd.read_excel("data_siswa.xlsx")
 
-# ubah ke list
-data = df.to_dict(orient="records")
+# Ubah kolom 'nisn' jadi string
+df['nisn'] = df['nisn'].astype(str)
 
-# simpan ke json di folder nilai
+data_list = df.to_dict(orient="records")
+
+if not os.path.exists("nilai"):
+    os.makedirs("nilai")
+
 with open("nilai/data.json", "w", encoding="utf-8") as f:
-    json.dump(data, f, indent=2, ensure_ascii=False)
+    json.dump(data_list, f, indent=2, ensure_ascii=False)
 
-print("Berhasil membuat nilai/data.json")
+print("data.json berhasil diperbarui di folder 'nilai'")
