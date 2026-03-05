@@ -2,7 +2,7 @@ import pandas as pd
 import json
 import os
 
-df = pd.read_excel("data_siswa.xlsx")
+df = pd.read_excel("nilai/data_siswa.xlsx")
 
 # Ubah kolom 'nisn' jadi string
 df['nisn'] = df['nisn'].astype(str)
