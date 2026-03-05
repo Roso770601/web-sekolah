@@ -40,12 +40,12 @@ body{
 
 <div class="login-box">
   <h2>Portal Wali Murid</h2>
-  <p style="font-size:13px;color:#666;text-align:center;">
+  <p style="font-size:13px;color:#fff;text-align:center;">
 Masukkan NISN siswa dan pilih tanggal lahir dari kalender.
 </p>
   <form id="loginForm">
     <input type="text" name="nisn" placeholder="Masukkan NISN" required>
-    <input type="text" name="tgl_lahir" placeholder="Tanggal Lahir (YYYYMMDD)" required pattern="\d{8}">
+    <input type="date" name="tgl_lahir" required>
     <button type="submit">Lihat Nilai</button>
   </form>
 </div>
@@ -53,14 +53,13 @@ Masukkan NISN siswa dan pilih tanggal lahir dari kalender.
 <script>
 document.getElementById('loginForm').addEventListener('submit', function(e){
     e.preventDefault();
+
     const nisn = this.nisn.value.trim();
-    const tgl = this.tgl_lahir.value.trim();
-    if(!/^\d{8}$/.test(tgl)){
-        alert('Format Tanggal Lahir harus YYYYMMDD, contoh: 20160512');
-        return;
-    }
+    const tgl = this.tgl_lahir.value;
+
     localStorage.setItem('nisn', nisn);
     localStorage.setItem('tgl_lahir', tgl);
+
     window.location.href = 'nilai.html';
 });
 </script>
