@@ -95,7 +95,6 @@ box-shadow:0 0 20px rgba(255,179,0,0.8);
 </div>
 
 <script>
-
 document.getElementById('loginForm').addEventListener('submit', function(e){
 
 e.preventDefault();
@@ -103,13 +102,14 @@ e.preventDefault();
 const nisn = document.getElementById('nisn').value.trim();
 const tgl = document.getElementById('tgl_lahir').value;
 
+console.log(tgl); // cek format
+
 localStorage.setItem('nisn', nisn);
 localStorage.setItem('tgl_lahir', tgl);
 
 window.location.href = 'nilai.html';
 
 });
-
 </script>
 
 </body>
