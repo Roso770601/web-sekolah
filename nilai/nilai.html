@@ -1,74 +1,40 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nilai Siswa | SDN 1 Sukamanah</title>
-
-<style>
-body{
-  font-family:'Poppins',sans-serif; 
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
-  background-size:cover; color:#fff; padding:50px; min-height:100vh; display:flex; justify-content:center; align-items:center;
-}
-
-.card{
-  background: rgba(255,255,255,0.9);
-  color:#333;
-  padding:30px;
-  border-radius:20px;
-  box-shadow: 0 10px 35px rgba(0,0,0,0.2);
-  width:100%; max-width:500px; text-align:center;
-}
-
-.card h2{
-  color:#1976d2; margin-bottom:20px;
-}
-
-.card p{
-  font-size:16px; margin:10px 0;
-}
-
-.card .label{
-  font-weight:600; color:#ffeb3b;
-}
-
-.card .error{
-  color:red; font-weight:600; font-size:16px;
-}
-</style>
-</head>
-<body>
-
-<div class="card" id="nilaiCard">
-  <h2>Nilai Siswa</h2>
-  <p>Loading...</p>
-</div>
-
 <script>
+
 const nisn = localStorage.getItem('nisn');
 const tgl = localStorage.getItem('tgl_lahir');
 
 fetch('data.json')
-  .then(res => res.json())
-  .then(data => {
-    const siswa = data.find(s => s.nisn === nisn && s.tgl_lahir === tgl);
-    const card = document.getElementById('nilaiCard');
-    if(siswa){
-        let html = `<h2>Nilai Siswa: ${siswa.nama}</h2>
-                    <p><span class="label">Kelas:</span> ${siswa.kelas}</p>`;
-        for(const [mapel, nilai] of Object.entries(siswa.nilai)){
-            html += `<p><span class="label">${mapel}:</span> ${nilai}</p>`;
-        }
-        card.innerHTML = html;
-    } else {
-        card.innerHTML = '<p class="error">Data tidak ditemukan! Pastikan NISN dan Tanggal Lahir benar.</p>';
-    }
-  })
-  .catch(err => {
-    document.getElementById('nilaiCard').innerHTML = '<p class="error">Gagal memuat data.</p>';
-  });
-</script>
+.then(res => res.json())
+.then(data => {
 
-</body>
-</html>
+const siswa = data.find(s => s.nisn === nisn && s.tgl_lahir === tgl);
+
+const card = document.getElementById('nilaiCard');
+
+if(siswa){
+
+card.innerHTML = `
+<h2>Nilai Siswa</h2>
+
+<p><b>Nama:</b> ${siswa.nama}</p>
+<p><b>NISN:</b> ${siswa.nisn}</p>
+<p><b>Tanggal Lahir:</b> ${siswa.tgl_lahir}</p>
+
+<hr>
+
+<p><b>Matematika:</b> ${siswa.matematika}</p>
+<p><b>Bahasa Indonesia:</b> ${siswa.bahasa_indonesia}</p>
+<p><b>PPKN:</b> ${siswa.ppkn}</p>
+<p><b>IPA:</b> ${siswa.ipa}</p>
+<p><b>IPS:</b> ${siswa.ips}</p>
+`;
+
+}else{
+
+card.innerHTML = '<p class="error">Data tidak ditemukan! Pastikan NISN dan Tanggal Lahir benar.</p>';
+
+}
+
+});
+
+</script>

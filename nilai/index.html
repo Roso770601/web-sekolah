@@ -53,16 +53,22 @@ text-align:left;
 const nisn = localStorage.getItem("nisn");
 const tgl = localStorage.getItem("tgl_lahir");
 
+console.log("NISN:", nisn);
+console.log("Tanggal:", tgl);
+
 fetch('data.json')
 .then(res => res.json())
 .then(data => {
+
+console.log("DATA JSON:", data);
 
 let siswa = data.find(s => 
 s.nisn === nisn && s.tgl_lahir === tgl
 );
 
 if(!siswa){
-document.getElementById("hasil").innerHTML = "Data tidak ditemukan";
+document.getElementById("hasil").innerHTML =
+"Data tidak ditemukan<br>NISN: "+nisn+"<br>TGL: "+tgl;
 return;
 }
 
