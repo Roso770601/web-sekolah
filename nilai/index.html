@@ -66,7 +66,7 @@ button:hover{
     <h2>Portal Nilai Kelas 2</h2>
 
     <input type="text" id="nis" placeholder="Masukkan NIS">
-    <input type="date" id="tgl_lahir">
+    <input type="text" id="tgl_lahir" placeholder="Masukkan Tanggal Lahir">
     <button onclick="cekNilai()">Lihat Nilai</button>
 
     <div class="result" id="result"></div>
@@ -81,7 +81,7 @@ async function cekNilai(){
     const response = await fetch('data.json');
     const data = await response.json();
 
-    const siswa = data.find(s => s.nis === nis && s.tgl_lahir === tgl);
+    const siswa = data.find(s => s.nisn === nis && s.tgl_lahir === tgl);
 
     if(siswa){
         resultDiv.innerHTML = `
