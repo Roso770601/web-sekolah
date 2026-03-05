@@ -3,113 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Orang Tua | SDN 1 Sukamanah</title>
+<title>Nilai Siswa</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
 body{
-background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
-background-size:cover;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-}
-
-.login-box{
-background: rgba(255,255,255,0.1);
+font-family:Arial;
+background:#f4f4f4;
 padding:40px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
 text-align:center;
-width:100%;
-max-width:400px;
 }
 
-.login-box h2{
-color:#ffeb3b;
+.box{
+background:white;
+padding:30px;
+max-width:500px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+h2{
 margin-bottom:20px;
-text-shadow:1px 1px 5px black;
 }
 
-.login-box p{
-font-size:14px;
-margin-bottom:15px;
-}
-
-.login-box input{
+table{
 width:100%;
-padding:12px;
-margin:10px 0;
-border:none;
-border-radius:8px;
-font-size:16px;
+border-collapse:collapse;
 }
 
-.login-box button{
-width:100%;
-padding:12px;
-margin-top:15px;
-background:#ffd54f;
-color:#333;
-border:none;
-border-radius:30px;
-font-weight:600;
-cursor:pointer;
-transition:0.3s;
-}
-
-.login-box button:hover{
-background:#ffb300;
-transform:scale(1.03);
-box-shadow:0 0 20px rgba(255,179,0,0.8);
+td{
+padding:10px;
+border-bottom:1px solid #ddd;
+text-align:left;
 }
 </style>
-
 </head>
+
 <body>
 
-<div class="login-box">
+<div class="box">
+<h2>Data Nilai Siswa</h2>
 
-<h2>Portal Wali Murid</h2>
-
-<p>Masukkan NISN siswa dan pilih tanggal lahir.</p>
-
-<form id="loginForm">
-
-<input type="text" id="nisn" placeholder="Masukkan NISN" required>
-
-<input type="date" id="tgl_lahir" required>
-
-<button type="submit">Lihat Nilai</button>
-
-</form>
+<div id="hasil">Memuat data...</div>
 
 </div>
 
 <script>
-document.getElementById('loginForm').addEventListener('submit', function(e){
 
-e.preventDefault();
+const nisn = localStorage.getItem("nisn");
+const tgl = localStorage.getItem("tgl_lahir");
 
-const nisn = document.getElementById('nisn').value.trim();
-const tgl = document.getElementById('tgl_lahir').value;
+fetch("../data.json")
+.then(res => res.json())
+.then(data => {
 
-console.log(tgl); // cek format
+let siswa = data.find(s => 
+s.nisn === nisn && s.tgl_lahir === tgl
+);
 
-localStorage.setItem('nisn', nisn);
-localStorage.setItem('tgl_lahir', tgl);
+if(!siswa){
+document.getElementById("hasil").innerHTML = "Data tidak ditemukan";
+return;
+}
 
-window.location.href = 'nilai.html';
+document.getElementById("hasil").innerHTML = `
+<table>
+<tr><td>Nama</td><td>${siswa.nama}</td></tr>
+<tr><td>NISN</td><td>${siswa.nisn}</td></tr>
+<tr><td>Tanggal Lahir</td><td>${siswa.tgl_lahir}</td></tr>
+<tr><td>Matematika</td><td>${siswa.matematika}</td></tr>
+<tr><td>Bahasa Indonesia</td><td>${siswa.bahasa_indonesia}</td></tr>
+<tr><td>PPKN</td><td>${siswa.ppkn}</td></tr>
+<tr><td>IPA</td><td>${siswa.ipa}</td></tr>
+<tr><td>IPS</td><td>${siswa.ips}</td></tr>
+</table>
+`;
 
 });
+
 </script>
 
 </body>
