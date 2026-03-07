@@ -4,62 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portal Nilai | SDN 1 Sukamanah</title>
-
 <style>
-*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
-body{
-    background: url('../gambar-sekolah.jpg') no-repeat center center fixed;
-    background-size:cover;
-    min-height:100vh;
-    display:flex; justify-content:center; align-items:center;
-}
-
-#nilaiCard{
-    background:#fff; /* card putih solid */
-    padding:30px 30px; border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-    width:100%; max-width:480px;
-    text-align:center;
-}
-
-/* LOGO SEKOLAH */
-#logo{
-    width:80px; height:80px; object-fit:contain; margin-bottom:10px;
-}
-
-/* NAMA */
-#nilaiCard h2{
-    font-size:24px; color:#333; margin-bottom:15px;
-}
-
-/* INFO SISWA */
-.info-container{
-    display:flex; flex-direction:column; align-items:center; gap:6px;
-    margin-bottom:15px;
-}
-.info-row{
-    display:flex; justify-content:space-between; width:100%;
-    font-size:16px; padding:4px 10px; background:#f2f2f2; border-radius:8px;
-}
-
-/* NILAI */
-#nilaiCard .nilai{
-    text-align:left; margin:6px 0; font-size:16px;
-}
-
-/* HR */
-#nilaiCard hr{
-    border:none; border-top:1px solid #333; margin:15px 0;
-}
-
-/* ERROR */
-.error{
-    color:#ff5252; font-weight:bold; font-size:16px;
-}
+body{font-family:'Poppins',sans-serif; background:url('../gambar-sekolah.jpg') no-repeat center center fixed; background-size:cover; min-height:100vh; display:flex; justify-content:center; align-items:center; margin:0;}
+#nilaiCard{background:#fff; padding:30px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.3); width:100%; max-width:480px; text-align:center;}
+#logo{width:80px; height:80px; object-fit:contain; margin-bottom:10px;}
+#nilaiCard h2{font-size:24px; color:#333; margin-bottom:15px;}
+.info-container{display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:15px;}
+.info-row{display:flex; justify-content:space-between; width:100%; font-size:16px; padding:4px 10px; background:#f2f2f2; border-radius:8px;}
+.nilai{text-align:left; margin:6px 0; font-size:16px;}
+#nilaiCard hr{border:none; border-top:1px solid #333; margin:15px 0;}
+.error{color:#ff5252; font-weight:bold; font-size:16px;}
 </style>
 </head>
 <body>
-
 <div id="nilaiCard">
   <h2>Memuat data...</h2>
 </div>
@@ -73,20 +30,16 @@ fetch('data.json')
 .then(data => {
     const siswa = data.find(s => s.nisn === nisn && s.pin === pin);
     const card = document.getElementById('nilaiCard');
-
     if(siswa){
         card.innerHTML = `
             <img id="logo" src="../logo.png" alt="Logo Sekolah">
             <h2>${siswa.nama}</h2>
-
             <div class="info-container">
                 <div class="info-row"><b>NISN:</b> <span>${siswa.nisn}</span></div>
                 <div class="info-row"><b>Kelas:</b> <span>${siswa.kelas}</span></div>
                 <div class="info-row"><b>Tanggal Lahir:</b> <span>${siswa.tgl_lahir}</span></div>
             </div>
-
             <hr>
-
             <div class="nilai"><b>Matematika :</b> ${siswa.matematika}</div>
             <div class="nilai"><b>Bahasa Indonesia :</b> ${siswa.bahasa_indonesia}</div>
             <div class="nilai"><b>PPKN :</b> ${siswa.ppkn}</div>
@@ -102,6 +55,5 @@ fetch('data.json')
     document.getElementById('nilaiCard').innerHTML = '<p class="error">Gagal memuat data. Cek koneksi atau file data.json!</p>';
 });
 </script>
-
 </body>
 </html>

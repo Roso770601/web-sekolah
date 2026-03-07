@@ -3,27 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Wali Murid | SDN 1 Sukamanah</title>
-
+<title>Portal Orang Tua | SDN 1 Sukamanah</title>
 <style>
-*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
-body{background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('gambar-sekolah.jpg') no-repeat center center fixed; background-size:cover; color:#fff; display:flex; justify-content:center; align-items:center; min-height:100vh;}
-.login-box{background: rgba(255,255,255,0.1); padding:40px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.3); text-align:center; width:100%; max-width:400px;}
+body{font-family:'Poppins',sans-serif; background: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)), url('gambar-sekolah.jpg') no-repeat center center fixed; background-size:cover; display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0;}
+.login-box{background: rgba(255,255,255,0.95); padding:40px; border-radius:20px; width:100%; max-width:400px; text-align:center;}
 .login-box h2{color:#ffeb3b; margin-bottom:20px; text-shadow:1px 1px 5px black;}
-.login-box input{width:100%; padding:12px; margin:10px 0; border:none; border-radius:8px; font-size:16px;}
+.login-box input{width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc; font-size:16px;}
 .login-box button{width:100%; padding:12px; margin-top:15px; background:#ffd54f; color:#333; border:none; border-radius:30px; font-weight:600; cursor:pointer; transition:0.3s;}
-.login-box button:hover{background:#ffb300; transform:scale(1.03); box-shadow:0 0 20px rgba(255,179,0,0.8);}
-.login-box p{font-size:14px; color:#fff; margin-top:10px;}
+.login-box button:hover{background:#ffb300; transform:scale(1.03);}
+.login-box p{font-size:14px; color:#333; margin-top:10px;}
 </style>
 </head>
 <body>
-
 <div class="login-box">
   <h2>Portal Wali Murid</h2>
-  <p>Masukkan NISN siswa dan PIN untuk login.</p>
+  <p>Masukkan NISN dan PIN siswa.</p>
   <form id="loginForm">
     <input type="text" name="nisn" placeholder="Masukkan NISN" required>
-    <input type="text" name="pin" placeholder="Masukkan PIN" required>
+    <input type="text" name="pin" placeholder="PIN (4 digit)" required>
     <button type="submit">Lihat Nilai</button>
   </form>
 </div>
@@ -33,13 +30,10 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
     e.preventDefault();
     const nisn = document.querySelector("input[name='nisn']").value.trim();
     const pin = document.querySelector("input[name='pin']").value.trim();
-
     localStorage.setItem("nisn", nisn);
     localStorage.setItem("pin", pin);
-
-    window.location.href = "nilai/nilai.html";  // arah ke folder nilai
+    window.location.href = "nilai/nilai.html";
 });
 </script>
-
 </body>
 </html>
