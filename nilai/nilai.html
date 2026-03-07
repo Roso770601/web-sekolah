@@ -6,31 +6,13 @@
 <title>Portal Nilai | SDN 1 Sukamanah</title>
 
 <style>
-/* ================= GLOBAL ================= */
 *{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
-body{
-  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
-  background-size:cover; color:#fff; line-height:1.6; min-height:100vh; display:flex; justify-content:center; align-items:center;
-}
-
-/* ================= CARD NILAI ================= */
-#nilaiCard{
-  background: rgba(255,255,255,0.1);
-  padding:40px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.3); width:100%; max-width:500px;
-}
-#nilaiCard h2{
-  color:#ffeb3b; margin-bottom:20px; text-shadow:1px 1px 5px black;
-  text-align:center;
-}
-#nilaiCard p{
-  font-size:16px; margin:8px 0;
-}
-#nilaiCard hr{
-  border:none; border-top:1px solid #ffd54f; margin:15px 0;
-}
-.error{
-  color:#ff5252; text-align:center; font-weight:bold;
-}
+body{background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../gambar-sekolah.jpg') no-repeat center center fixed; background-size:cover; color:#fff; line-height:1.6; min-height:100vh; display:flex; justify-content:center; align-items:center;}
+#nilaiCard{background: rgba(255,255,255,0.1); padding:40px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.3); width:100%; max-width:500px;}
+#nilaiCard h2{color:#ffeb3b; margin-bottom:20px; text-shadow:1px 1px 5px black; text-align:center;}
+#nilaiCard p{font-size:16px; margin:8px 0;}
+#nilaiCard hr{border:none; border-top:1px solid #ffd54f; margin:15px 0;}
+.error{color:#ff5252; text-align:center; font-weight:bold;}
 </style>
 </head>
 <body>
@@ -43,7 +25,7 @@ body{
 const nisn = localStorage.getItem('nisn');
 const pin = localStorage.getItem('pin');
 
-fetch('data.json')
+fetch('data.json')  // JSON ada di folder sama
 .then(res => res.json())
 .then(data => {
     const siswa = data.find(s => s.nisn === nisn && s.pin === pin);
