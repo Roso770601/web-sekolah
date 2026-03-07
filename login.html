@@ -4,16 +4,76 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portal Wali Murid | SDN 1 Sukamanah</title>
-
 <style>
-*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
-body{background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('gambar-sekolah.jpg') no-repeat center center fixed; background-size:cover; color:#fff; display:flex; justify-content:center; align-items:center; min-height:100vh;}
-.login-box{background: rgba(255,255,255,0.1); padding:40px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.3); text-align:center; width:100%; max-width:400px;}
-.login-box h2{color:#ffeb3b; margin-bottom:20px; text-shadow:1px 1px 5px black;}
-.login-box input{width:100%; padding:12px; margin:10px 0; border:none; border-radius:8px; font-size:16px;}
-.login-box button{width:100%; padding:12px; margin-top:15px; background:#ffd54f; color:#333; border:none; border-radius:30px; font-weight:600; cursor:pointer; transition:0.3s;}
-.login-box button:hover{background:#ffb300; transform:scale(1.03); box-shadow:0 0 20px rgba(255,179,0,0.8);}
-.login-box p{font-size:14px; color:#fff; margin-top:10px;}
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+
+body {
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('gambar-sekolah.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-box {
+  background: rgba(255,255,255,0.15);
+  padding: 40px 30px;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  backdrop-filter: blur(5px);
+}
+
+.login-box h2 {
+  color: #ffeb3b;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 8px rgba(0,0,0,0.7);
+  font-size: 26px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+}
+
+.login-box input:focus {
+  box-shadow: 0 0 10px #ffd54f;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  background: #ffd54f;
+  color: #333;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.login-box button:hover {
+  background: #ffb300;
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(255,179,0,0.8);
+}
+
+.login-box p {
+  font-size: 14px;
+  color: #fff;
+  margin-top: 12px;
+}
 </style>
 </head>
 <body>
@@ -37,6 +97,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
     localStorage.setItem("nisn", nisn);
     localStorage.setItem("pin", pin);
 
+    // Tetap arahkan ke halaman nilai
     window.location.href = "nilai/nilai.html";
 });
 </script>
