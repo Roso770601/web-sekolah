@@ -1,15 +1,19 @@
 import pandas as pd
 import json
 
+print("Membaca Excel...")
+
 df = pd.read_excel("nilai/data_siswa.xlsx")
 
-# ganti semua NaN dengan kosong
+# ubah semua NaN menjadi string kosong
 df = df.fillna("")
 
-# ubah ke list json
+# ubah ke list JSON
 data_list = df.to_dict(orient="records")
 
-with open("data.json", "w", encoding="utf-8") as f:
-    json.dump(data_list, f, indent=2, ensure_ascii=False, allow_nan=False)
+print("Menyimpan JSON...")
 
-print("Excel berhasil diubah menjadi JSON tanpa NaN")
+with open("data.json", "w", encoding="utf-8") as f:
+    json.dump(data_list, f, indent=2, ensure_ascii=False)
+
+print("JSON berhasil dibuat tanpa NaN")
