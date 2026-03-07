@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nilai Siswa | SDN 1 Sukamanah</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
 body{
   background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
   background-size:cover; min-height:100vh; display:flex; align-items:center; justify-content:center;
@@ -16,15 +16,7 @@ body{
 }
 .logo{width:70px; margin-bottom:10px;}
 h2{color:#1976d2; margin-bottom:15px;}
-.info{
-  display:grid; grid-template-columns: max-content auto; gap:5px 10px; justify-content:center;
-  text-align:left; margin-top:10px;
-}
-.info div.label::after{
-  content:":"; display:inline-block; width:10px; text-align:right; margin-left:2px;
-}
-hr.garis{border:none; border-top:3px solid #FFD700; margin:15px 0;}
-table{width:100%; border-collapse:collapse; margin-top:10px;}
+table{width:100%; border-collapse:collapse; margin-top:20px;}
 td{padding:10px; border-bottom:1px solid #ddd; text-align:left;}
 .label{font-weight:bold;}
 .btn{margin-top:20px; padding:10px 18px; border:none; border-radius:20px; cursor:pointer; font-weight:600;}
@@ -36,53 +28,55 @@ td{padding:10px; border-bottom:1px solid #ddd; text-align:left;}
 <body>
 
 <div class="card">
-<img src="../logo.png" class="logo">
-<h2>Nilai Tengah Semester</h2>
-<div id="hasil">Memuat data...</div>
-<div style="margin-top:20px">
-  <button class="btn print" onclick="window.print()">Cetak Nilai</button>
-  <button class="btn logout" onclick="logout()">Logout</button>
-</div>
+  <img src="../logo.png" class="logo">
+  <h2>Nilai Tengah Semester</h2>
+  <div id="hasil">Memuat data...</div>
+  <div style="margin-top:20px">
+    <button class="btn print" onclick="window.print()">Cetak Nilai</button>
+    <button class="btn logout" onclick="logout()">Logout</button>
+  </div>
 </div>
 
 <script>
 const nisn = localStorage.getItem("nisn");
-const pin = localStorage.getItem("pin");
-if(!nisn || !pin){ window.location.href = "../login.html"; }
-
-fetch("data.json")
-.then(res=>res.json())
-.then(data=>{
-  const siswa = data.find(s=>s.nisn===nisn && s.pin===pin);
-  const hasil = document.getElementById("hasil");
-  if(!siswa){ hasil.innerHTML="<p class='error'>Data tidak ditemukan</p>"; return; }
-
-  hasil.innerHTML = `
-    <h3>${siswa.nama}</h3>
-    <div class="info">
-      <div class="label">NISN</div><div>${siswa.nisn}</div>
-      <div class="label">Kelas</div><div>${siswa.kelas}</div>
-      <div class="label">Tanggal Lahir</div><div>${siswa.tgl_lahir}</div>
-    </div>
-    <hr class="garis">
-    <table>
-      ${tampilMapel(siswa)}
-    </table>
-  `;
-});
-
-function tampilMapel(siswa){
-  const semuaMapel=["matematika","bahasa_indonesia","ppkn","ipas","pjok","seni_rupa","seni_musik"];
-  return semuaMapel.map(m=>{
-    const nama = m.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase());
-    return `<tr><td class="label">${nama}</td><td>${siswa[m]||"-"}</td></tr>`;
-  }).join("");
+const pin = localStorage.getItem("pin"); // kalau kamu pakai PIN
+if(!nisn || !pin){
+    window.location.href = "../login.html";
 }
 
+fetch("data.json")
+.then(res => res.json())
+.then(data => {
+    const siswa = data.find(s => s.nisn === nisn);
+    const hasil = document.getElementById("hasil");
+    if(!siswa){
+        hasil.innerHTML = "<p class='error'>Data tidak ditemukan</p>";
+        return;
+    }
+    hasil.innerHTML = `
+        <h3>${siswa.nama}</h3>
+        <p><b>Nisn :</b> ${siswa.nisn}</p>
+		<p><b>Kelas :</b> ${siswa.kelas}</p>
+        <p><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</p>
+		<hr style="border:none; border-top:3px solid #FFD700; margin:15px 0;"> <!-- garis kuning -->
+        <table>
+            <tr><td class="label">Matematika</td><td>${siswa.matematika}</td></tr>
+            <tr><td class="label">Bahasa Indonesia</td><td>${siswa.bahasa_indonesia}</td></tr>
+            <tr><td class="label">PPKN</td><td>${siswa.ppkn}</td></tr>
+            <tr><td class="label">IPAS</td><td>${siswa.ipas}</td></tr>
+            <tr><td class="label">PJOK</td><td>${siswa.pjok}</td></tr>
+			<tr><td class="label">Seni Rupa</td><td>${siswa.seni_rupa}</td></tr>
+        </table>
+    `;
+})
+.catch(err => {
+    document.getElementById("hasil").innerHTML = "<p class='error'>Gagal memuat data.</p>";
+});
+
 function logout(){
-  localStorage.removeItem("nisn");
-  localStorage.removeItem("pin");
-  window.location.href="../login.html";
+    localStorage.removeItem("nisn");
+    localStorage.removeItem("pin");
+    window.location.href="../login.html";
 }
 </script>
 

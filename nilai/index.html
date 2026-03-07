@@ -142,20 +142,21 @@ let html = `
 <table>
 `;
 
-// Loop otomatis mapel, termasuk kolom baru
-const semuaMapel = ["matematika","bahasa_indonesia","ppkn","ipas","pjok","seni_rupa","seni_musik"];
+for (let key in siswa) {
 
-for (let key of semuaMapel) {
-    let namaMapel = key.replace(/_/g, " ");
-    namaMapel = namaMapel.replace(/\b\w/g, c => c.toUpperCase());
+  if (key === "nisn" || key === "nama" || key === "tgl_lahir" || key === "kelas") {
+  continue;
+}
 
-    // pakai tampilNilai supaya aman kalau kolom belum ada
-    html += `
-    <tr>
-      <td class="label">${namaMapel}</td>
-      <td>${tampilNilai(siswa[key])}</td>
-    </tr>
-    `;
+  let namaMapel = key.replace(/_/g, " ");
+  namaMapel = namaMapel.replace(/\b\w/g, c => c.toUpperCase());
+
+  html += `
+  <tr>
+    <td class="label">${namaMapel}</td>
+    <td>${tampilNilai(siswa[key])}</td>
+  </tr>
+  `;
 }
 
 html += "</table>";
