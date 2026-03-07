@@ -1,8 +1,10 @@
 import pandas as pd
 import json
 
-# baca file excel
 df = pd.read_excel("nilai/data_siswa.xlsx")
+
+# GANTI SEMUA NaN MENJADI STRING KOSONG
+df = df.fillna("")
 
 data_list = []
 
@@ -16,7 +18,7 @@ for _, row in df.iterrows():
         "ppkn": row["ppkn"],
         "ipas": row["ipas"],
         "pjok": row["pjok"],
-        "seni_rupa": "" if pd.isna(row["seni_rupa"]) else row["seni_rupa"]
+        "seni_rupa": row["seni_rupa"]
     }
 
     data_list.append(siswa)
@@ -24,4 +26,4 @@ for _, row in df.iterrows():
 with open("data.json", "w", encoding="utf-8") as f:
     json.dump(data_list, f, indent=2, ensure_ascii=False)
 
-print("✅ Excel berhasil diubah menjadi JSON!")
+print("Excel berhasil diubah menjadi JSON")
