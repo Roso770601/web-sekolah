@@ -41,11 +41,11 @@ body{
 <div class="login-box">
   <h2>Portal Wali Murid</h2>
   <p style="font-size:13px;color:#fff;text-align:center;">
-Masukkan NISN siswa dan pilih tanggal lahir dari kalender.
+Masukkan NISN siswa dan PIN.
 </p>
   <form id="loginForm">
     <input type="text" name="nisn" placeholder="Masukkan NISN" required>
-    <input type="date" name="tgl_lahir" required>
+    <input type="text" name="pin" placeholder="Masukkan PIN" required>
     <button type="submit">Lihat Nilai</button>
   </form>
 </div>
@@ -55,11 +55,13 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
     e.preventDefault();
 
     const nisn = document.querySelector("input[name='nisn']").value.trim();
-    const tgl = document.querySelector("input[name='tgl_lahir']").value;
+    const pin = document.querySelector("input[name='pin']").value.trim();
 
+    // simpan ke localStorage untuk halaman nilai
     localStorage.setItem("nisn", nisn);
-    localStorage.setItem("tgl_lahir", tgl);
+    localStorage.setItem("pin", pin);
 
+    // arahkan ke halaman nilai
     window.location.href = "/nilai/";
 });
 </script>

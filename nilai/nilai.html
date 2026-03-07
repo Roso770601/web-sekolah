@@ -1,40 +1,80 @@
-<script>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Nilai | SDN 1 Sukamanah</title>
 
+<style>
+/* ================= GLOBAL ================= */
+*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
+body{
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
+  background-size:cover; color:#fff; line-height:1.6; min-height:100vh; display:flex; justify-content:center; align-items:center;
+}
+
+/* ================= CARD NILAI ================= */
+#nilaiCard{
+  background: rgba(255,255,255,0.1);
+  padding:40px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.3); width:100%; max-width:500px;
+}
+#nilaiCard h2{
+  color:#ffeb3b; margin-bottom:20px; text-shadow:1px 1px 5px black;
+  text-align:center;
+}
+#nilaiCard p{
+  font-size:16px; margin:8px 0;
+}
+#nilaiCard hr{
+  border:none; border-top:1px solid #ffd54f; margin:15px 0;
+}
+.error{
+  color:#ff5252; text-align:center; font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div id="nilaiCard">
+  <h2>Memuat data...</h2>
+</div>
+
+<script>
 const nisn = localStorage.getItem('nisn');
-const tgl = localStorage.getItem('tgl_lahir');
+const pin = localStorage.getItem('pin');
 
 fetch('data.json')
 .then(res => res.json())
 .then(data => {
+    const siswa = data.find(s => s.nisn === nisn && s.pin === pin);
+    const card = document.getElementById('nilaiCard');
 
-const siswa = data.find(s => s.nisn === nisn && s.tgl_lahir === tgl);
+    if(siswa){
+        card.innerHTML = `
+            <h2>Nilai Siswa</h2>
 
-const card = document.getElementById('nilaiCard');
+            <p><b>Nama:</b> ${siswa.nama}</p>
+            <p><b>NISN:</b> ${siswa.nisn}</p>
+            <p><b>Kelas:</b> ${siswa.kelas}</p>
+            <p><b>Tanggal Lahir:</b> ${siswa.tgl_lahir}</p>
 
-if(siswa){
+            <hr>
 
-card.innerHTML = `
-<h2>Nilai Siswa</h2>
-
-<p><b>Nama:</b> ${siswa.nama}</p>
-<p><b>NISN:</b> ${siswa.nisn}</p>
-<p><b>Tanggal Lahir:</b> ${siswa.tgl_lahir}</p>
-
-<hr>
-
-<p><b>Matematika:</b> ${siswa.matematika}</p>
-<p><b>Bahasa Indonesia:</b> ${siswa.bahasa_indonesia}</p>
-<p><b>PPKN:</b> ${siswa.ppkn}</p>
-<p><b>IPA:</b> ${siswa.ipa}</p>
-<p><b>IPS:</b> ${siswa.ips}</p>
-`;
-
-}else{
-
-card.innerHTML = '<p class="error">Data tidak ditemukan! Pastikan NISN dan Tanggal Lahir benar.</p>';
-
-}
-
+            <p><b>Matematika:</b> ${siswa.matematika}</p>
+            <p><b>Bahasa Indonesia:</b> ${siswa.bahasa_indonesia}</p>
+            <p><b>PPKN:</b> ${siswa.ppkn}</p>
+            <p><b>IPA/IPAS:</b> ${siswa.ipas}</p>
+            <p><b>PJOK:</b> ${siswa.pjok}</p>
+            <p><b>Seni Rupa:</b> ${siswa.seni_rupa}</p>
+        `;
+    } else {
+        card.innerHTML = '<p class="error">Data tidak ditemukan! Pastikan NISN dan PIN benar.</p>';
+    }
+})
+.catch(err => {
+    document.getElementById('nilaiCard').innerHTML = '<p class="error">Gagal memuat data. Cek koneksi atau file data.json!</p>';
 });
-
 </script>
+
+</body>
+</html>
