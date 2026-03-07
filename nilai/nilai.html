@@ -8,44 +8,43 @@
 <style>
 *{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
 body{
-    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
-    background-size:cover; color:#fff; line-height:1.6; min-height:100vh;
+    background: url('../gambar-sekolah.jpg') no-repeat center center fixed;
+    background-size:cover; color:#000; line-height:1.6; min-height:100vh;
     display:flex; justify-content:center; align-items:center;
 }
 
 /* CARD NILAI */
 #nilaiCard{
-    background: rgba(255,255,255,0.15); /* sedikit transparan, gambar tetap terlihat */
-    padding:40px; border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3); width:100%; max-width:500px;
+    background: #fff; /* putih solid */
+    padding:30px 40px; border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3); width:100%; max-width:480px;
     text-align:center;
 }
 
 /* LOGO SEKOLAH */
 #logo{
-    width:80px; height:80px; object-fit:contain; margin-bottom:15px;
+    width:80px; height:80px; object-fit:contain; margin-bottom:10px;
 }
 
 /* NAMA */
 #nilaiCard h2{
-    color:#ffeb3b; margin-bottom:10px; text-shadow:1px 1px 5px black;
-    font-size:26px;
+    color:#333; margin-bottom:10px; font-size:26px;
 }
 
 /* INFO SISI */
 .info{
-    background: rgba(0,0,0,0.3); padding:10px 15px; border-radius:10px;
-    display:inline-block; margin:5px 0; font-size:16px;
+    display:flex; justify-content:space-between;
+    padding:5px 10px; margin:2px 0; font-size:16px;
 }
 
 /* HR */
 #nilaiCard hr{
-    border:none; border-top:1px solid #ffd54f; margin:15px 0;
+    border:none; border-top:1px solid #333; margin:15px 0;
 }
 
 /* NILAI */
 #nilaiCard .nilai{
-    text-align:left; margin:8px 0;
+    text-align:left; margin:6px 0; font-size:16px;
 }
 
 /* ERROR */
@@ -75,9 +74,8 @@ fetch('data.json')
             <img id="logo" src="../logo-sekolah.png" alt="Logo Sekolah">
             <h2>${siswa.nama}</h2>
 
-            <div class="info"><b>NISN :</b> ${siswa.nisn}</div><br>
-            <div class="info"><b>KELAS :</b> ${siswa.kelas}</div><br>
-            <div class="info"><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</div>
+            <div class="info"><span><b>NISN:</b> ${siswa.nisn}</span><span><b>KELAS:</b> ${siswa.kelas}</span></div>
+            <div class="info" style="justify-content:center;"><b>Tanggal Lahir:</b> ${siswa.tgl_lahir}</div>
 
             <hr>
 
