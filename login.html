@@ -3,37 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Orang Tua | SDN 1 Sukamanah</title>
+<title>Portal Nilai | SDN 1 Sukamanah</title>
+
 <style>
-body{font-family:'Poppins',sans-serif; background: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)), url('gambar-sekolah.jpg') no-repeat center center fixed; background-size:cover; display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0;}
-.login-box{background: rgba(255,255,255,0.95); padding:40px; border-radius:20px; width:100%; max-width:400px; text-align:center;}
-.login-box h2{color:#ffeb3b; margin-bottom:20px; text-shadow:1px 1px 5px black;}
-.login-box input{width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc; font-size:16px;}
-.login-box button{width:100%; padding:12px; margin-top:15px; background:#ffd54f; color:#333; border:none; border-radius:30px; font-weight:600; cursor:pointer; transition:0.3s;}
-.login-box button:hover{background:#ffb300; transform:scale(1.03);}
-.login-box p{font-size:14px; color:#333; margin-top:10px;}
+*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
+body{background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../gambar-sekolah.jpg') no-repeat center center fixed; background-size:cover; color:#fff; line-height:1.6; min-height:100vh; display:flex; justify-content:center; align-items:center;}
+#nilaiCard{background: rgba(255,255,255,0.1); padding:40px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.3); width:100%; max-width:500px;}
+#nilaiCard h2{color:#ffeb3b; margin-bottom:20px; text-shadow:1px 1px 5px black; text-align:center;}
+#nilaiCard p{font-size:16px; margin:8px 0;}
+#nilaiCard hr{border:none; border-top:1px solid #ffd54f; margin:15px 0;}
+.error{color:#ff5252; text-align:center; font-weight:bold;}
 </style>
 </head>
 <body>
-<div class="login-box">
-  <h2>Portal Wali Murid</h2>
-  <p>Masukkan NISN dan PIN siswa.</p>
-  <form id="loginForm">
-    <input type="text" name="nisn" placeholder="Masukkan NISN" required>
-    <input type="text" name="pin" placeholder="PIN (4 digit)" required>
-    <button type="submit">Lihat Nilai</button>
-  </form>
+
+<div id="nilaiCard">
+  <h2>Memuat data...</h2>
 </div>
 
 <script>
-document.getElementById("loginForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    const nisn = document.querySelector("input[name='nisn']").value.trim();
-    const pin = document.querySelector("input[name='pin']").value.trim();
-    localStorage.setItem("nisn", nisn);
-    localStorage.setItem("pin", pin);
-    window.location.href = "nilai/nilai.html";
+const nisn = localStorage.getItem('nisn');
+const pin = localStorage.getItem('pin');
+
+fetch('data.json')  // path JSON sudah fix
+.then(res => res.json())
+.then(data => {
+    const siswa = data.find(s => s.nisn === nisn && s.pin === pin);
+    const card = document.getElementById('nilaiCard');
+
+    if(siswa){
+        card.innerHTML = `
+            <h2>Nilai Siswa</h2>
+            <p><b>Nama:</b> ${siswa.nama}</p>
+            <p><b>NISN:</b> ${siswa.nisn}</p>
+            <p><b>Kelas:</b> ${siswa.kelas}</p>
+            <p><b>Tanggal Lahir:</b> ${siswa.tgl_lahir}</p>
+            <hr>
+            <p><b>Matematika:</b> ${siswa.matematika}</p>
+            <p><b>Bahasa Indonesia:</b> ${siswa.bahasa_indonesia}</p>
+            <p><b>PPKN:</b> ${siswa.ppkn}</p>
+            <p><b>IPA/IPAS:</b> ${siswa.ipas}</p>
+            <p><b>PJOK:</b> ${siswa.pjok}</p>
+            <p><b>Seni Rupa:</b> ${siswa.seni_rupa}</p>
+        `;
+    } else {
+        card.innerHTML = '<p class="error">Data tidak ditemukan! Pastikan NISN dan PIN benar.</p>';
+    }
+})
+.catch(err => {
+    document.getElementById('nilaiCard').innerHTML = '<p class="error">Gagal memuat data. Cek koneksi atau file data.json!</p>';
 });
 </script>
+
 </body>
 </html>
