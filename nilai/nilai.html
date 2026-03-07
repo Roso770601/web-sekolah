@@ -3,104 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Nilai | SDN 1 Sukamanah</title>
-
+<title>Nilai Siswa | SDN 1 Sukamanah</title>
 <style>
 *{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
 body{
-    background: url('../gambar-sekolah.jpg') no-repeat center center fixed;
-    background-size:cover;
-    min-height:100vh;
-    display:flex; justify-content:center; align-items:center;
+  background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
+  background-size:cover; min-height:100vh; display:flex; align-items:center; justify-content:center;
 }
-
-#nilaiCard{
-    background:#fff; /* card putih solid */
-    padding:30px 30px; border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-    width:100%; max-width:480px;
-    text-align:center;
+.card{
+  background:white; padding:35px; border-radius:20px; width:100%; max-width:500px; text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
-
-/* LOGO SEKOLAH */
-#logo{
-    width:80px; height:80px; object-fit:contain; margin-bottom:10px;
-}
-
-/* NAMA */
-#nilaiCard h2{
-    font-size:24px; color:#333; margin-bottom:15px;
-}
-
-/* INFO SISWA */
-.info-container{
-    display:flex; flex-direction:column; align-items:center; gap:6px;
-    margin-bottom:15px;
-}
-.info-row{
-    display:flex; justify-content:space-between; width:100%;
-    font-size:16px; padding:4px 10px; background:#f2f2f2; border-radius:8px;
-}
-
-/* NILAI */
-#nilaiCard .nilai{
-    text-align:left; margin:6px 0; font-size:16px;
-}
-
-/* HR */
-#nilaiCard hr{
-    border:none; border-top:1px solid #333; margin:15px 0;
-}
-
-/* ERROR */
-.error{
-    color:#ff5252; font-weight:bold; font-size:16px;
-}
+.logo{width:70px; margin-bottom:10px;}
+h2{color:#1976d2; margin-bottom:15px;}
+table{width:100%; border-collapse:collapse; margin-top:20px;}
+td{padding:10px; border-bottom:1px solid #ddd; text-align:left;}
+.label{font-weight:bold;}
+.btn{margin-top:20px; padding:10px 18px; border:none; border-radius:20px; cursor:pointer; font-weight:600;}
+.print{background:#4caf50; color:white;}
+.logout{background:#e53935; color:white; margin-left:10px;}
+.error{color:red; font-weight:bold;}
 </style>
 </head>
 <body>
 
-<div id="nilaiCard">
-  <h2>Memuat data...</h2>
+<div class="card">
+  <img src="../logo.png" class="logo">
+  <h2>Portal Nilai Siswa</h2>
+  <div id="hasil">Memuat data...</div>
+  <div style="margin-top:20px">
+    <button class="btn print" onclick="window.print()">Cetak Nilai</button>
+    <button class="btn logout" onclick="logout()">Logout</button>
+  </div>
 </div>
 
 <script>
-const nisn = localStorage.getItem('nisn');
-const pin = localStorage.getItem('pin');
+const nisn = localStorage.getItem("nisn");
+const pin = localStorage.getItem("pin"); // kalau kamu pakai PIN
+if(!nisn || !pin){
+    window.location.href = "../login.html";
+}
 
-fetch('data.json')
+fetch("data.json")
 .then(res => res.json())
 .then(data => {
-    const siswa = data.find(s => s.nisn === nisn && s.pin === pin);
-    const card = document.getElementById('nilaiCard');
-
-    if(siswa){
-        card.innerHTML = `
-            <img id="logo" src="../logo.png" alt="Logo Sekolah">
-            <h2>${siswa.nama}</h2>
-
-            <div class="info-container">
-                <div class="info-row"><b>NISN:</b> <span>${siswa.nisn}</span></div>
-                <div class="info-row"><b>Kelas:</b> <span>${siswa.kelas}</span></div>
-                <div class="info-row"><b>Tanggal Lahir:</b> <span>${siswa.tgl_lahir}</span></div>
-            </div>
-
-            <hr>
-
-            <div class="nilai"><b>Matematika :</b> ${siswa.matematika}</div>
-            <div class="nilai"><b>Bahasa Indonesia :</b> ${siswa.bahasa_indonesia}</div>
-            <div class="nilai"><b>PPKN :</b> ${siswa.ppkn}</div>
-            <div class="nilai"><b>IPA/IPAS :</b> ${siswa.ipas}</div>
-            <div class="nilai"><b>PJOK :</b> ${siswa.pjok}</div>
-            <div class="nilai"><b>Seni Rupa :</b> ${siswa.seni_rupa}</div>
-        `;
-    } else {
-        card.innerHTML = '<p class="error">Data tidak ditemukan! Pastikan NISN dan PIN benar.</p>';
+    const siswa = data.find(s => s.nisn === nisn);
+    const hasil = document.getElementById("hasil");
+    if(!siswa){
+        hasil.innerHTML = "<p class='error'>Data tidak ditemukan</p>";
+        return;
     }
+    hasil.innerHTML = `
+        <h3>${siswa.nama}</h3>
+        <p><b>NISN :</b> ${siswa.nisn}</p>
+        <p><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</p>
+        <table>
+            <tr><td class="label">Matematika</td><td>${siswa.matematika}</td></tr>
+            <tr><td class="label">Bahasa Indonesia</td><td>${siswa.bahasa_indonesia}</td></tr>
+            <tr><td class="label">PPKN</td><td>${siswa.ppkn}</td></tr>
+            <tr><td class="label">IPA</td><td>${siswa.ipa}</td></tr>
+            <tr><td class="label">IPS</td><td>${siswa.ips}</td></tr>
+        </table>
+    `;
 })
 .catch(err => {
-    document.getElementById('nilaiCard').innerHTML = '<p class="error">Gagal memuat data. Cek koneksi atau file data.json!</p>';
+    document.getElementById("hasil").innerHTML = "<p class='error'>Gagal memuat data.</p>";
 });
+
+function logout(){
+    localStorage.removeItem("nisn");
+    localStorage.removeItem("pin");
+    window.location.href="../login.html";
+}
 </script>
 
 </body>
