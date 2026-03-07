@@ -130,20 +130,33 @@ hasil.innerHTML = "<p class='error'>Data tidak ditemukan</p>";
 return;
 }
 
-hasil.innerHTML = `
+let html = `
 <h3>${siswa.nama}</h3>
 <p><b>NISN :</b> ${siswa.nisn}</p>
 <p><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</p>
-
 <table>
-<tr><td class="label">Matematika</td><td>${tampilNilai(siswa.matematika)}</td></tr>
-<tr><td class="label">Bahasa Indonesia</td><td>${tampilNilai(siswa.bahasa_indonesia)}</td></tr>
-<tr><td class="label">PPKN</td><td>${tampilNilai(siswa.ppkn)}</td></tr>
-<tr><td class="label">IPAS</td><td>${tampilNilai(siswa.ipas)}</td></tr>
-<tr><td class="label">PJOK</td><td>${tampilNilai(siswa.pjok)}</td></tr>
-<tr><td class="label">Seni Rupa</td><td>${tampilNilai(siswa.seni_rupa)}</td></tr>
-</table>
 `;
+
+for (let key in siswa) {
+
+  if (key === "nisn" || key === "nama" || key === "tgl_lahir") {
+    continue;
+  }
+
+  let namaMapel = key.replace(/_/g, " ");
+  namaMapel = namaMapel.replace(/\b\w/g, c => c.toUpperCase());
+
+  html += `
+  <tr>
+    <td class="label">${namaMapel}</td>
+    <td>${tampilNilai(siswa[key])}</td>
+  </tr>
+  `;
+}
+
+html += "</table>";
+
+hasil.innerHTML = html;
 
 });
 
