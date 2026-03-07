@@ -38,42 +38,12 @@ td{padding:10px; border-bottom:1px solid #ddd; text-align:left;}
 </div>
 
 <script>
-// 1️⃣ Ambil NISN & PIN
 const nisn = localStorage.getItem("nisn");
-const pin = localStorage.getItem("pin");
+const pin = localStorage.getItem("pin"); // kalau kamu pakai PIN
 if(!nisn || !pin){
     window.location.href = "../login.html";
 }
 
-// 2️⃣ Tambahkan CSS grid responsif untuk info
-const style = document.createElement('style');
-style.innerHTML = `
-.info {
-    display: grid;
-    grid-template-columns: minmax(80px, 150px) auto;
-    gap: 5px 10px;
-    justify-content: center;
-    margin-top: 10px;
-    text-align: left;
-    width: 100%;
-    max-width: 300px;
-}
-.info div.label::after {
-    content: ":";
-    display: inline-block;
-    width: 10px;
-    text-align: right;
-    margin-left: 2px;
-}
-@media (max-width: 400px){
-    .info {
-        grid-template-columns: 80px auto;
-    }
-}
-`;
-document.head.appendChild(style);
-
-// 3️⃣ Fetch data.json & tampilkan
 fetch("data.json")
 .then(res => res.json())
 .then(data => {
@@ -85,18 +55,16 @@ fetch("data.json")
     }
     hasil.innerHTML = `
         <h3>${siswa.nama}</h3>
-        <div class="info">
-          <div class="label">NISN</div><div>${siswa.nisn}</div>
-          <div class="label">Kelas</div><div>${siswa.kelas}</div>
-          <div class="label">Tanggal Lahir</div><div>${siswa.tgl_lahir}</div>
-        </div>
+        <p><b>NISN :</b> ${siswa.nisn}</p>
+		<p><b>Kelas :</b> ${siswa.kelas}</p>
+        <p><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</p>
         <table>
             <tr><td class="label">Matematika</td><td>${siswa.matematika}</td></tr>
             <tr><td class="label">Bahasa Indonesia</td><td>${siswa.bahasa_indonesia}</td></tr>
             <tr><td class="label">PPKN</td><td>${siswa.ppkn}</td></tr>
             <tr><td class="label">IPAS</td><td>${siswa.ipas}</td></tr>
             <tr><td class="label">PJOK</td><td>${siswa.pjok}</td></tr>
-            <tr><td class="label">Seni Rupa</td><td>${siswa.seni_rupa}</td></tr>
+			<tr><td class="label">Seni Rupa</td><td>${siswa.seni_rupa}</td></tr>
         </table>
     `;
 })
@@ -104,7 +72,6 @@ fetch("data.json")
     document.getElementById("hasil").innerHTML = "<p class='error'>Gagal memuat data.</p>";
 });
 
-// 4️⃣ Fungsi logout tetap sama
 function logout(){
     localStorage.removeItem("nisn");
     localStorage.removeItem("pin");
