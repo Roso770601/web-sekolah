@@ -7,12 +7,28 @@
 
 <style>
 *{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
-body{background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../gambar-sekolah.jpg') no-repeat center center fixed; background-size:cover; color:#fff; line-height:1.6; min-height:100vh; display:flex; justify-content:center; align-items:center;}
-#nilaiCard{background: rgba(255,255,255,0.1); padding:40px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.3); width:100%; max-width:500px;}
-#nilaiCard h2{color:#ffeb3b; margin-bottom:20px; text-shadow:1px 1px 5px black; text-align:center;}
-#nilaiCard p{font-size:16px; margin:8px 0;}
-#nilaiCard hr{border:none; border-top:1px solid #ffd54f; margin:15px 0;}
-.error{color:#ff5252; text-align:center; font-weight:bold;}
+body{
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
+    background-size:cover; color:#fff; line-height:1.6; min-height:100vh;
+    display:flex; justify-content:center; align-items:center;
+}
+#nilaiCard{
+    background: rgba(255,255,255,0.1); padding:40px; border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3); width:100%; max-width:500px;
+}
+#nilaiCard h2{
+    color:#ffeb3b; margin-bottom:10px; text-shadow:1px 1px 5px black;
+    text-align:center; font-size:26px;
+}
+#nilaiCard p{
+    font-size:16px; margin:4px 0; text-align:center;
+}
+#nilaiCard hr{
+    border:none; border-top:1px solid #ffd54f; margin:15px 0;
+}
+.error{
+    color:#ff5252; text-align:center; font-weight:bold;
+}
 </style>
 </head>
 <body>
@@ -25,7 +41,7 @@ body{background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../ga
 const nisn = localStorage.getItem('nisn');
 const pin = localStorage.getItem('pin');
 
-fetch('data.json')  // JSON ada di folder sama
+fetch('data.json')  // JSON harus ada di folder sama
 .then(res => res.json())
 .then(data => {
     const siswa = data.find(s => s.nisn === nisn && s.pin === pin);
@@ -33,21 +49,19 @@ fetch('data.json')  // JSON ada di folder sama
 
     if(siswa){
         card.innerHTML = `
-            <h2>Nilai Siswa</h2>
-
-            <p><b>Nama:</b> ${siswa.nama}</p>
-            <p><b>NISN:</b> ${siswa.nisn}</p>
-            <p><b>Kelas:</b> ${siswa.kelas}</p>
-            <p><b>Tanggal Lahir:</b> ${siswa.tgl_lahir}</p>
+            <h2>${siswa.nama}</h2>
+            <p><b>NISN :</b> ${siswa.nisn}</p>
+            <p><b>KELAS :</b> ${siswa.kelas}</p>
+            <p><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</p>
 
             <hr>
 
-            <p><b>Matematika:</b> ${siswa.matematika}</p>
-            <p><b>Bahasa Indonesia:</b> ${siswa.bahasa_indonesia}</p>
-            <p><b>PPKN:</b> ${siswa.ppkn}</p>
-            <p><b>IPA/IPAS:</b> ${siswa.ipas}</p>
-            <p><b>PJOK:</b> ${siswa.pjok}</p>
-            <p><b>Seni Rupa:</b> ${siswa.seni_rupa}</p>
+            <p><b>Matematika :</b> ${siswa.matematika}</p>
+            <p><b>Bahasa Indonesia :</b> ${siswa.bahasa_indonesia}</p>
+            <p><b>PPKN :</b> ${siswa.ppkn}</p>
+            <p><b>IPA/IPAS :</b> ${siswa.ipas}</p>
+            <p><b>PJOK :</b> ${siswa.pjok}</p>
+            <p><b>Seni Rupa :</b> ${siswa.seni_rupa}</p>
         `;
     } else {
         card.innerHTML = '<p class="error">Data tidak ditemukan! Pastikan NISN dan PIN benar.</p>';
