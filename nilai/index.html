@@ -136,12 +136,12 @@ hasil.innerHTML = `
 <p><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</p>
 
 <table>
-<tr><td class="label">Matematika</td><td>${siswa.matematika}</td></tr>
-<tr><td class="label">Bahasa Indonesia</td><td>${siswa.bahasa_indonesia}</td></tr>
-<tr><td class="label">PPKN</td><td>${siswa.ppkn}</td></tr>
-<tr><td class="label">IPAS</td><td>${siswa.ipas}</td></tr>
-<tr><td class="label">PJOK</td><td>${siswa.pjok}</td></tr>
-<tr><td class="label">Seni Rupa</td><td>${siswa.seni_rupa||"-"}</td></tr>
+<tr><td class="label">Matematika</td><td>${tampilNilai(siswa.matematika)}</td></tr>
+<tr><td class="label">Bahasa Indonesia</td><td>${tampilNilai(siswa.bahasa_indonesia)}</td></tr>
+<tr><td class="label">PPKN</td><td>${tampilNilai(siswa.ppkn)}</td></tr>
+<tr><td class="label">IPAS</td><td>${tampilNilai(siswa.ipas)}</td></tr>
+<tr><td class="label">PJOK</td><td>${tampilNilai(siswa.pjok)}</td></tr>
+<tr><td class="label">Seni Rupa</td><td>${tampilNilai(siswa.seni_rupa)}</td></tr>
 </table>
 `;
 
@@ -154,6 +154,10 @@ localStorage.removeItem("tgl_lahir");
 
 window.location.href="/login.html";
 
+}
+function tampilNilai(n) {
+  if (!n || n === "NaN") return "-";
+  return n;
 }
 
 </script>
