@@ -3,8 +3,8 @@ import json
 
 df = pd.read_excel("nilai/data_siswa.xlsx")
 
-# ubah NaN menjadi None (akan jadi null di JSON)
-df = df.where(pd.notnull(df), None)
+# ganti NaN dengan string kosong
+df = df.fillna("")
 
 data_list = df.to_dict(orient="records")
 
