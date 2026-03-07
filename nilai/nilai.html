@@ -8,26 +8,49 @@
 <style>
 *{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
 body{
-    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
     background-size:cover; color:#fff; line-height:1.6; min-height:100vh;
     display:flex; justify-content:center; align-items:center;
 }
+
+/* CARD NILAI */
 #nilaiCard{
-    background: rgba(255,255,255,0.1); padding:40px; border-radius:20px;
+    background: rgba(255,255,255,0.15); /* sedikit transparan, gambar tetap terlihat */
+    padding:40px; border-radius:20px;
     box-shadow:0 10px 30px rgba(0,0,0,0.3); width:100%; max-width:500px;
+    text-align:center;
 }
+
+/* LOGO SEKOLAH */
+#logo{
+    width:80px; height:80px; object-fit:contain; margin-bottom:15px;
+}
+
+/* NAMA */
 #nilaiCard h2{
     color:#ffeb3b; margin-bottom:10px; text-shadow:1px 1px 5px black;
-    text-align:center; font-size:26px;
+    font-size:26px;
 }
-#nilaiCard p{
-    font-size:16px; margin:4px 0; text-align:center;
+
+/* INFO SISI */
+.info{
+    background: rgba(0,0,0,0.3); padding:10px 15px; border-radius:10px;
+    display:inline-block; margin:5px 0; font-size:16px;
 }
+
+/* HR */
 #nilaiCard hr{
     border:none; border-top:1px solid #ffd54f; margin:15px 0;
 }
+
+/* NILAI */
+#nilaiCard .nilai{
+    text-align:left; margin:8px 0;
+}
+
+/* ERROR */
 .error{
-    color:#ff5252; text-align:center; font-weight:bold;
+    color:#ff5252; font-weight:bold;
 }
 </style>
 </head>
@@ -41,7 +64,7 @@ body{
 const nisn = localStorage.getItem('nisn');
 const pin = localStorage.getItem('pin');
 
-fetch('data.json')  // JSON harus ada di folder sama
+fetch('data.json')
 .then(res => res.json())
 .then(data => {
     const siswa = data.find(s => s.nisn === nisn && s.pin === pin);
@@ -49,19 +72,21 @@ fetch('data.json')  // JSON harus ada di folder sama
 
     if(siswa){
         card.innerHTML = `
+            <img id="logo" src="../logo-sekolah.png" alt="Logo Sekolah">
             <h2>${siswa.nama}</h2>
-            <p><b>NISN :</b> ${siswa.nisn}</p>
-            <p><b>KELAS :</b> ${siswa.kelas}</p>
-            <p><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</p>
+
+            <div class="info"><b>NISN :</b> ${siswa.nisn}</div><br>
+            <div class="info"><b>KELAS :</b> ${siswa.kelas}</div><br>
+            <div class="info"><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</div>
 
             <hr>
 
-            <p><b>Matematika :</b> ${siswa.matematika}</p>
-            <p><b>Bahasa Indonesia :</b> ${siswa.bahasa_indonesia}</p>
-            <p><b>PPKN :</b> ${siswa.ppkn}</p>
-            <p><b>IPA/IPAS :</b> ${siswa.ipas}</p>
-            <p><b>PJOK :</b> ${siswa.pjok}</p>
-            <p><b>Seni Rupa :</b> ${siswa.seni_rupa}</p>
+            <div class="nilai"><b>Matematika :</b> ${siswa.matematika}</div>
+            <div class="nilai"><b>Bahasa Indonesia :</b> ${siswa.bahasa_indonesia}</div>
+            <div class="nilai"><b>PPKN :</b> ${siswa.ppkn}</div>
+            <div class="nilai"><b>IPA/IPAS :</b> ${siswa.ipas}</div>
+            <div class="nilai"><b>PJOK :</b> ${siswa.pjok}</div>
+            <div class="nilai"><b>Seni Rupa :</b> ${siswa.seni_rupa}</div>
         `;
     } else {
         card.innerHTML = '<p class="error">Data tidak ditemukan! Pastikan NISN dan PIN benar.</p>';
