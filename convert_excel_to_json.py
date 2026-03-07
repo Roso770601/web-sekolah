@@ -38,3 +38,5 @@ with open(json_path, "w", encoding="utf-8") as f:
     json.dump(data_list, f, ensure_ascii=False, indent=2)
 
 print(f"✅ data.json berhasil dibuat di {json_path} dengan semua kolom nilai otomatis")
+print("Kolom yang terbaca:", df.columns.tolist())
+print("5 baris pertama:", df.head().to_dict(orient='records')[:5])
