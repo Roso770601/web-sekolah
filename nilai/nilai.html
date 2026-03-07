@@ -58,7 +58,25 @@ fetch("data.json")
         hasil.innerHTML = "<p class='error'>Data tidak ditemukan</p>";
         return;
     }
-
+hasil.innerHTML = `
+        <h3>${siswa.nama}</h3>
+        <div class="info">
+            <div class="label">NISN</div><div>${siswa.nisn}</div>
+            <div class="label">Kelas</div><div>${siswa.kelas}</div>
+            <div class="label">Tanggal Lahir</div><div>${siswa.tgl_lahir}</div>
+        </div>
+        <hr style="border:none; border-top:3px solid #FFD700; margin:15px 0;">
+        <table>
+            <tr><td class="label">Matematika</td><td>${siswa.matematika}</td></tr>
+            <tr><td class="label">Bahasa Indonesia</td><td>${siswa.bahasa_indonesia}</td></tr>
+            <tr><td class="label">PPKN</td><td>${siswa.ppkn}</td></tr>
+            <tr><td class="label">IPAS</td><td>${siswa.ipas}</td></tr>
+            <tr><td class="label">PJOK</td><td>${siswa.pjok}</td></tr>
+            <tr><td class="label">Seni Rupa</td><td>${siswa.seni_rupa}</td></tr>
+            <tr><td class="label">Seni Musik</td><td>${siswa.seni_musik}</td></tr>
+        </table>
+    `;
+});
     // Tampilkan identitas
     let html = `
     <h3>${siswa.nama}</h3>
