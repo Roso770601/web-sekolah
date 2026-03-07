@@ -22,7 +22,7 @@ for _, row in df.iterrows():
         "matematika": row["matematika"],
         "bahasa_indonesia": row["bahasa_indonesia"],
         "ppkn": row["ppkn"],
-        "ipa": row["ipas"],
+        "ipas": row["ipas"],
         "pjok": row["pjok"],
         "seni_rupa": row["seni_rupa"]
     }
