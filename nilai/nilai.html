@@ -5,75 +5,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nilai Siswa | SDN 1 Sukamanah</title>
 <style>
-*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{
   background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
   background-size:cover; min-height:100vh; display:flex; align-items:center; justify-content:center;
 }
-.card{
-  background:white; padding:35px; border-radius:20px; width:100%; max-width:500px; text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-.logo{width:70px; margin-bottom:10px;}
-h2{color:#1976d2; margin-bottom:15px;}
-table{width:100%; border-collapse:collapse; margin-top:20px;}
-td{padding:10px; border-bottom:1px solid #ddd; text-align:left;}
+.card{background:white;padding:35px;border-radius:20px;width:100%;max-width:500px;text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);}
+.logo{width:70px;margin-bottom:10px;}
+h2{color:#1976d2;margin-bottom:15px;}
+table{width:100%;border-collapse:collapse;margin-top:20px;}
+td{padding:10px;border-bottom:1px solid #ddd;text-align:left;}
 .label{font-weight:bold;}
-.btn{margin-top:20px; padding:10px 18px; border:none; border-radius:20px; cursor:pointer; font-weight:600;}
-.print{background:#4caf50; color:white;}
-.logout{background:#e53935; color:white; margin-left:10px;}
-.error{color:red; font-weight:bold;}
+.btn{margin-top:20px;padding:10px 18px;border:none;border-radius:20px;cursor:pointer;font-weight:600;}
+.print{background:#4caf50;color:white;}
+.logout{background:#e53935;color:white;margin-left:10px;}
+.error{color:red;font-weight:bold;}
+hr {border:none;border-top:3px solid #FFD700;margin:15px 0;}
 </style>
 </head>
 <body>
 
 <div class="card">
-  <img src="../logo.png" class="logo">
-  <h2>Nilai Tengah Semester</h2>
-  <div id="hasil">Memuat data...</div>
-  <div style="margin-top:20px">
-    <button class="btn print" onclick="window.print()">Cetak Nilai</button>
-    <button class="btn logout" onclick="logout()">Logout</button>
-  </div>
+<img src="../logo.png" class="logo">
+<h2>Nilai Tengah Semester</h2>
+<div id="hasil">Memuat data...</div>
+<div style="margin-top:20px">
+  <button class="btn print" onclick="window.print()">Cetak Nilai</button>
+  <button class="btn logout" onclick="logout()">Logout</button>
+</div>
 </div>
 
 <script>
+// Ambil data login
 const nisn = localStorage.getItem("nisn");
-const pin = localStorage.getItem("pin"); // kalau kamu pakai PIN
+const pin = localStorage.getItem("pin");
 if(!nisn || !pin){
-    window.location.href = "../login.html";
+    window.location.href="../login.html";
 }
+
+// Daftar mapel lengkap
+const semuaMapel = ["matematika","bahasa_indonesia","ppkn","ipas","pjok","seni_rupa","seni_musik"];
 
 fetch("data.json")
 .then(res => res.json())
 .then(data => {
-    const siswa = data.find(s => s.nisn === nisn);
+    // Cari siswa berdasarkan NISN + PIN
+    const siswa = data.find(s => s.nisn === nisn && s.pin === pin);
     const hasil = document.getElementById("hasil");
+
     if(!siswa){
         hasil.innerHTML = "<p class='error'>Data tidak ditemukan</p>";
         return;
     }
-    hasil.innerHTML = `
-        <h3>${siswa.nama}</h3>
-        <p><b>Nisn :</b> ${siswa.nisn}</p>
-		<p><b>Kelas :</b> ${siswa.kelas}</p>
-        <p><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</p>
-		<hr style="border:none; border-top:3px solid #FFD700; margin:15px 0;"> <!-- garis kuning -->
-        <table>
-            <tr><td class="label">Matematika</td><td>${siswa.matematika}</td></tr>
-            <tr><td class="label">Bahasa Indonesia</td><td>${siswa.bahasa_indonesia}</td></tr>
-            <tr><td class="label">PPKN</td><td>${siswa.ppkn}</td></tr>
-            <tr><td class="label">IPAS</td><td>${siswa.ipas}</td></tr>
-            <tr><td class="label">PJOK</td><td>${siswa.pjok}</td></tr>
-			<tr><td class="label">Seni Rupa</td><td>${siswa.seni_rupa}</td></tr>
-			<tr><td class="label">Seni Musik</td><td>${siswa.seni_musik}</td></tr>
-        </table>
+
+    // Tampilkan identitas
+    let html = `
+    <h3>${siswa.nama}</h3>
+    <p><b>NISN :</b> ${siswa.nisn}</p>
+    <p><b>Kelas :</b> ${siswa.kelas}</p>
+    <p><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</p>
+    <hr>
+    <table>
     `;
+
+    // Loop mapel
+    for (let key of semuaMapel){
+        let namaMapel = key.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase());
+        html += `<tr>
+          <td class="label">${namaMapel}</td>
+          <td>${siswa[key] ? siswa[key] : "-"}</td>
+        </tr>`;
+    }
+
+    html += "</table>";
+    hasil.innerHTML = html;
 })
 .catch(err => {
     document.getElementById("hasil").innerHTML = "<p class='error'>Gagal memuat data.</p>";
 });
 
+// Logout
 function logout(){
     localStorage.removeItem("nisn");
     localStorage.removeItem("pin");
