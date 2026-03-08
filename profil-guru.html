@@ -3,98 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profil Guru | SDN 1 Sukamanah</title>
+<title>Profil Guru - Admin</title>
 
+<!-- SCRIPT PASSWORD ADMIN -->
+<script>
+function checkPassword() {
+    var pass = prompt("Masukkan password admin:");
+    if(pass !== "roso") { // ganti sesuai password yang kamu mau
+        alert("Password salah! Halaman hanya untuk admin.");
+        window.location.href = "index.html"; // balik ke home
+    }
+}
+</script>
+
+<!-- STYLE -->
 <style>
-
 body{
-font-family: Arial, sans-serif;
-background:#f4f6f9;
-margin:0;
-padding:0;
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    margin:0;
+    padding:0;
 }
 
 header{
-background:#2c7be5;
-color:white;
-text-align:center;
-padding:25px;
+    background:#2c7be5;
+    color:white;
+    text-align:center;
+    padding:25px;
 }
 
 h1{
-margin:0;
+    margin:0;
 }
 
 .container{
-max-width:1100px;
-margin:40px auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-padding:20px;
+    max-width:1100px;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    padding:20px;
 }
 
 .card{
-background:white;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-text-align:center;
-padding:20px;
-transition:0.3s;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    text-align:center;
+    padding:20px;
+    transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
+    transform:translateY(-5px);
 }
 
 .card img{
-width:120px;
-height:120px;
-object-fit:cover;
-border-radius:50%;
-margin-bottom:15px;
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:50%;
+    margin-bottom:15px;
 }
 
 .nama{
-font-size:18px;
-font-weight:bold;
-margin-bottom:5px;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:5px;
 }
 
 .nip{
-font-size:14px;
-color:#666;
-margin-bottom:5px;
+    font-size:14px;
+    color:#666;
+    margin-bottom:5px;
 }
 
 .jabatan{
-font-size:14px;
-color:#2c7be5;
-font-weight:bold;
+    font-size:14px;
+    color:#2c7be5;
+    font-weight:bold;
 }
 
+a.home-btn{
+    display:inline-block;
+    margin:20px;
+    padding:10px 15px;
+    background:#2c7be5;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
 </style>
-</head>
 
-<body>
-<a href="index.html" style="
-display:inline-block;
-margin:20px;
-padding:10px 15px;
-background:#2c7be5;
-color:white;
-text-decoration:none;
-border-radius:6px;
-font-weight:bold;
-box-shadow:0 2px 5px rgba(0,0,0,0.2);
-">
-← Home
-</a>
+</head>
+<body onload="checkPassword()">
+
+<!-- TOMBOL HOME -->
+<a href="index.html" class="home-btn">← Home</a>
+
+<!-- HEADER -->
 <header>
 <h1>Profil Guru</h1>
 <p>SDN 1 Sukamanah</p>
 </header>
 
+<!-- ISI PROFIL GURU -->
 <div class="container">
 
 <div class="card">
@@ -119,6 +134,5 @@ box-shadow:0 2px 5px rgba(0,0,0,0.2);
 </div>
 
 </div>
-
 </body>
 </html>
