@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Guru | SDN 1 Sukamanah</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f4f6f9;
+margin:0;
+padding:0;
+}
+
+header{
+background:#2c7be5;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+h1{
+margin:0;
+}
+
+.container{
+max-width:1100px;
+margin:40px auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+padding:20px;
+}
+
+.card{
+background:white;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+text-align:center;
+padding:20px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:120px;
+height:120px;
+object-fit:cover;
+border-radius:50%;
+margin-bottom:15px;
+}
+
+.nama{
+font-size:18px;
+font-weight:bold;
+margin-bottom:5px;
+}
+
+.nip{
+font-size:14px;
+color:#666;
+margin-bottom:5px;
+}
+
+.jabatan{
+font-size:14px;
+color:#2c7be5;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Profil Guru</h1>
+<p>SDN 1 Sukamanah</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<img src="guru/guru1.jpg">
+<div class="nama">Ibu Marim</div>
+<div class="nip">NIP. 19870512 201001 2 001</div>
+<div class="jabatan">Kepala Sekolah</div>
+</div>
+
+<div class="card">
+<img src="guru/guru2.jpg">
+<div class="nama">Bapak Ahmad</div>
+<div class="nip">NIP. 19780410 200902 1 002</div>
+<div class="jabatan">Guru Kelas</div>
+</div>
+
+<div class="card">
+<img src="guru/guru3.jpg">
+<div class="nama">Ibu Siti</div>
+<div class="nip">NIP. 19890615 201203 2 003</div>
+<div class="jabatan">Guru Bahasa</div>
+</div>
+
+</div>
+
+</body>
+</html>
