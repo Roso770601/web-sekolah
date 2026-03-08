@@ -1,10 +1,10 @@
 @echo off
 echo =========================
-echo UPDATE NILAI WEBSITE
+echo UPDATE WEBSITE SEKOLAH
 echo =========================
 
 REM =========================
-REM AMBIL UPDATE TERBARU DARI GITHUB
+REM AMBIL UPDATE TERBARU
 REM =========================
 echo Sinkronisasi dengan GitHub...
 git pull origin main
@@ -24,10 +24,10 @@ IF %ERRORLEVEL% NEQ 0 (
 REM =========================
 REM PUSH KE GITHUB
 REM =========================
-echo Mengirim update nilai ke GitHub...
+echo Mengirim update ke GitHub...
 
-git add nilai/data.json
-git commit -m "Update nilai siswa otomatis"
+git add .
+git commit -m "Update website sekolah"
 git push origin main
 
 IF %ERRORLEVEL% NEQ 0 (
