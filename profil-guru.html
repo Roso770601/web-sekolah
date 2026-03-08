@@ -4,7 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Profil Guru - Admin</title>
+<style>
+#content {
+    filter: blur(5px);
+    display:none; /* sembunyikan dulu */
+}
+</style>
 
+<body onload="checkPassword()">
+<div id="content">
+<!-- semua isi profil guru -->
+</div>
+
+<script>
+function checkPassword() {
+    var pass = prompt("Masukkan password admin:");
+    if(pass === "roso") {
+        document.getElementById("content").style.display = "block";
+    } else {
+        alert("Password salah! Halaman hanya untuk admin.");
+        window.location.href = "index.html";
+    }
+}
+</script>
 <!-- SCRIPT PASSWORD ADMIN -->
 <script>
 function checkPassword() {
