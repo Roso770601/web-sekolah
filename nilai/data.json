@@ -35,14 +35,14 @@
     "nama": "ALMIRA KHOERUNISA",
     "pin": "8005",
     "tgl_lahir": "2018-07-27",
-    "matematika": "-",
-    "bahasa_indonesia": "-",
-    "ppkn": "-",
-    "ipas": "-",
-    "pjok": "-",
-    "seni_rupa": "-",
-    "seni_musik": "-",
-    "bahasa_inggris": "-"
+    "matematika": "25",
+    "bahasa_indonesia": "50",
+    "ppkn": "75",
+    "ipas": "100",
+    "pjok": "125",
+    "seni_rupa": "150",
+    "seni_musik": "175",
+    "bahasa_inggris": "200"
   },
   {
     "kelas": "1A",
