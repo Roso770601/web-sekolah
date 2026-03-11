@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Pendaftaran Berhasil</title>
+<title>Verifikasi Pendaftaran PPDB</title>
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -11,69 +11,85 @@ body{
   background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
   url('gambar-sekolah.jpg') no-repeat center center fixed;
   background-size:cover;
+  color:#fff;
   font-family:'Poppins',sans-serif;
-  color:white;
   text-align:center;
+  padding:40px;
 }
 
 .box{
   max-width:600px;
-  margin:120px auto;
-  background:rgba(255,255,255,0.95);
-  color:#333;
-  padding:40px;
-  border-radius:15px;
+  margin:auto;
+  background:rgba(0,0,0,0.6);
+  padding:30px;
+  border-radius:10px;
+}
+
+h1{
+  margin-bottom:20px;
+}
+
+.data{
+  text-align:left;
+  margin-top:20px;
+  line-height:1.8;
 }
 
 .btn-wa{
   display:inline-block;
-  margin-top:20px;
-  padding:12px 25px;
+  margin-top:30px;
+  padding:14px 30px;
   background:#25D366;
   color:white;
   text-decoration:none;
-  border-radius:25px;
-  font-weight:600;
+  border-radius:6px;
+  font-size:18px;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.btn-wa:hover{
+  background:#1ebe5d;
+  transform:scale(1.05);
 }
 
 </style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>Verifikasi Data Pendaftaran</h1>
+
+<p>Periksa kembali data pendaftaran Anda sebelum mengirim ke admin sekolah.</p>
+
+<div class="data" id="tampilData"></div>
+
+<button class="btn-wa" onclick="kirimWA()">
+📨 Kirim Pendaftaran ke WhatsApp
+</button>
+
+</div>
 
 <script>
-
-function kirimWA(){
 
 let params = new URLSearchParams(window.location.search);
 let pesan = params.get("pesan");
 
-let url = "https://wa.me/6287734686477?text=" + encodeURIComponent(pesan);
+document.getElementById("tampilData").innerText = pesan;
+
+function kirimWA(){
+
+let nomor = "62877734686477";
+
+let url = "https://wa.me/" + nomor + "?text=" + encodeURIComponent(pesan);
 
 window.open(url, "_blank");
 
 }
 
 </script>
-
-</head>
-<body>
-
-<div class="box">
-
-<h1>✅ Pendaftaran Berhasil</h1>
-
-<p>
-Data pendaftaran sudah dibuat.<br>
-Silakan kirim data ke admin sekolah untuk verifikasi.
-</p>
-
-<button class="btn-wa" onclick="kirimWA()">
-📲 Kirim Data ke WhatsApp Admin
-</button>
-
-<br><br>
-
-<a href="index.html">Kembali ke Beranda</a>
-
-</div>
 
 </body>
 </html>
