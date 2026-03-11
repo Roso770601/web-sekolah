@@ -45,7 +45,7 @@ function kirimWA(){
 let params = new URLSearchParams(window.location.search);
 let pesan = params.get("pesan");
 
-let url = "https://wa.me/6287734686477?text=" + pesan;
+let url = "https://wa.me/6287734686477?text=" + encodeURIComponent(pesan);
 
 window.open(url, "_blank");
 
