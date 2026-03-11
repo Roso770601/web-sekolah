@@ -84,7 +84,7 @@ h1{
 <div class="data" id="tampilData"></div>
 
 <button class="btn-wa" onclick="kirimWA()">
-📨 Kirim Pendaftaran ke WhatsApp
+📨 Verifikasi Pendaftaran lewat WhatsApp
 
 
 </button>
@@ -102,7 +102,7 @@ document.getElementById("tampilData").innerText = pesan;
 
 function kirimWA(){
 
-let nomor = "62877734686477";
+let nomor = "6287734686477";
 
 let url = "https://wa.me/" + nomor + "?text=" + encodeURIComponent(pesan);
 
