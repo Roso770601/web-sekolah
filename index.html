@@ -100,6 +100,67 @@ footer{
   .hero p{font-size:16px;}
   .btn, .btn-ortu { padding:10px 20px; font-size:14px; }
 }
+.hero-btn{
+  margin-top:20px;
+}
+
+/* kedua tombol dibuat identik */
+.btn-ppdb, .btn-ortu{
+  display:inline-block;
+  width:300px;              /* lebar sama */
+  padding:12px 20px;
+  text-align:center;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  white-space:nowrap;       /* supaya tulisan tidak turun baris */
+  transition:0.3s;
+}
+
+/* tombol PPDB */
+.btn-ppdb{
+  background:#ff9800;
+  color:white;
+  box-shadow:0 0 12px rgba(255,152,0,0.7);
+}
+
+.btn-ppdb:hover{
+  background:#e68900;
+  transform:scale(1.05);
+  box-shadow:0 0 25px rgba(255,152,0,1);
+}
+
+/* tombol portal */
+.btn-ortu{
+  background:#0066cc;
+  color:white;
+  margin-left:10px;
+  box-shadow:0 0 12px rgba(0,102,204,0.7);
+}
+
+.btn-ortu:hover{
+  background:#004a99;
+  transform:scale(1.05);
+  box-shadow:0 0 25px rgba(0,102,204,1);
+}
+/* ===== ANIMASI PULSE PPDB ===== */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(255,152,0,0.7);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255,152,0,1);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255,152,0,0.7);
+  }
+}
+
+.btn-ppdb{
+  background:#ff9800;
+  color:white;
+  animation:pulseGlow 2s infinite;
+}
 </style>
 </head>
 <body>
@@ -121,9 +182,15 @@ footer{
 <section class="hero">
   <h2>Mewujudkan Generasi Cerdas dan Berkarakter</h2>
   <p>Sekolah unggulan dengan kurikulum modern dan lingkungan belajar yang inspiratif.</p>
-  <a href="#kontak" class="btn">Daftar Sekarang</a>
-  <br>
-  <a href="login.html" class="btn-ortu">🔐 Portal Orang Tua / Lihat Nilai</a>
+
+  <div class="hero-btn">
+    <a href="ppdb.html" class="btn-ppdb">📋 PPDB</a>
+	<p style="margin-top:10px; font-size:14px; opacity:0.9;">
+Pendaftaran Peserta Didik Baru Tahun Ajaran 2026/2027
+</p>
+    <a href="login.html" class="btn-ortu">🔐 Portal Orang Tua / Lihat Nilai</a>
+  </div>
+
 </section>
 
 <section id="tentang">

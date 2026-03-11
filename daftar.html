@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Form Pendaftaran PPDB</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+  url('gambar-sekolah.jpg') no-repeat center center fixed;
+  background-size:cover;
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+}
+
+/* kotak form */
+.form-box{
+  max-width:700px;
+  margin:80px auto;
+  background:rgba(255,255,255,0.95);
+  color:#333;
+  padding:40px;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.form-box h1{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+/* input */
+.form-box input,
+.form-box textarea{
+  width:100%;
+  padding:10px;
+  margin:8px 0 15px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:14px;
+}
+
+/* tombol */
+.btn-kirim{
+  width:100%;
+  padding:12px;
+  background:#ff9800;
+  border:none;
+  color:white;
+  font-size:16px;
+  border-radius:25px;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow:0 0 12px rgba(255,152,0,0.7);
+}
+
+.btn-kirim:hover{
+  background:#e68900;
+}
+
+.kembali{
+  display:block;
+  text-align:center;
+  margin-top:15px;
+  text-decoration:none;
+  color:#1976d2;
+}
+a.home-btn{
+    display:inline-block;
+    margin:20px;
+    padding:10px 15px;
+    background:#2c7be5;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+
+</style>
+
+<script>
+
+function kirimWA(){
+
+let nama = document.getElementById("nama").value;
+let ttl = document.getElementById("ttl").value;
+let jk = document.getElementById("jk").value;
+let alamat = document.getElementById("alamat").value;
+let ortu = document.getElementById("ortu").value;
+let wa = document.getElementById("wa").value;
+
+let pesan =
+`Pendaftaran PPDB SDN 1 Sukamanah
+
+Nama Siswa: ${nama}
+Tempat/Tgl Lahir: ${ttl}
+Jenis Kelamin: ${jk}
+Alamat: ${alamat}
+
+Nama Orang Tua: ${ortu}
+No WA Orang Tua: ${wa}`;
+
+let url = "https://wa.me/6287734686477?text=" + encodeURIComponent(pesan);
+
+window.open(url, "_blank");
+
+}
+
+</script>
+
+</head>
+<body>
+<a href="index.html" class="home-btn">← Home</a>
+
+<div class="form-box">
+
+<h1>Form Pendaftaran PPDB</h1>
+
+<label>Nama Lengkap Siswa</label>
+<input type="text" id="nama" placeholder="Masukkan nama siswa">
+
+<label>Tempat / Tanggal Lahir</label>
+<input type="text" id="ttl" placeholder="Contoh: Tasikmalaya, 12 Mei 2019">
+
+<label>Jenis Kelamin</label>
+<input type="text" id="jk" placeholder="Laki-laki / Perempuan">
+
+<label>Alamat</label>
+<textarea id="alamat" rows="3"></textarea>
+
+<label>Nama Orang Tua</label>
+<input type="text" id="ortu">
+
+<label>No WhatsApp Orang Tua</label>
+<input type="text" id="wa">
+
+<button class="btn-kirim" onclick="kirimWA()">Kirim Pendaftaran</button>
+
+<a href="ppdb.html" class="kembali">← Kembali ke Informasi PPDB</a>
+
+</div>
+
+</body>
+</html>
