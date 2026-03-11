@@ -104,9 +104,8 @@ Alamat: ${alamat}
 Nama Orang Tua: ${ortu}
 No WA Orang Tua: ${wa}`;
 
-let url = "https://wa.me/6287734686477?text=" + encodeURIComponent(pesan);
 
-window.open(url, "_blank");
+window.location.href = "verifikasi.html?pesan=" + encodeURIComponent(pesan);
 
 }
 

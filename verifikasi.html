@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Pendaftaran Berhasil</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+  url('gambar-sekolah.jpg') no-repeat center center fixed;
+  background-size:cover;
+  font-family:'Poppins',sans-serif;
+  color:white;
+  text-align:center;
+}
+
+.box{
+  max-width:600px;
+  margin:120px auto;
+  background:rgba(255,255,255,0.95);
+  color:#333;
+  padding:40px;
+  border-radius:15px;
+}
+
+.btn-wa{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 25px;
+  background:#25D366;
+  color:white;
+  text-decoration:none;
+  border-radius:25px;
+  font-weight:600;
+}
+
+</style>
+
+<script>
+
+function kirimWA(){
+
+let params = new URLSearchParams(window.location.search);
+let pesan = params.get("pesan");
+
+let url = "https://wa.me/6287734686477?text=" + pesan;
+
+window.open(url, "_blank");
+
+}
+
+</script>
+
+</head>
+<body>
+
+<div class="box">
+
+<h1>✅ Pendaftaran Berhasil</h1>
+
+<p>
+Data pendaftaran sudah dibuat.<br>
+Silakan kirim data ke admin sekolah untuk verifikasi.
+</p>
+
+<button class="btn-wa" onclick="kirimWA()">
+📲 Kirim Data ke WhatsApp Admin
+</button>
+
+<br><br>
+
+<a href="index.html">Kembali ke Beranda</a>
+
+</div>
+
+</body>
+</html>
