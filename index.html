@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SDN 1 Sukamanah | Sekolah Dasar Negeri di Sukamanah</title>
+<meta name="description" content="SDN 1 Sukamanah, Sekolah Dasar Negeri di Sukamanah, Tasikmalaya. Program unggulan literasi, numerasi, ekstrakurikuler, dan karakter.">
+<meta name="keywords" content="SDN Sukamanah, SD Tasikmalaya, Sekolah Dasar, PPDB, Sekolah Unggulan">
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -263,7 +265,7 @@ Pendaftaran Peserta Didik Baru Tahun Ajaran 2026/2027
 </footer>
 
 <script>
-// Testimoni berganti otomatis
+// Testimoni berganti otomatis (fade-in/out)
 const testimonials = [
   {text: '"Sejak putra kami belajar di sini, kemampuan membaca dan berhitungnya meningkat pesat. Guru-gurunya sangat sabar dan perhatian, serta kegiatan sekolah selalu menyenangkan dan mendidik."', author:'- Ibu Mariam, Orang Tua Siswa kelas 3'},
   {text: '"Aku senang sekali belajar di sekolah ini! Ada banyak kegiatan seru! Aku jadi lebih pintar dan percaya diri."', author:'- Dimas, Siswa kelas 5 (2025)'},
@@ -274,11 +276,21 @@ let i = 0;
 const testimonialText = document.getElementById('testimonial-text');
 const testimonialAuthor = document.getElementById('testimonial-author');
 
-setInterval(() => {
+function showTestimonial(index){
+  testimonialText.style.opacity = 0;
+  testimonialAuthor.style.opacity = 0;
+  setTimeout(()=>{
+    testimonialText.textContent = testimonials[index].text;
+    testimonialAuthor.textContent = testimonials[index].author;
+    testimonialText.style.opacity = 1;
+    testimonialAuthor.style.opacity = 1;
+  },400);
+}
+showTestimonial(i);
+setInterval(()=>{
   i = (i + 1) % testimonials.length;
-  testimonialText.textContent = testimonials[i].text;
-  testimonialAuthor.textContent = testimonials[i].author;
-}, 4000);
+  showTestimonial(i);
+},4000);
 </script>
 
 </body>
