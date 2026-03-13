@@ -163,8 +163,58 @@ footer{
   color:white;
   animation:pulseGlow 2s infinite;
 }
+
+#popup-lebaran{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+#popup-lebaran img{
+    max-width:85%;
+    max-height:85%;
+    border-radius:10px;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
+    animation:fadeIn 1s;
+}
+
+#close-popup{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:40px;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
 </style>
 </head>
+
+<body>
+
+<div id="popup-lebaran">
+    <span id="close-popup">&times;</span>
+    <img src="ucapan.jpg" alt="Selamat Idul Fitri">
+</div>
+
+<script>
+document.getElementById("close-popup").onclick = function(){
+    document.getElementById("popup-lebaran").style.display="none";
+};
+</script>
+
 <body>
 
 <header>
