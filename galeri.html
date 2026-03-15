@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeri Kegiatan | SDN 1 Sukamanah</title>
+
+<style>
+
+body{
+background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('gambar-sekolah.jpg') no-repeat center center fixed;
+background-size:cover;
+font-family:Poppins,sans-serif;
+margin:0;
+padding:40px;
+text-align:center;
+color:white;
+}
+
+h1{
+color:#ffeb3b;
+margin-bottom:25px;
+}
+
+/* tombol kategori */
+
+.filter-btn{
+margin:5px;
+padding:10px 18px;
+border:none;
+border-radius:20px;
+background:#1976d2;
+color:white;
+cursor:pointer;
+font-weight:600;
+}
+
+.filter-btn:hover{
+background:#0d47a1;
+}
+
+/* grid galeri */
+
+.galeri-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+max-width:1100px;
+margin:auto;
+margin-top:25px;
+}
+
+.galeri-grid img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.galeri-grid img:hover{
+transform:scale(1.05);
+}
+
+/* tombol kembali */
+
+.back{
+display:inline-block;
+margin-top:30px;
+padding:12px 25px;
+background:#1976d2;
+color:white;
+text-decoration:none;
+border-radius:25px;
+}
+
+/* LIGHTBOX */
+
+#lightbox{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+#close{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Galeri Kegiatan Sekolah</h1>
+
+<div>
+
+<button class="filter-btn" onclick="filterSelection('all')">Semua</button>
+<button class="filter-btn" onclick="filterSelection('upacara')">Upacara</button>
+<button class="filter-btn" onclick="filterSelection('kbm')">KBM</button>
+<button class="filter-btn" onclick="filterSelection('ekskul')">Ekstrakurikuler</button>
+<button class="filter-btn" onclick="filterSelection('agama')">Keagamaan</button>
+
+</div>
+
+<div class="galeri-grid">
+
+<img src="galeri/upacara.jpg" class="upacara">
+<img src="galeri/kbm.png" class="kbm">
+<img src="galeri/tka.jpg" class="kbm">
+
+<img src="galeri/pramuka.jpg" class="ekskul">
+<img src="galeri/renang.jpg" class="ekskul">
+
+<img src="galeri/dhuha.jpg" class="agama">
+
+<img src="galeri/1.jpg" class="ekskul">
+<img src="galeri/2.jpg" class="ekskul">
+<img src="galeri/3.jpg" class="ekskul">
+<img src="galeri/4.jpg" class="ekskul">
+
+</div>
+
+<a href="index.html" class="back">⬅ Kembali ke Beranda</a>
+
+<!-- LIGHTBOX -->
+
+<div id="lightbox">
+<span id="close">&times;</span>
+<img id="lightbox-img">
+</div>
+
+<script>
+
+/* FILTER GALERI */
+
+function filterSelection(category){
+let images=document.querySelectorAll(".galeri-grid img");
+
+images.forEach(img=>{
+if(category==="all"){
+img.style.display="block";
+}else{
+if(img.classList.contains(category)){
+img.style.display="block";
+}else{
+img.style.display="none";
+}
+}
+});
+}
+
+/* LIGHTBOX */
+
+const images=document.querySelectorAll(".galeri-grid img");
+const lightbox=document.getElementById("lightbox");
+const lightboxImg=document.getElementById("lightbox-img");
+const close=document.getElementById("close");
+
+images.forEach(img=>{
+img.onclick=()=>{
+lightbox.style.display="flex";
+lightboxImg.src=img.src;
+}
+});
+
+close.onclick=()=>{lightbox.style.display="none";}
+lightbox.onclick=()=>{lightbox.style.display="none";}
+
+</script>
+
+</body>
+</html>

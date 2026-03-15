@@ -199,6 +199,83 @@ footer{
     from{opacity:0;}
     to{opacity:1;}
 }
+/* ===== GALERI ===== */
+.galeri-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr); /* 3 kolom */
+  gap:15px;
+  max-width:900px;
+  margin:auto;
+}
+
+.galeri-grid img{
+  width:100%;
+  height:180px;
+  object-fit:cover; /* supaya proporsi bagus */
+  border-radius:10px;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.galeri-grid img:hover{
+  transform:scale(1.05);
+}
+.galeri-item{
+text-align:center;
+}
+
+.galeri-item p{
+font-size:14px;
+margin-top:5px;
+color:white;
+}
+.galeri-item p{
+font-size:14px;
+margin-top:6px;
+color:#ffeb3b;
+font-weight:600;
+text-shadow:1px 1px 3px black;
+}
+/* ===== LIGHTBOX GALERI ===== */
+#lightbox{
+display:none;
+position:fixed;
+z-index:9999;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+justify-content:center;
+align-items:center;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+box-shadow:0 0 25px black;
+}
+
+#close-lightbox{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+@media(max-width:768px){
+.galeri-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:480px){
+.galeri-grid{
+grid-template-columns:1fr;
+}
+}
 </style>
 </head>
 
@@ -214,8 +291,6 @@ document.getElementById("close-popup").onclick = function(){
     document.getElementById("popup-lebaran").style.display="none";
 };
 </script>
-
-<body>
 
 <header>
   <div class="logo-area">
@@ -269,6 +344,55 @@ Pendaftaran Peserta Didik Baru Tahun Ajaran 2026/2027
     </div>
   </div>
 </section>
+
+<section id="galeri">
+<h2 class="section-title">Galeri Kegiatan Sekolah</h2>
+
+<div class="galeri-grid">
+
+<div class="galeri-item">
+<img src="galeri/upacara.jpg" alt="Kegiatan upacara SDN 1 Sukamanah">
+<p>Upacara Bendera</p>
+</div>
+
+<div class="galeri-item">
+<img src="galeri/kbm.png">
+<p>Kegiatan Belajar Mengajar</p>
+</div>
+
+<div class="galeri-item">
+<img src="galeri/tka.jpg" alt="Tes Kemampuan Akademik">
+<p>Tes Kemampuan Akademik (TKA)</p>
+</div>
+
+<div class="galeri-item">
+<img src="galeri/pramuka.jpg">
+<p>Kegiatan Ekstrakurikuler Pramuka</p>
+</div>
+
+<div class="galeri-item">
+<img src="galeri/dhuha.jpg" alt="Sholat dhuha">
+<p>Pembiasaan Sholat Dhuha</p>
+</div>
+
+<div class="galeri-item">
+<img src="galeri/renang.jpg" alt="Ekstrakurikuler renang">
+<p>Ekstrakurikuler Renang</p>
+</div>
+</div>
+
+<div style="text-align:center; margin-top:30px;">
+<a href="galeri.html" class="btn">📸 Lihat Galeri Lengkap</a>
+</div>
+
+</section>
+
+</div>
+</section>
+<div id="lightbox">
+<span id="close-lightbox">&times;</span>
+<img id="lightbox-img">
+</div>
 
 <section id="fasilitas">
   <h2 class="section-title">Fasilitas</h2>
@@ -342,6 +466,28 @@ setInterval(()=>{
   showTestimonial(i);
 },4000);
 </script>
+<script>
 
+const images = document.querySelectorAll(".galeri-grid img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeLightbox = document.getElementById("close-lightbox");
+
+images.forEach(img => {
+img.addEventListener("click", () => {
+lightbox.style.display="flex";
+lightboxImg.src = img.src;
+});
+});
+
+closeLightbox.onclick = () => {
+lightbox.style.display="none";
+};
+
+lightbox.onclick = () => {
+lightbox.style.display="none";
+};
+
+</script>
 </body>
 </html>
