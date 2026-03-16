@@ -1,0 +1,5 @@
+buka file excel 
+edit nilai 
+simpan
+jalankan convert_to_json.py
+update.bat
