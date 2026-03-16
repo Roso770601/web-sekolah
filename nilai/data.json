@@ -50,14 +50,14 @@
     "nama": "Andra Hanan Adyatama",
     "pin": "5944",
     "tgl_lahir": "2017-05-03",
-    "matematika": "-",
-    "bahasa_indonesia": "-",
-    "ppkn": "-",
-    "ipas": "-",
-    "pjok": "-",
-    "seni_rupa": "-",
-    "seni_musik": "-",
-    "bahasa_inggris": "-"
+    "matematika": "40",
+    "bahasa_indonesia": "60",
+    "ppkn": "70",
+    "ipas": "50",
+    "pjok": "50",
+    "seni_rupa": "80",
+    "seni_musik": "90",
+    "bahasa_inggris": "100"
   },
   {
     "kelas": "1A",
