@@ -180,7 +180,7 @@ display:none;
 
 <script>
 
-const waktuRilis = new Date("Mar 16, 2026 10:00:00").getTime();
+const waktuRilis = new Date("Jun 20, 2026 10:00:00").getTime();
 
 const nisn = localStorage.getItem("nisn");
 const pin = localStorage.getItem("pin");
@@ -241,19 +241,11 @@ let html = `
 <h3>${siswa.nama}</h3>
 <p><b>NISN :</b> ${siswa.nisn}</p>
 <p><b>Kelas :</b> ${siswa.kelas}</p>
+<p><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</p>
 
 <hr style="border:none; border-top:3px solid #FFD700; margin:15px 0;">
 
-<h2 style="margin-top:20px;">STATUS KELULUSAN</h2>
-
-<div style="
-font-size:35px;
-font-weight:bold;
-margin-top:15px;
-color:${siswa.status === 'LULUS' ? '#2e7d32' : '#c62828'};
-">
-${siswa.status}
-</div>
+<table>
 `;
 
 for (let key in siswa) {
