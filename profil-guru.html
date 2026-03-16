@@ -3,27 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profil Guru</title>
 
-<!-- STYLE -->
+<title>Profil Guru SDN 1 Sukamanah</title>
+
+<meta name="description" content="Profil guru dan tenaga pendidik SDN 1 Sukamanah yang berperan dalam kegiatan belajar mengajar dan pembinaan karakter siswa.">
+
+<meta name="keywords" content="guru SDN 1 Sukamanah, tenaga pendidik SDN 1 Sukamanah, profil guru sekolah dasar">
+
+<meta name="author" content="SDN 1 Sukamanah">
+
 <style>
+
 body{
     font-family: Arial, sans-serif;
-    background:#f4f6f9;
+    background:url("gambar-sekolah.jpg") no-repeat center center fixed;
+    background-size:cover;
     margin:0;
     padding:0;
 }
+/* HEADER */
 
 header{
     background:#2c7be5;
     color:white;
     text-align:center;
-    padding:25px;
+    padding:30px;
 }
 
-h1{
-    margin:0;
+header p{
+    margin-top:8px;
+    font-size:16px;
 }
+
+/* DESKRIPSI */
+
+.deskripsi{
+    text-align:center;
+    max-width:800px;
+    margin:30px auto;
+    color:#555;
+    line-height:1.6;
+    padding:0 20px;
+}
+
+/* CONTAINER GRID */
 
 .container{
     max-width:1100px;
@@ -34,9 +57,11 @@ h1{
     padding:20px;
 }
 
+/* CARD */
+
 .card{
     background:white;
-    border-radius:10px;
+    border-radius:12px;
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
     text-align:center;
     padding:20px;
@@ -44,27 +69,32 @@ h1{
 }
 
 .card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-6px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
+/* FOTO */
+
 .card img{
-    width:100px;
-    height:150px;
+    width:120px;
+    height:160px;
     object-fit:cover;
-    border-radius:8%;
+    border-radius:10px;
     margin-bottom:15px;
 }
 
+/* TEKS */
+
 .nama{
-    font-size:18px;
+    font-size:17px;
     font-weight:bold;
-    margin-bottom:5px;
+    margin-bottom:6px;
 }
 
 .nip{
     font-size:14px;
-    color:#666;
-    margin-bottom:5px;
+    color:#777;
+    margin-bottom:6px;
 }
 
 .jabatan{
@@ -73,228 +103,292 @@ h1{
     font-weight:bold;
 }
 
+/* TOMBOL HOME */
+
 a.home-btn{
     display:inline-block;
     margin:20px;
-    padding:10px 15px;
+    padding:10px 18px;
     background:#2c7be5;
     color:white;
     text-decoration:none;
-    border-radius:6px;
+    border-radius:8px;
     font-weight:bold;
-    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
 }
+
+a.home-btn:hover{
+    background:#1a5fcc;
+}
+#lightbox{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+#close{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+
 </style>
 </head>
+
 <body>
 
-<!-- TOMBOL HOME -->
 <a href="index.html" class="home-btn">← Home</a>
 
-<!-- HEADER -->
 <header>
 <h1>Profil Guru</h1>
-<p>SDN 1 SUKAMANAH</p>
+<p>SDN 1 Sukamanah</p>
 </header>
 
-<!-- ISI PROFIL GURU -->
+<div class="deskripsi">
+Halaman ini menampilkan profil guru dan tenaga pendidik di SDN 1 Sukamanah yang berperan dalam kegiatan belajar mengajar serta pembinaan karakter siswa.
+</div>
+
 <div class="container">
 
 <div class="card">
-<img src="guru/cacih.jpeg">
+<img src="guru/cacih.jpeg" alt="Cacih Resniasih Kepala Sekolah SDN 1 Sukamanah">
 <div class="nama">Cacih Resniasih,S.Pd.SD</div>
 <div class="nip">NIP. 19670711 198803 2 006</div>
 <div class="jabatan">Kepala Sekolah</div>
 </div>
 
 <div class="card">
-<img src="guru/sigit.jpeg">
+<img src="guru/sigit.jpeg" alt="R Sigit Pamungkas Guru SDN 1 Sukamanah">
 <div class="nama">R. SIGIT PAMUNGKAS, S.Pd.</div>
 <div class="nip">NIP. 19820830 202121 1 001</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/riksa.jpeg">
+<img src="guru/riksa.jpeg" alt="Riksa Komara Guru SDN 1 Sukamanah">
 <div class="nama">RIKSA KOMARA, S.Pd.</div>
 <div class="nip">NIP. 19851118 200902 1 003</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/ajiz.jpeg">
+<img src="guru/ajiz.jpeg" alt="Abdul Aziz Alauddin Guru SDN 1 Sukamanah">
 <div class="nama">ABDUL AZIZ ALAUDDIN, S.Pd.</div>
 <div class="nip">NIP. 19950318 202221 1 009</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/lesi.jpeg">
+<img src="guru/lesi.jpeg" alt="Lezzy Marlina Guru SDN 1 Sukamanah">
 <div class="nama">LEZZY MARLINA, S.Pd.</div>
 <div class="nip">NIP. 19840322 201101 2 005</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/deti.jpeg">
+<img src="guru/deti.jpeg" alt="Deti Dharmayanti Guru SDN 1 Sukamanah">
 <div class="nama">DETI DHARMAYANTI, S.Pd.SD.</div>
 <div class="nip">NIP. 19770908 201001 2 009</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/maya.png">
+<img src="guru/maya.png" alt="MAYA SITI NURMAYANTI Guru SDN 1 Sukamanah">
 <div class="nama">MAYA SITI NURMAYANTI, S.Pd.</div>
 <div class="nip">NIP. 19860515 201903 2 005</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/tatun.jpeg">
+<img src="guru/tatun.jpeg" alt="TATUN NUR RAHMATUNNISA Guru SDN 1 Sukamanah">
 <div class="nama">TATUN NUR RAHMATUNNISA, S.Pd.SD</div>
 <div class="nip">NIP. 19861126 202221 2 015</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/desi.jpeg">
+<img src="guru/desi.jpeg" alt="DESI SITI ZULAEHA Guru SDN 1 Sukamanah">
 <div class="nama">DESY SITI ZULAEHA, S.Pd.</div>
 <div class="nip">NIP. 19861216 202221 2 014</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/dini.jpeg">
+<img src="guru/dini.jpeg" alt="DINI NURYANTI Guru SDN 1 Sukamanah">
 <div class="nama">DINI NURYANTI, S.Pd.</div>
 <div class="nip">NIP. 19840827 202221 2 005</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/enung.jpeg">
+<img src="guru/enung.jpeg" alt="ENUNG HUDANAH Guru SDN 1 Sukamanah">
 <div class="nama">ENUNG HUDANAH, S.Pd.I</div>
 <div class="nip">NIP. 19810308 202221 2 015</div>
 <div class="jabatan">Guru PAI</div>
 </div>
 
 <div class="card">
-<img src="guru/ira.jpeg">
+<img src="guru/ira.jpeg" alt="IRAWATI RAHMAT Guru SDN 1 Sukamanah">
 <div class="nama">IRAWATI RAHMAT, S.Pd.</div>
 <div class="nip">NIP. 19960428 202221 2 001</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/keukeu.jpeg">
+<img src="guru/keukeu.jpeg" alt="KEUKEU WINDI ASTUTI Guru SDN 1 Sukamanah">
 <div class="nama">KEUKEU WINDI ASTUTI, S.Pd.</div>
 <div class="nip">NIP. 19670820 198803 2 012</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/nurhaeni.jpeg">
+<img src="guru/nurhaeni.jpeg" alt="NURHAENI Guru SDN 1 Sukamanah">
 <div class="nama">NURHAENI, S.Pd.I</div>
 <div class="nip">NIP. 19770315 202221 2 004</div>
 <div class="jabatan">Guru PAI</div>
 </div>
 
 <div class="card">
-<img src="guru/rista.jpeg">
+<img src="guru/rista.jpeg" alt="RISTA KUNTARI Guru SDN 1 Sukamanah">
 <div class="nama">RISTA KUNTARI, S.Pd.</div>
 <div class="nip">NIP. 19850405 202521 2 008 </div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/santi.jpeg">
+<img src="guru/santi.jpeg" alt="SANTY RAHMAYANI Guru SDN 1 Sukamanah">
 <div class="nama">SANTY RAHMAYANI, S.Pd.SD</div>
 <div class="nip">NIP. 19840901 200902 2 010</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/tia.jpeg">
+<img src="guru/tia.jpeg" alt="YASINTIA NUR ASSAMI Guru SDN 1 Sukamanah">
 <div class="nama">YASINTIA NUR ASSAMI, S.Pd.</div>
 <div class="nip">NIP. 19980623 202521 2 067</div>
 <div class="jabatan">Guru PAI</div>
 </div>
 
 <div class="card">
-<img src="guru/tuti.jpeg">
+<img src="guru/tuti.jpeg" alt="N. TUTI SETIAWATI Guru SDN 1 Sukamanah">
 <div class="nama">N. TUTI SETIAWATI, S.Pd.</div>
 <div class="nip">NIP. 19670523 200501 2 005</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/ayu.jpeg">
+<img src="guru/ayu.jpeg" alt="AYU SHINTA BELLA Guru SDN 1 Sukamanah">
 <div class="nama">AYU SHINTA BELLA, S.Pd.</div>
 <div class="nip">NIP. 19980813 202521 2 062</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/ela.jpeg">
+<img src="guru/ela.jpeg" alt="ELA NURLAELA Guru SDN 1 Sukamanah">
 <div class="nama">ELA NURLAELA, S.Pd.</div>
 <div class="nip">NIP. 19930111 202521 2 083</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/nurjanah.jpeg">
+<img src="guru/nurjanah.jpeg" alt="NURJANAH Guru SDN 1 Sukamanah">
 <div class="nama">NURJANAH, S.Pd.</div>
 <div class="nip">NIP. 19840204 200902 2 007</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/diana.jpeg">
+<img src="guru/diana.jpeg" alt="DIANA AGUSTINA HASANAH Guru SDN 1 Sukamanah">
 <div class="nama">DIANA AGUSTINA HASANAH, S.I.P</div>
 <div class="nip">NIP. 19920814 202521 2 098</div>
 <div class="jabatan">Guru Kelas</div>
 </div>
 
 <div class="card">
-<img src="guru/sandi.jpeg">
+<img src="guru/sandi.jpeg" alt="SANDY FUJI S Guru SDN 1 Sukamanah">
 <div class="nama">SANDY FUJI S, S.Pd.</div>
 <div class="nip">NIP. 19910119 202221 1 012</div>
 <div class="jabatan">Guru PJOK</div>
 </div>
 
 <div class="card">
-<img src="guru/arya.jpeg">
+<img src="guru/arya.jpeg" alt="ARYA PURWA HADINATA Guru SDN 1 Sukamanah">
 <div class="nama">ARYA PURWA HADINATA</div>
 <div class="nip">NIP. -</div>
 <div class="jabatan">Guru PJOK</div>
 </div>
 
 <div class="card">
-<img src="guru/faizal.jpeg">
+<img src="guru/faizal.jpeg" alt="MOHAMMAD FAIZAL HILMAN Guru SDN 1 Sukamanah">
 <div class="nama">MOHAMMAD FAIZAL HILMAN, S.Pd.</div>
 <div class="nip">NIP. 19920821 202521 1 008</div>
 <div class="jabatan">Guru PJOK</div>
 </div>
 
 <div class="card">
-<img src="guru/agit.jpeg">
+<img src="guru/agit.jpeg" alt="GITA PUSPITASARI Operator Sekolah SDN 1 Sukamanah">
 <div class="nama">GITA PUSPITASARI</div>
 <div class="nip">NIP. 19920914 202521 2 081</div>
 <div class="jabatan">OPS</div>
 </div>
 
 <div class="card">
-<img src="guru/aji.jpeg">
+<img src="guru/aji.jpeg" alt="AJI SYAHID JAISY HAQ Operator Sekolah SDN 1 Sukamanah">
 <div class="nama">AJI SYAHID JAISY HAQ, S.E</div>
 <div class="nip">NIP. 20000523 202521 1 025</div>
 <div class="jabatan">OPS</div>
 </div>
 
 <div class="card">
-<img src="guru/idvar.jpeg">
+<img src="guru/idvar.jpeg" alt="IDVAR PRANANJAYA Operator Sekolah SDN 1 Sukamanah">
 <div class="nama">IDVAR PRANANJAYA, S.P</div>
 <div class="nip">NIP. 19830517 202521 1 086</div>
 <div class="jabatan">OPS</div>
 </div>
 </div>
+<div id="lightbox">
+<span id="close">&times;</span>
+<img id="lightbox-img">
+</div>
+<script>
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeBtn = document.getElementById("close");
+
+document.querySelectorAll(".card img").forEach(img => {
+    img.addEventListener("click", function(){
+        lightbox.style.display = "flex";
+        lightboxImg.src = this.src;
+    });
+});
+
+closeBtn.onclick = function(){
+    lightbox.style.display = "none";
+}
+
+lightbox.onclick = function(e){
+    if(e.target !== lightboxImg){
+        lightbox.style.display = "none";
+    }
+}
+
+</script>
 </body>
 </html>
