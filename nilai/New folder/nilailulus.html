@@ -157,7 +157,8 @@ display:none;
 <h2>Portal Nilai Siswa</h2>
 <div class="subtitle">SDN 1 Sukamanah</div>
 
-<div id="hasil">Memuat data...</div>
+<div id="countdown"></div>
+<div id="hasil" style="display:none;">Memuat data...</div>
 
 <div class="action-buttons">
 
@@ -179,12 +180,49 @@ display:none;
 
 <script>
 
+const waktuRilis = new Date("Mar 16, 2026 10:00:00").getTime();
+
 const nisn = localStorage.getItem("nisn");
 const pin = localStorage.getItem("pin");
 
 if(!nisn || !pin){
 window.location.href = "../login.html";
 }
+
+function mulaiCountdown(){
+
+const sekarang = new Date().getTime();
+const jarak = waktuRilis - sekarang;
+
+const countdown = document.getElementById("countdown");
+const hasil = document.getElementById("hasil");
+
+if(jarak > 0){
+
+const hari = Math.floor(jarak / (1000 * 60 * 60 * 24));
+const jam = Math.floor((jarak % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const menit = Math.floor((jarak % (1000 * 60 * 60)) / (1000 * 60));
+const detik = Math.floor((jarak % (1000 * 60)) / 1000);
+
+countdown.innerHTML =
+"<h3>Pengumuman Nilai Akan Dibuka Dalam</h3>" +
+"<h2>"+hari+" Hari "+jam+" Jam "+menit+" Menit "+detik+" Detik</h2>";
+
+setTimeout(mulaiCountdown,1000);
+
+}else{
+
+countdown.style.display="none";
+hasil.style.display="block";
+loadNilai();
+
+}
+
+}
+
+mulaiCountdown();
+
+function loadNilai(){
 
 fetch("data.json")
 .then(res => res.json())
@@ -203,16 +241,24 @@ let html = `
 <h3>${siswa.nama}</h3>
 <p><b>NISN :</b> ${siswa.nisn}</p>
 <p><b>Kelas :</b> ${siswa.kelas}</p>
-<p><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</p>
 
 <hr style="border:none; border-top:3px solid #FFD700; margin:15px 0;">
 
-<table>
+<h2 style="margin-top:20px;">STATUS KELULUSAN</h2>
+
+<div style="
+font-size:35px;
+font-weight:bold;
+margin-top:15px;
+color:${siswa.status === 'LULUS' ? '#2e7d32' : '#c62828'};
+">
+${siswa.status}
+</div>
 `;
 
 for (let key in siswa) {
 
-if (['nisn','pin','nama','kelas','tgl_lahir'].includes(key)) continue;
+if (['nisn','pin','nama','kelas','tgl_lahir','status'].includes(key)) continue;
 
 let namaMapel = key
 .replace(/_/g," ")
@@ -237,6 +283,8 @@ hasil.innerHTML = html;
 document.getElementById("hasil").innerHTML = "<p class='error'>Gagal memuat data.</p>";
 
 });
+
+}
 
 function tampilNilai(n){
 
