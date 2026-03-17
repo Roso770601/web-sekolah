@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nilai Siswa | SDN 1 Sukamanah</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('../gambar-sekolah.jpg') no-repeat center center fixed;
+background-size:cover;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.card{
+background:white;
+padding:35px;
+border-radius:20px;
+width:100%;
+max-width:500px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.logo{
+width:70px;
+margin-bottom:10px;
+}
+
+h2{
+color:#1976d2;
+margin-bottom:5px;
+}
+
+.subtitle{
+font-size:14px;
+color:#666;
+margin-bottom:15px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+td{
+padding:10px;
+border-bottom:1px solid #ddd;
+text-align:left;
+}
+
+.label{
+font-weight:bold;
+}
+
+.nilai{
+font-weight:bold;
+text-align:right;
+}
+
+/* warna nilai */
+
+.hijau{
+color:#2e7d32;
+}
+
+.kuning{
+color:#f9a825;
+}
+
+.merah{
+color:#c62828;
+}
+
+.action-buttons{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:25px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:10px 18px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+font-weight:600;
+font-size:14px;
+transition:0.3s;
+}
+
+.home{
+background:#1976d2;
+color:white;
+}
+
+.logout{
+background:#e53935;
+color:white;
+}
+
+.print{
+background:#4caf50;
+color:white;
+}
+
+.btn:hover{
+opacity:0.9;
+transform:scale(1.05);
+}
+
+.error{
+color:red;
+font-weight:bold;
+}
+
+/* saat print */
+
+@media print{
+
+body{
+background:white;
+}
+
+.card{
+box-shadow:none;
+}
+
+.action-buttons{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<img src="../logo.png" class="logo">
+
+<h2>Portal Nilai Siswa</h2>
+<div class="subtitle">SDN 1 Sukamanah</div>
+
+<div id="countdown"></div>
+<div id="hasil" style="display:none;">Memuat data...</div>
+
+<div class="action-buttons">
+
+<button class="btn home" onclick="window.location.href='/'">
+🏠 Beranda
+</button>
+
+<button class="btn logout" onclick="logout()">
+🔍 Cari Siswa Lagi
+</button>
+
+<button class="btn print" onclick="window.print()">
+🖨 Cetak Nilai
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const waktuRilis = new Date("Jun 26, 2026 10:00:00").getTime();
+
+const nisn = localStorage.getItem("nisn");
+const pin = localStorage.getItem("pin");
+
+if(!nisn || !pin){
+window.location.href = "../login.html";
+}
+
+function mulaiCountdown(){
+
+const sekarang = new Date().getTime();
+const jarak = waktuRilis - sekarang;
+
+const countdown = document.getElementById("countdown");
+const hasil = document.getElementById("hasil");
+
+if(jarak > 0){
+
+const hari = Math.floor(jarak / (1000 * 60 * 60 * 24));
+const jam = Math.floor((jarak % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const menit = Math.floor((jarak % (1000 * 60 * 60)) / (1000 * 60));
+const detik = Math.floor((jarak % (1000 * 60)) / 1000);
+
+countdown.innerHTML =
+"<h3>Pengumuman Nilai Akan Dibuka Dalam</h3>" +
+"<h2>"+hari+" Hari "+jam+" Jam "+menit+" Menit "+detik+" Detik</h2>";
+
+setTimeout(mulaiCountdown,1000);
+
+}else{
+
+countdown.style.display="none";
+hasil.style.display="block";
+loadNilai();
+
+}
+
+}
+
+mulaiCountdown();
+
+function loadNilai(){
+
+fetch("data.json")
+.then(res => res.json())
+.then(data => {
+
+const siswa = data.find(s => s.nisn === nisn);
+
+const hasil = document.getElementById("hasil");
+
+if(!siswa){
+hasil.innerHTML = "<p class='error'>Data tidak ditemukan</p>";
+return;
+}
+
+let html = `
+<h3>${siswa.nama}</h3>
+<p><b>NISN :</b> ${siswa.nisn}</p>
+<p><b>Kelas :</b> ${siswa.kelas}</p>
+<p><b>Tanggal Lahir :</b> ${siswa.tgl_lahir}</p>
+
+<hr style="border:none; border-top:3px solid #FFD700; margin:15px 0;">
+
+<table>
+`;
+
+for (let key in siswa) {
+
+if (['nisn','pin','nama','kelas','tgl_lahir'].includes(key)) continue;
+
+let namaMapel = key
+.replace(/_/g," ")
+.replace(/\b\w/g,c => c.toUpperCase());
+
+html += `
+<tr>
+<td class="label">${namaMapel}</td>
+<td class="nilai ${warnaNilai(siswa[key])}">${tampilNilai(siswa[key])}</td>
+</tr>
+`;
+
+}
+
+html += "</table>";
+
+hasil.innerHTML = html;
+
+})
+.catch(err => {
+
+document.getElementById("hasil").innerHTML = "<p class='error'>Gagal memuat data.</p>";
+
+});
+
+}
+
+function tampilNilai(n){
+
+if (!n || n === "NaN") return "-";
+
+return n;
+
+}
+
+function warnaNilai(n){
+
+n = Number(n);
+
+if (n >= 80) return "hijau";
+if (n >= 60) return "kuning";
+return "merah";
+
+}
+
+function logout(){
+
+localStorage.removeItem("nisn");
+localStorage.removeItem("pin");
+
+window.location.href="../login.html";
+
+}
+
+</script>
+
+</body>
+</html>
