@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sdn1sukamanah.my.id/sitemap.xml
