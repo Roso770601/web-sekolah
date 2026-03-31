@@ -2,83 +2,137 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>PPDB Online</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPDB SDN 1 Sukamanah</title>
 
 <style>
+*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
+
 body{
-  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
   url('gambar-sekolah.jpg') no-repeat center center fixed;
   background-size:cover;
   color:#fff;
-  line-height:1.6;
-  font-family:'Poppins',sans-serif;
 }
 
-/* kotak isi */
-.ppdb-box{
-  max-width:700px;
-  margin:100px auto;
+/* CONTAINER */
+.container{
+  max-width:900px;
+  margin:80px auto;
+  padding:20px;
+}
+
+/* BOX */
+.box{
   background:rgba(255,255,255,0.95);
   color:#333;
   padding:40px;
   border-radius:15px;
   text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-.ppdb-box h1{
+/* JUDUL */
+.box h1{
+  font-size:32px;
+  margin-bottom:15px;
+}
+
+.box p{
+  font-size:18px;
   margin-bottom:20px;
 }
 
-.ppdb-box ul{
-  text-align:left;
-  margin:20px 0;
+/* URGENCY */
+.urgent{
+  color:red;
+  font-weight:bold;
+  margin-bottom:20px;
 }
 
-.btn-daftar{
+/* BUTTON */
+.btn{
   display:inline-block;
-  margin-top:20px;
-  padding:12px 25px;
+  padding:15px 30px;
   background:#ff9800;
   color:white;
   text-decoration:none;
-  border-radius:25px;
-  font-weight:600;
-  box-shadow:0 0 12px rgba(255,152,0,0.7);
+  border-radius:30px;
+  font-weight:bold;
+  margin:10px 0;
+  box-shadow:0 0 15px rgba(255,152,0,0.8);
   transition:0.3s;
+  animation:pulse 2s infinite;
 }
 
-.btn-daftar:hover{
+.btn:hover{
   background:#e68900;
   transform:scale(1.05);
 }
-a.home-btn{
-    display:inline-block;
-    margin:20px;
-    padding:10px 15px;
-    background:#e68900;
-    color:white;
-    text-decoration:none;
-    border-radius:6px;
-    font-weight:bold;
-    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+
+/* ANIMASI */
+@keyframes pulse{
+  0%{box-shadow:0 0 10px rgba(255,152,0,0.6);}
+  50%{box-shadow:0 0 25px rgba(255,152,0,1);}
+  100%{box-shadow:0 0 10px rgba(255,152,0,0.6);}
 }
 
+/* LIST */
+ul{
+  text-align:left;
+  margin:20px 0;
+  line-height:1.8;
+}
+
+/* HOME BTN */
+.home{
+  display:inline-block;
+  margin-bottom:20px;
+  color:#fff;
+  text-decoration:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .box{
+    padding:25px;
+  }
+  .box h1{
+    font-size:24px;
+  }
+}
 </style>
 
 </head>
 <body>
-<a href="index.html" class="home-btn">← Home</a>
 
-<div class="ppdb-box">
+<div class="container">
 
-<h1>PPDB Online SDN 1 Sukamanah</h1>
+<a href="index.html" class="home">← Kembali ke Beranda</a>
+
+<div class="box">
+
+<h1>🎓 PPDB SDN 1 Sukamanah Telah Dibuka!</h1>
 
 <p>
-Pendaftaran Peserta Didik Baru dapat dilakukan secara online melalui website ini.
-Silakan membaca informasi berikut sebelum melakukan pendaftaran.
+Berikan pendidikan terbaik untuk masa depan anak Anda 💡<br>
+Lingkungan nyaman, guru berpengalaman, dan pembelajaran modern.
 </p>
+
+<p class="urgent">
+⚠️ Kuota terbatas! Segera daftarkan sebelum penuh
+</p>
+
+<a href="daftar.html" class="btn">🚀 Daftar Sekarang</a>
+
+<h2 style="margin-top:30px;">Kenapa Memilih Kami?</h2>
+
+<ul>
+<li>✅ Guru berpengalaman dan ramah</li>
+<li>🏫 Lingkungan belajar nyaman & aman</li>
+<li>💻 Pembelajaran modern berbasis teknologi</li>
+<li>🎯 Fokus pada karakter dan prestasi siswa</li>
+</ul>
 
 <h2>Persyaratan</h2>
 
@@ -86,10 +140,13 @@ Silakan membaca informasi berikut sebelum melakukan pendaftaran.
 <li>Usia minimal 6 tahun</li>
 <li>Fotokopi Kartu Keluarga</li>
 <li>Fotokopi Akta Kelahiran</li>
-<li>Persyaratan lengkap dapat dilengkapi saat datang ke sekolah</li>
+<li>Dokumen dilengkapi saat datang ke sekolah</li>
 </ul>
 
-<a href="daftar.html" class="btn-daftar">Lanjut Mendaftar</a>
+<a href="daftar.html" class="btn">🔥 Lanjut Mendaftar</a>
+<a href="https://wa.me/6287734686477" class="btn">💬 Tanya via WhatsApp</a>
+
+</div>
 
 </div>
 

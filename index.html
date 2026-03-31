@@ -81,6 +81,13 @@ nav a{
   color:#ffeb3b; margin-left:20px; text-decoration:none; font-weight:600; transition:0.3s;
 }
 nav a:hover{color:white;}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.4);
+}
 
 /* ===== HERO ===== */
 .hero{padding:120px 10%; text-align:center;}
@@ -98,6 +105,9 @@ nav a:hover{color:white;}
 .btn-ortu{
   display:inline-flex; align-items:center; gap:8px; margin-top:15px;
 }
+.hero h2 {
+  text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
 
 /* ===== SECTION ===== */
 section{padding:70px 10%; background:transparent;}
@@ -109,6 +119,13 @@ section{padding:70px 10%; background:transparent;}
 }
 .card:hover{transform:translateY(-8px); box-shadow:0 15px 35px rgba(0,0,0,0.15);}
 .card h3{margin-bottom:15px; color:#1976d2;}
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
 #kontak .section-title { text-shadow: 0 0 15px rgba(255,235,59,0.6); }
 
 /* ===== TESTIMONIAL FIXED ===== */
@@ -268,16 +285,13 @@ text-align:center;
 
 .galeri-item p{
 font-size:14px;
-margin-top:5px;
-color:white;
-}
-.galeri-item p{
-font-size:14px;
 margin-top:6px;
 color:#ffeb3b;
 font-weight:600;
 text-shadow:1px 1px 3px black;
 }
+}
+
 /* ===== LIGHTBOX GALERI ===== */
 #lightbox{
 display:none;
@@ -299,6 +313,13 @@ border-radius:10px;
 box-shadow:0 0 25px black;
 }
 
+.btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 #close-lightbox{
 position:absolute;
 top:30px;
@@ -317,6 +338,28 @@ grid-template-columns:repeat(2,1fr);
 .galeri-grid{
 grid-template-columns:1fr;
 }
+}
+.galeri-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.galeri-item::after {
+  content: "Lihat";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.galeri-item:hover::after {
+  opacity: 1;
 }
 </style>
 </head>
@@ -366,14 +409,21 @@ Portal Orang Tua / Wali Untuk Melihat Nilai dan Laporan Perkembangan Siswa
 
 <section id="tentang">
   <h2 class="section-title">Tentang Sekolah</h2>
-  <p style="text-align:center; max-width:800px; margin:auto;">
-   SDN 1 Sukamanah Kota Tasikmalaya adalah sekolah dasar negeri di Kelurahan Sukamanah Kecamatan Cipedes, Kota Tasikmalaya yang berkomitmen memberikan pendidikan terbaik melalui perpaduan akademik dan pembentukan karakter. 
-	Kami berfokus pada pengembangan literasi, numerasi, serta nilai-nilai karakter untuk membentuk siswa yang cerdas, berakhlak, dan siap menghadapi tantangan masa depan.Didukung oleh tenaga pendidik yang profesional dan berpengalaman, SDN 1 Sukamanah Kota Tasikmalaya juga menyediakan berbagai kegiatan ekstrakurikuler untuk mengembangkan minat dan bakat siswa secara optimal.
-  </p>
   <div class="cards">
-    <div style="text-align:center; margin-top:20px;">
-  <a href="profil.html" class="btn">📖 Lihat Profil Sekolah</a>
+  <div class="card" style="max-width:800px; margin:auto;">
+    <p>
+      SDN 1 Sukamanah Kota Tasikmalaya adalah sekolah dasar negeri di Kelurahan Sukamanah Kecamatan Cipedes, Kota Tasikmalaya yang berkomitmen memberikan pendidikan terbaik melalui perpaduan akademik dan pembentukan karakter. 
+      Kami berfokus pada pengembangan literasi, numerasi, serta nilai-nilai karakter untuk membentuk siswa yang cerdas, berakhlak, dan siap menghadapi tantangan masa depan. 
+      Didukung oleh tenaga pendidik yang profesional dan berpengalaman, SDN 1 Sukamanah Kota Tasikmalaya juga menyediakan berbagai kegiatan ekstrakurikuler untuk mengembangkan minat dan bakat siswa secara optimal.
+    </p>
+  </div>
 </div>
+  <div class="cards">
+  <div class="btn-wrapper">
+    <a href="profil.html" class="btn">📖 Lihat Profil Sekolah</a>
+  </div>
+</div>
+
 </section>
 
 <section id="program">
@@ -399,43 +449,41 @@ Portal Orang Tua / Wali Untuk Melihat Nilai dan Laporan Perkembangan Siswa
 
 <div class="galeri-grid">
 
-<div class="galeri-item">
-<img src="galeri/upacara.jpg" alt="Kegiatan upacara SDN 1 Sukamanah">
-<p>Upacara Bendera</p>
-</div>
+  <div class="galeri-item">
+    <img src="galeri/upacara.jpg">
+    <p>Upacara Bendera</p>
+  </div>
 
-<div class="galeri-item">
-<img src="galeri/kbm.png">
-<p>Kegiatan Belajar Mengajar</p>
-</div>
+  <div class="galeri-item">
+    <img src="galeri/kbm.png">
+    <p>Kegiatan Belajar Mengajar</p>
+  </div>
 
-<div class="galeri-item">
-<img src="galeri/tka.jpg" alt="Tes Kemampuan Akademik">
-<p>Tes Kemampuan Akademik (TKA)</p>
-</div>
+  <div class="galeri-item">
+    <img src="galeri/tka.jpg">
+    <p>Tes Kemampuan Akademik (TKA)</p>
+  </div>
 
-<div class="galeri-item">
-<img src="galeri/pramuka.jpg">
-<p>Kegiatan Ekstrakurikuler Pramuka</p>
-</div>
+  <div class="galeri-item">
+    <img src="galeri/pramuka.jpg">
+    <p>Kegiatan Ekstrakurikuler Pramuka</p>
+  </div>
 
-<div class="galeri-item">
-<img src="galeri/dhuha.jpg" alt="Sholat dhuha">
-<p>Pembiasaan Sholat Dhuha</p>
-</div>
+  <div class="galeri-item">
+    <img src="galeri/dhuha.jpg">
+    <p>Pembiasaan Sholat Dhuha</p>
+  </div>
 
-<div class="galeri-item">
-<img src="galeri/renang.jpg" alt="Ekstrakurikuler renang">
-<p>Ekstrakurikuler Renang</p>
-</div>
-</div>
+  <div class="galeri-item">
+    <img src="galeri/renang.jpg">
+    <p>Ekstrakurikuler Renang</p>
+  </div>
 
-<div style="text-align:center; margin-top:30px;">
-<a href="galeri.html" class="btn">📸 Lihat Galeri Lengkap</a>
-</div>
+</div> <!-- 🔥 WAJIB DITUTUP DI SINI -->
 
-</section>
-
+<!-- 🔥 PINDAH KE SINI -->
+<div class="btn-wrapper">
+  <a href="galeri.html" class="btn">📸 Lihat Galeri Lengkap</a>
 </div>
 </section>
 <div id="lightbox">
