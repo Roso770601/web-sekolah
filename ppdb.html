@@ -92,6 +92,23 @@ ul{
   text-decoration:none;
 }
 
+.gratis-blink{
+  font-weight:bold;
+  font-size:18px;
+  text-align:center;
+  background:#e8f5e9;
+  color:#2e7d32;
+  padding:15px;
+  border-radius:10px;
+  margin:25px 0;
+  animation:softBlink 1.5s infinite;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+@keyframes softBlink{
+  0%{opacity:1;}
+  50%{opacity:0.4;}
+  100%{opacity:1;}
+}
 /* RESPONSIVE */
 @media(max-width:600px){
   .box{
@@ -100,7 +117,7 @@ ul{
   .box h1{
     font-size:24px;
   }
-}
+  }
 </style>
 
 </head>
@@ -142,7 +159,9 @@ Lingkungan nyaman, guru berpengalaman, dan pembelajaran modern.
 <li>Fotokopi Akta Kelahiran</li>
 <li>Dokumen dilengkapi saat datang ke sekolah</li>
 </ul>
-
+<p class="gratis-blink">
+🎉 100% GRATIS! TIDAK DIPUNGUT BIAYA APAPUN
+</p>
 <a href="daftar.html" class="btn">🔥 Lanjut Mendaftar</a>
 <a href="https://wa.me/6287734686477" class="btn">💬 Tanya via WhatsApp</a>
 
