@@ -361,6 +361,20 @@ grid-template-columns:1fr;
 .galeri-item:hover::after {
   opacity: 1;
 }
+#lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+
+  /* 🔥 ini penting */
+  justify-content: center;
+  align-items: center;
+}
 </style>
 </head>
 
@@ -459,32 +473,32 @@ SDN 1 Sukamanah mendorong siswa untuk mandiri, mampu berkolaborasi, berkomunikas
 <div class="galeri-grid">
 
   <div class="galeri-item">
-    <img src="galeri/upacara.jpg">
+    <img src="galeri/upacara.jpg" class="galeri-img">
     <p>Upacara Bendera</p>
   </div>
 
   <div class="galeri-item">
-    <img src="galeri/kbm.png">
+    <img src="galeri/kbm.png" class="galeri-img">
     <p>Kegiatan Belajar Mengajar</p>
   </div>
 
   <div class="galeri-item">
-    <img src="galeri/tka.jpg">
+    <img src="galeri/tka.jpg" class="galeri-img">
     <p>Tes Kemampuan Akademik (TKA)</p>
   </div>
 
   <div class="galeri-item">
-    <img src="galeri/pramuka.jpg">
+    <img src="galeri/pramuka.jpg" class="galeri-img">
     <p>Kegiatan Ekstrakurikuler Pramuka</p>
   </div>
 
   <div class="galeri-item">
-    <img src="galeri/dhuha.jpg">
+    <img src="galeri/dhuha.jpg" class="galeri-img">
     <p>Pembiasaan Sholat Dhuha</p>
   </div>
 
   <div class="galeri-item">
-    <img src="galeri/renang.jpg">
+    <img src="galeri/renang.jpg" class="galeri-img">
     <p>Ekstrakurikuler Renang</p>
   </div>
 
@@ -573,27 +587,28 @@ setInterval(()=>{
 },4000);
 </script>
 <script>
-
 const images = document.querySelectorAll(".galeri-grid img");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const closeLightbox = document.getElementById("close-lightbox");
 
 images.forEach(img => {
-img.addEventListener("click", () => {
-lightbox.style.display="flex";
-lightboxImg.src = img.src;
-});
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
+  });
 });
 
 closeLightbox.onclick = () => {
-lightbox.style.display="none";
+  lightbox.style.display = "none";
 };
 
-lightbox.onclick = () => {
-lightbox.style.display="none";
-};
-
+// 🔥 FIX: klik luar gambar baru nutup
+lightbox.addEventListener("click", (e) => {
+  if (e.target !== lightboxImg) {
+    lightbox.style.display = "none";
+  }
+});
 </script>
 </body>
 </html>
