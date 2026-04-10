@@ -373,7 +373,13 @@ grid-template-columns:1fr;
 <script>
 document.getElementById("close-popup").onclick = function(){
     document.getElementById("popup-lebaran").style.display="none";
+    localStorage.setItem("popupSudahMuncul", "yes");
 };
+
+// cek saat halaman dibuka
+if(localStorage.getItem("popupSudahMuncul")){
+    document.getElementById("popup-lebaran").style.display = "none";
+}
 </script>
 
 <header>
@@ -392,8 +398,8 @@ document.getElementById("close-popup").onclick = function(){
 </header>
 
 <section class="hero">
-  <h2>Mewujudkan Generasi Berakhlak Cerdas Kreatif dan Berkarakter</h2>
-  <p>Sekolah unggulan dengan kurikulum modern dan lingkungan belajar yang inspiratif.</p>
+  <h2>Mewujudkan Siswa Beriman, Berkarakter, dan Siap Menghadapi Era Global</h2>
+  <p>Mendorong generasi yang bernalar kritis, kreatif, mandiri, serta mampu berkolaborasi dan berkomunikasi dengan baik.</p>
 
   <div class="hero-btn">
     <a href="ppdb.html" class="btn-ppdb">📋 PPDB</a>
@@ -412,10 +418,13 @@ Portal Orang Tua / Wali Untuk Melihat Nilai dan Laporan Perkembangan Siswa
   <div class="cards">
   <div class="card" style="max-width:800px; margin:auto;">
     <p>
-      SDN 1 Sukamanah Kota Tasikmalaya adalah sekolah dasar negeri di Kelurahan Sukamanah Kecamatan Cipedes, Kota Tasikmalaya yang berkomitmen memberikan pendidikan terbaik melalui perpaduan akademik dan pembentukan karakter. 
-      Kami berfokus pada pengembangan literasi, numerasi, serta nilai-nilai karakter untuk membentuk siswa yang cerdas, berakhlak, dan siap menghadapi tantangan masa depan. 
-      Didukung oleh tenaga pendidik yang profesional dan berpengalaman, SDN 1 Sukamanah Kota Tasikmalaya juga menyediakan berbagai kegiatan ekstrakurikuler untuk mengembangkan minat dan bakat siswa secara optimal.
-    </p>
+SDN 1 Sukamanah Tasikmalaya merupakan sekolah dasar negeri yang berlokasi 
+di Kelurahan Sukamanah, Kecamatan Cipedes, Kota Tasikmalaya. 
+Sekolah ini berkomitmen dalam membentuk peserta didik yang beriman dan bertakwa kepada Tuhan Yang Maha Esa, serta mengembangkan karakter, kreativitas, dan kemampuan berpikir kritis.
+
+Dengan lingkungan belajar yang aman, nyaman, dan kondusif, 
+SDN 1 Sukamanah mendorong siswa untuk mandiri, mampu berkolaborasi, berkomunikasi dengan baik, serta menjaga kesehatan jasmani dan rohani sebagai bekal menghadapi perkembangan zaman.
+</p>
   </div>
 </div>
   <div class="cards">
