@@ -116,6 +116,24 @@ color:white;
 cursor:pointer;
 }
 
+#prev, #next{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:40px;
+color:white;
+cursor:pointer;
+padding:10px;
+user-select:none;
+}
+
+#prev{ left:20px; }
+#next{ right:20px; }
+
+#prev:hover, #next:hover{
+color:#ffeb3b;
+}
+
 </style>
 </head>
 
@@ -183,6 +201,8 @@ cursor:pointer;
 <div id="lightbox">
 <span id="close">&times;</span>
 <img id="lightbox-img">
+<span id="prev">&#10094;</span>
+<span id="next">&#10095;</span>
 </div>
 
 <script>
@@ -207,20 +227,59 @@ img.style.display="none";
 
 /* LIGHTBOX */
 
-const images=document.querySelectorAll(".galeri-grid img");
-const lightbox=document.getElementById("lightbox");
-const lightboxImg=document.getElementById("lightbox-img");
-const close=document.getElementById("close");
+const images = document.querySelectorAll(".galeri-grid img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const close = document.getElementById("close");
+const next = document.getElementById("next");
+const prev = document.getElementById("prev");
 
-images.forEach(img=>{
+let currentIndex = 0;
+
+// buka gambar
+images.forEach((img, index)=>{
 img.onclick=()=>{
 lightbox.style.display="flex";
 lightboxImg.src=img.src;
+currentIndex = index;
 }
 });
 
-close.onclick=()=>{lightbox.style.display="none";}
-lightbox.onclick=()=>{lightbox.style.display="none";}
+// next
+next.onclick = (e)=>{
+e.stopPropagation();
+currentIndex = (currentIndex + 1) % images.length;
+lightboxImg.src = images[currentIndex].src;
+};
+
+// prev
+prev.onclick = (e)=>{
+e.stopPropagation();
+currentIndex = (currentIndex - 1 + images.length) % images.length;
+lightboxImg.src = images[currentIndex].src;
+};
+
+// swipe HP
+let startX = 0;
+
+lightbox.addEventListener("touchstart", e=>{
+startX = e.touches[0].clientX;
+});
+
+lightbox.addEventListener("touchend", e=>{
+let endX = e.changedTouches[0].clientX;
+
+if(startX - endX > 50){
+next.click();
+}
+if(endX - startX > 50){
+prev.click();
+}
+});
+
+// close
+close.onclick = ()=>{lightbox.style.display="none";}
+lightbox.onclick = ()=>{lightbox.style.display="none";}
 
 </script>
 
