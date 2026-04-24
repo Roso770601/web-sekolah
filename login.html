@@ -107,14 +107,23 @@ a.home-btn{
 <script>
 document.getElementById("loginForm").addEventListener("submit", function(e){
     e.preventDefault();
+
     const nisn = document.querySelector("input[name='nisn']").value.trim();
     const pin = document.querySelector("input[name='pin']").value.trim();
 
-    localStorage.setItem("nisn", nisn);
-    localStorage.setItem("pin", pin);
+    // 🔒 DATA LOGIN SEDERHANA
+    const dataSiswa = {
+        "1234567890": "1234",
+        "9876543210": "4321"
+    };
 
-    // Tetap arahkan ke halaman nilai
-    window.location.href = "nilai/nilai.html";
+    // 🔍 CEK LOGIN
+    if(dataSiswa[nisn] && dataSiswa[nisn] === pin){
+        localStorage.setItem("nisn", nisn);
+        window.location.href = "nilai/nilai.html";
+    } else {
+        alert("NISN atau PIN salah!");
+    }
 });
 </script>
 
