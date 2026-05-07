@@ -290,7 +290,6 @@ color:#ffeb3b;
 font-weight:600;
 text-shadow:1px 1px 3px black;
 }
-}
 
 /* ===== LIGHTBOX GALERI ===== */
 #lightbox{
@@ -371,8 +370,18 @@ grid-template-columns:1fr;
 </div>
 
 <script>
+  const sudahTampil = localStorage.getItem("popupLebaranShown") === "true";
+
+  if (sudahTampil) {
+        document.getElementById("popup-lebaran").style.display = "none";
+    } else {
+        document.getElementById("popup-lebaran").style.display = "flex";
+    }
+
+;
 document.getElementById("close-popup").onclick = function(){
     document.getElementById("popup-lebaran").style.display="none";
+    localStorage.setItem("popupLebaranShown", "true");
 };
 </script>
 
