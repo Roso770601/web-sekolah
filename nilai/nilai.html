@@ -237,6 +237,13 @@ hasil.innerHTML = "<p class='error'>Data tidak ditemukan</p>";
 return;
 }
 
+const nisn = localStorage.getItem("nisn");
+
+if (!nisn) {
+   alert("Silakan login dulu");
+   window.location.href = "../login.html";
+}
+
 let html = `
 <h3>${siswa.nama}</h3>
 <p><b>NISN :</b> ${siswa.nisn}</p>
@@ -304,6 +311,8 @@ localStorage.removeItem("pin");
 window.location.href="../login.html";
 
 }
+
+
 
 </script>
 
