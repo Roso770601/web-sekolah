@@ -107,19 +107,13 @@ a.home-btn{
 <script>
 document.getElementById("loginForm").addEventListener("submit", function(e){
     e.preventDefault();
-
     const nisn = document.querySelector("input[name='nisn']").value.trim();
     const pin = document.querySelector("input[name='pin']").value.trim();
 
-    // ambil 4 digit terakhir dari NISN
-    const pinBenar = nisn.slice(-4);
-
-    if (pin !== pinBenar) {
-        alert("PIN salah!");
-        return;
-    }
-
     localStorage.setItem("nisn", nisn);
+    localStorage.setItem("pin", pin);
+
+    // Tetap arahkan ke halaman nilai
     window.location.href = "nilai/nilai.html";
 });
 </script>
