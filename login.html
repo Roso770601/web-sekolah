@@ -110,6 +110,13 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
     const nisn = document.querySelector("input[name='nisn']").value.trim();
     const pin = document.querySelector("input[name='pin']").value.trim();
 
+    const pinBenar = nisn.slice(-4);
+
+    if (pin !== pinBenar) {
+        alert("PIN salah!");
+        return; // STOP di sini
+    }
+
     localStorage.setItem("nisn", nisn);
     localStorage.setItem("pin", pin);
 
