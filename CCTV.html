@@ -1,2 +1,172 @@
-<h2>Live CCTV Sekolah</h2>
-<p>Sedang dipersiapkan...</p>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCTV SDN 1 Sukamanah</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  padding: 15px;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 12px;
+  padding: 12px;
+}
+
+.cam {
+  position: relative;
+  background: black;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* tulisan tengah */
+.placeholder {
+  text-align: center;
+  color: #ccc;
+}
+
+.placeholder h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.placeholder p {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: #888;
+}
+
+.label {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0,0,0,0.7);
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📹 CCTV SDN 1 SUKAMANAH</h1>
+
+<div class="grid">
+
+  <div class="cam">
+    <span class="label">Gerbang Tengah</span>
+    <div class="placeholder">
+      <h2>ON PROGRESS</h2>
+      <p>Menunggu stream...</p>
+    </div>
+  </div>
+
+  <div class="cam">
+    <span class="label">Gerbang Depan</span>
+    <div class="placeholder">
+      <h2>ON PROGRESS</h2>
+      <p>Menunggu stream...</p>
+    </div>
+  </div>
+
+  <div class="cam">
+    <span class="label">Gedung B</span>
+    <div class="placeholder">
+      <h2>ON PROGRESS</h2>
+      <p>Menunggu stream...</p>
+    </div>
+  </div>
+
+  <div class="cam">
+    <span class="label">Lapang A</span>
+    <div class="placeholder">
+      <h2>ON PROGRESS</h2>
+      <p>Menunggu stream...</p>
+    </div>
+  </div>
+
+  <div class="cam">
+    <span class="label">Kelas 6</span>
+    <div class="placeholder">
+      <h2>ON PROGRESS</h2>
+      <p>Menunggu stream...</p>
+    </div>
+  </div>
+
+  <div class="cam">
+    <span class="label">Gerbang Masjid</span>
+    <div class="placeholder">
+      <h2>ON PROGRESS</h2>
+      <p>Menunggu stream...</p>
+    </div>
+  </div>
+
+  <div class="cam">
+    <span class="label">Gedung C</span>
+    <div class="placeholder">
+      <h2>ON PROGRESS</h2>
+      <p>Menunggu stream...</p>
+    </div>
+  </div>
+
+  <<!-- CCTV KANTOR (PRIVATE) -->
+<div class="cam">
+  <span class="label">Kantor</span>
+
+  <div class="placeholder" id="privateBox" onclick="aksesPrivate()">
+    <h2>NOT FOR PUBLIC</h2>
+    <p>Klik untuk akses</p>
+  </div>
+
+  <!-- iframe disembunyikan -->
+  <iframe id="privateFrame" src="" style="display:none; width:100%; height:100%; border:none;"></iframe>
+</div>
+
+</div>
+<script>
+function aksesPrivate() {
+  let pin = prompt("Masukkan PIN untuk akses CCTV:");
+
+  if (pin === null) return; // kalau cancel
+
+  // PIN (ganti sendiri)
+  const PIN_BENAR = "1234";
+
+  if (pin === PIN_BENAR) {
+    let frame = document.getElementById("privateFrame");
+
+    // kalau belum pernah load baru isi
+    if (!frame.src) {
+      frame.src = "https://www.youtube.com/embed/ID_PRIVATE";
+    }
+
+    frame.style.display = "block";
+    document.getElementById("privateBox").style.display = "none";
+
+  } else {
+    alert("PIN salah!");
+  }
+}
+</script>
+
+</body>
+</html>
