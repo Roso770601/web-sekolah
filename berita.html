@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Berita Terbaru SDN 1 SUKAMANAH | Info Sekolah & Kegiatan</title>
+<meta name="description" content="Berita terbaru SDN 1 SUKAMANAH. Informasi kegiatan sekolah, pengumuman, prestasi siswa, dan update terbaru.">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  color: #fff;
+
+  background-image: url('gambar-sekolah.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* OVERLAY biar kontras */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: -1;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #ffeb3b;
+}
+
+/* NAVBAR */
+nav {
+  text-align: center;
+  padding: 10px;
+}
+
+nav a {
+  color: #ffeb3b;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: white;
+}
+
+/* CONTAINER */
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  color: #333;
+  padding: 15px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.card h2 {
+  margin: 10px 0;
+  color: #222;
+}
+
+.card p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: #0066cc;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #004a99;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Berita SDN 1 Sukamanah</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="ppdb.html">PPDB</a>
+  <a href="login.html">Cek Nilai</a>
+  <a href="berita.html">Berita</a>
+</nav>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Kegiatan MPLS Siswa Baru Tahun 2026</h2>
+    <p>Siswa baru SDN 1 Sukamanah mengikuti kegiatan MPLS dengan penuh semangat untuk mengenal lingkungan sekolah.</p>
+    <a href="berita_kegiatan.html" class="btn">Baca Selengkapnya</a>
+  </div>
+
+  <div class="card">
+    <h2>Prestasi Siswa Juara Di Berbagai Lomba</h2>
+    <p>Salah satu siswa berhasil meraih juara dan mengharumkan nama SDN 1 Sukamanah.</p>
+    <a href="berita_prestasi.html" class="btn">Baca Selengkapnya</a>
+  </div>
+
+  <div class="card">
+    <h2>Pengumuman</h2>
+    <p>Berikut pengumuman yang wajib diperhatikan oleh seluruh siswa SDN 1 Sukamanah.</p>
+    <a href="berita_pengumuman.html" class="btn">Baca Selengkapnya</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 SDN 1 Sukamanah</p>
+</footer>
+
+</body>
+</html>

@@ -123,12 +123,20 @@ section{padding:70px 10%; background:transparent;}
 .cards{display:flex; gap:20px; flex-wrap:wrap;}
 .card{background:rgba(255,255,255,0.95); color:#333; backdrop-filter:blur(5px);
   padding:25px; flex:1; min-width:250px; border-radius:15px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.1); transition:0.3s;
+  box-shadow:0 6px 20px rgba(0,0,0,0.1); transition:0.3s; 
 }
 .card:hover{transform:translateY(-8px); box-shadow:0 15px 35px rgba(0,0,0,0.15);}
 .card h3{margin-bottom:15px; color:#1976d2;}
 .card {
   transition: all 0.3s ease;
+}
+.card h2 {
+  margin-bottom: 40px; /* kasih jarak */
+  font-size:18px;
+  color:#1976d2;
+}
+.card .btn {
+  align-self: center; /* posisi tengah horizontal */
 }
 
 .card:hover {
@@ -370,6 +378,47 @@ grid-template-columns:1fr;
 .galeri-item:hover::after {
   opacity: 1;
 }
+
+.floating-berita-kiri {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  width: 240px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+  z-index: 999;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.floating-berita-kiri h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  text-align: center;
+  color: #ffeb3b;
+}
+
+#berita-text {
+  font-size: 14px;
+  margin-bottom: 10px;
+  transition: 0.4s;
+}
+
+.floating-berita-kiri a {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #ffeb3b;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.floating-berita-kiri a:hover {
+  background: white;
+}
 </style>
 </head>
 
@@ -407,6 +456,7 @@ document.getElementById("close-popup").onclick = function(){
     <a href="#fasilitas">Fasilitas</a>
     <a href="#kontak">Kontak</a>
     <a href="profil-guru.html">Guru</a>
+    <a href="berita.html">Berita</a>
     <a href="CCTV.html" target="_blank" rel="noopener noreferrer">CCTV</a>
   </nav>
 </header>
@@ -540,6 +590,12 @@ Portal Orang Tua / Wali Untuk Melihat Nilai dan Laporan Perkembangan Siswa
   <strong id="testimonial-author">- Ibu Mariam, Orang Tua Siswa kelas 3</strong>
 </div>
 
+<div class="floating-berita-kiri">
+  <h4>Berita Terbaru</h4>
+  <p id="berita-text"></p>
+  <a id="berita-link" href="berita.html">Lihat</a>
+</div>
+
 <section id="kontak">
   <h2 class="section-title">Kontak Kami</h2>
   <p style="text-align:center;">
@@ -581,6 +637,44 @@ showTestimonial(i);
 setInterval(()=>{
   i = (i + 1) % testimonials.length;
   showTestimonial(i);
+},4000);
+</script>
+
+<script>
+const beritas = [
+  {
+    text: "Kegiatan MPLS Siswa Baru Tahun 2026 telah berlangsung dengan meriah.",
+    link: "berita_kegiatan.html"
+  },
+  {
+    text: "Prestasi siswa berhasil meraih juara di berbagai lomba tingkat daerah.",
+    link: "berita_prestasi.html"
+  },
+  {
+    text: "Pengumuman libur sekolah akhir semester telah resmi diumumkan.",
+    link: "berita_pengumuman.html"
+  }
+];
+
+let j = 0;
+const beritaText = document.getElementById('berita-text');
+const beritaLink = document.getElementById('berita-link');
+
+function showBerita(index){
+  beritaText.style.opacity = 0;
+
+  setTimeout(()=>{
+    beritaText.textContent = beritas[index].text;
+    beritaLink.href = beritas[index].link;
+    beritaText.style.opacity = 1;
+  },400);
+}
+
+showBerita(j);
+
+setInterval(()=>{
+  j = (j + 1) % beritas.length;
+  showBerita(j);
 },4000);
 </script>
 <script>
