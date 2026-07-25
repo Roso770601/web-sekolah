@@ -30,26 +30,6 @@ body {
   pointer-events: none;
 }
 
-/* LOGO TENGAH */
-#logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-#logo img {
-  width: 120px;
-  opacity: 0.9;
-}
-
-#logo h1 {
-  color: white;
-  margin-top: 10px;
-  font-size: 28px;
-}
-
 /* JAM */
 #clock {
   position: absolute;
@@ -60,6 +40,27 @@ body {
   background: rgba(0,0,0,0.5);
   padding: 5px 10px;
   border-radius: 5px;
+}
+
+/* WAITING TEXT */
+#waiting {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: red;
+  font-size: 30px;
+  font-weight: bold;
+  background: rgba(0,0,0,0.7);
+  padding: 15px 25px;
+  border-radius: 10px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {opacity: 1;}
+  50% {opacity: 0.3;}
+  100% {opacity: 1;}
 }
 </style>
 
@@ -76,12 +77,36 @@ allowfullscreen>
 
 <!-- OVERLAY -->
 <div id="overlay">
-
   <div id="clock"></div>
-
+  <div id="waiting">🔴 LIVE STREAM CCTV SDN 1 SUKAMANAH .... SEDANG DIPERSIAPKAN</div>
 </div>
 
 <script>
+
+// =======================
+// MODE (TINGGAL GANTI INI)
+// =======================
+let mode = "waiting"; // 👉 ganti jadi "live" kalau sudah diizinkan
+
+
+// LOGIC MODE
+function updateMode() {
+  const video = document.getElementById("video");
+  const waiting = document.getElementById("waiting");
+
+  if (mode === "waiting") {
+    video.style.display = "none";
+    waiting.style.display = "block";
+  } else {
+    video.style.display = "block";
+    waiting.style.display = "none";
+  }
+}
+
+updateMode();
+
+
+// JAM
 function updateClock() {
   const now = new Date();
   const time = now.toLocaleTimeString('id-ID');
@@ -89,6 +114,7 @@ function updateClock() {
 }
 setInterval(updateClock, 1000);
 updateClock();
+
 </script>
 
 </body>
