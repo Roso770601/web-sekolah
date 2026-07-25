@@ -8,164 +8,87 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  color: white;
-}
-
-h1 {
-  text-align: center;
-  padding: 15px;
-  margin: 0;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 12px;
-  padding: 12px;
-}
-
-.cam {
-  position: relative;
   background: black;
-  border-radius: 12px;
   overflow: hidden;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: Arial, sans-serif;
 }
 
-/* tulisan tengah */
-.placeholder {
-  text-align: center;
-  color: #ccc;
+#video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.placeholder h2 {
-  margin: 0;
-  font-size: 18px;
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-.placeholder p {
-  margin: 5px 0 0;
-  font-size: 12px;
-  color: #888;
-}
-
-.label {
+/* LOGO TENGAH */
+#logo {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  background: rgba(0,0,0,0.7);
-  padding: 4px 10px;
-  font-size: 12px;
-  border-radius: 6px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#logo img {
+  width: 120px;
+  opacity: 0.9;
+}
+
+#logo h1 {
+  color: white;
+  margin-top: 10px;
+  font-size: 28px;
+}
+
+/* JAM */
+#clock {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: white;
+  font-size: 20px;
+  background: rgba(0,0,0,0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<h1>📹 CCTV SDN 1 SUKAMANAH</h1>
+<!-- VIDEO -->
+<iframe id="video"
+src="https://www.youtube.com/embed/_A6384scyNk?autoplay=1&mute=1&controls=0&modestbranding=1"
+frameborder="0"
+allow="autoplay; encrypted-media"
+allowfullscreen>
+</iframe>
 
-<div class="grid">
+<!-- OVERLAY -->
+<div id="overlay">
 
-  <div class="cam">
-    <span class="label">Gerbang Tengah</span>
-    <div class="placeholder">
-      <h2>ON PROGRESS</h2>
-      <p>Menunggu stream...</p>
-    </div>
-  </div>
-
-  <div class="cam">
-    <span class="label">Gerbang Depan</span>
-    <div class="placeholder">
-      <h2>ON PROGRESS</h2>
-      <p>Menunggu stream...</p>
-    </div>
-  </div>
-
-  <div class="cam">
-    <span class="label">Gedung B</span>
-    <div class="placeholder">
-      <h2>ON PROGRESS</h2>
-      <p>Menunggu stream...</p>
-    </div>
-  </div>
-
-  <div class="cam">
-    <span class="label">Lapang A</span>
-    <div class="placeholder">
-      <h2>ON PROGRESS</h2>
-      <p>Menunggu stream...</p>
-    </div>
-  </div>
-
-  <div class="cam">
-    <span class="label">Kelas 6</span>
-    <div class="placeholder">
-      <h2>ON PROGRESS</h2>
-      <p>Menunggu stream...</p>
-    </div>
-  </div>
-
-  <div class="cam">
-    <span class="label">Gerbang Masjid</span>
-    <div class="placeholder">
-      <h2>ON PROGRESS</h2>
-      <p>Menunggu stream...</p>
-    </div>
-  </div>
-
-  <div class="cam">
-    <span class="label">Gedung C</span>
-    <div class="placeholder">
-      <h2>ON PROGRESS</h2>
-      <p>Menunggu stream...</p>
-    </div>
-  </div>
-
-  <<!-- CCTV KANTOR (PRIVATE) -->
-<div class="cam">
-  <span class="label">Kantor</span>
-
-  <div class="placeholder" id="privateBox" onclick="aksesPrivate()">
-    <h2>NOT FOR PUBLIC</h2>
-    <p>Klik untuk akses</p>
-  </div>
-
-  <!-- iframe disembunyikan -->
-  <iframe id="privateFrame" src="" style="display:none; width:100%; height:100%; border:none;"></iframe>
-</div>
+  <div id="clock"></div>
 
 </div>
+
 <script>
-function aksesPrivate() {
-  let pin = prompt("Masukkan PIN untuk akses CCTV:");
-
-  if (pin === null) return; // kalau cancel
-
-  // PIN (ganti sendiri)
-  const PIN_BENAR = "1234";
-
-  if (pin === PIN_BENAR) {
-    let frame = document.getElementById("privateFrame");
-
-    // kalau belum pernah load baru isi
-    if (!frame.src) {
-      frame.src = "https://www.youtube.com/embed/ID_PRIVATE";
-    }
-
-    frame.style.display = "block";
-    document.getElementById("privateBox").style.display = "none";
-
-  } else {
-    alert("PIN salah!");
-  }
+function updateClock() {
+  const now = new Date();
+  const time = now.toLocaleTimeString('id-ID');
+  document.getElementById('clock').innerText = time;
 }
+setInterval(updateClock, 1000);
+updateClock();
 </script>
 
 </body>
