@@ -670,41 +670,46 @@ setInterval(()=>{
 </script>
 
 <script>
-const beritas = [
-  {
-    text: "Menyambut Hari Pramuka 2026, SDN 1 Sukamanah Gelar Upacara Pembukaan Pesta Siaga.",
-    link: "berita_pramuka_2026.html"
-  },
-  {
-    text: "Kegiatan MPLS Siswa Baru Tahun 2026 telah berlangsung dengan meriah.",
-    link: "berita_kegiatan.html"
-  },
-  {
-    text: "Prestasi siswa berhasil meraih juara di berbagai lomba tingkat daerah.",
-    link: "berita_prestasi.html"
+  let beritas = [];
+  let j = 0;
+
+  const beritaText = document.getElementById('berita-text');
+  const beritaLink = document.getElementById('berita-link');
+
+  fetch('berita/data.json')
+    .then(response => response.json())
+    .then(data => {
+
+      // Urutkan berdasarkan tanggal terbaru
+      beritas = data.sort((a, b) =>
+        new Date(b.tanggal) - new Date(a.tanggal)
+      );
+
+      // Ambil hanya 3 berita terbaru
+      beritas = beritas.slice(0, 3);
+
+      showBerita(j);
+
+      setInterval(() => {
+        j = (j + 1) % beritas.length;
+        showBerita(j);
+      }, 4000);
+
+    })
+    .catch(error => {
+      console.error('Gagal memuat berita:', error);
+      beritaText.textContent = 'Berita belum tersedia.';
+    });
+
+  function showBerita(index) {
+    beritaText.style.opacity = 0;
+
+    setTimeout(() => {
+      beritaText.textContent = beritas[index].judul;
+      beritaLink.href = 'berita/' + beritas[index].link;
+      beritaText.style.opacity = 1;
+    }, 400);
   }
-];
-
-let j = 0;
-const beritaText = document.getElementById('berita-text');
-const beritaLink = document.getElementById('berita-link');
-
-function showBerita(index){
-  beritaText.style.opacity = 0;
-
-  setTimeout(()=>{
-    beritaText.textContent = beritas[index].text;
-    beritaLink.href = beritas[index].link;
-    beritaText.style.opacity = 1;
-  },400);
-}
-
-showBerita(j);
-
-setInterval(()=>{
-  j = (j + 1) % beritas.length;
-  showBerita(j);
-},4000);
 </script>
 <script>
 

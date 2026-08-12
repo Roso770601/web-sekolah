@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Berita Terbaru SDN 1 SUKAMANAH | Info Sekolah & Kegiatan</title>
+
 <meta name="description" content="Berita terbaru SDN 1 SUKAMANAH. Informasi kegiatan sekolah, pengumuman, prestasi siswa, dan update terbaru.">
 
 <style>
@@ -108,6 +109,13 @@ nav a:hover {
   line-height: 1.6;
 }
 
+/* TANGGAL */
+.tanggal {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
 /* BUTTON */
 .btn {
   display: inline-block;
@@ -122,6 +130,16 @@ nav a:hover {
 
 .btn:hover {
   background: #004a99;
+}
+
+/* PESAN ERROR / KOSONG */
+.status-berita {
+  background: #ffffff;
+  color: #333;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 /* FOOTER */
@@ -150,28 +168,13 @@ footer {
 
 <div class="container">
 
-  <div class="card">
-    <h2>Menyambut Hari Pramuka 2026, SDN 1 Sukamanah Gelar Upacara Pembukaan Pesta Siaga</h2>
-    <p>SDN 1 Sukamanah mengadakan upacara pembukaan Pesta Siaga dalam rangka menyambut Hari Pramuka 2026 dengan penuh semangat dan antusiasme.</p>
-    <a href="berita_pramuka_2026.html" class="btn">Baca Selengkapnya</a>
-  </div>
+  <!-- DAFTAR BERITA OTOMATIS -->
+  <div id="daftar-berita">
 
-  <div class="card">
-    <h2>Kegiatan MPLS Siswa Baru Tahun 2026</h2>
-    <p>Siswa baru SDN 1 Sukamanah mengikuti kegiatan MPLS dengan penuh semangat untuk mengenal lingkungan sekolah.</p>
-    <a href="berita_kegiatan.html" class="btn">Baca Selengkapnya</a>
-  </div>
+    <div class="status-berita">
+      Memuat berita...
+    </div>
 
-  <div class="card">
-    <h2>Prestasi Siswa Juara Di Berbagai Lomba</h2>
-    <p>Salah satu siswa berhasil meraih juara dan mengharumkan nama SDN 1 Sukamanah.</p>
-    <a href="berita_prestasi.html" class="btn">Baca Selengkapnya</a>
-  </div>
-
-  <div class="card">
-    <h2>Pengumuman</h2>
-    <p>Berikut pengumuman yang wajib diperhatikan oleh seluruh siswa SDN 1 Sukamanah.</p>
-    <a href="berita_pengumuman.html" class="btn">Baca Selengkapnya</a>
   </div>
 
 </div>
@@ -179,6 +182,131 @@ footer {
 <footer>
   <p>© 2026 SDN 1 Sukamanah</p>
 </footer>
+
+
+<script>
+
+fetch('berita/data.json')
+
+  .then(response => {
+
+    if (!response.ok) {
+      throw new Error(
+        'Gagal mengambil data berita. Status: ' + response.status
+      );
+    }
+
+    return response.json();
+
+  })
+
+  .then(data => {
+
+    // Urutkan berita dari tanggal terbaru
+    data.sort((a, b) => {
+      return new Date(b.tanggal) - new Date(a.tanggal);
+    });
+
+    const daftarBerita =
+      document.getElementById('daftar-berita');
+
+    // Kosongkan tulisan "Memuat berita..."
+    daftarBerita.innerHTML = '';
+
+    // Jika belum ada berita
+    if (!data.length) {
+
+      daftarBerita.innerHTML = `
+        <div class="status-berita">
+          <h2>Belum Ada Berita</h2>
+          <p>
+            Belum ada berita yang dapat ditampilkan.
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+    // Tampilkan SEMUA berita
+    data.forEach(berita => {
+
+      const card = document.createElement('div');
+
+      card.className = 'card';
+
+      card.innerHTML = `
+
+        <h2>${berita.judul}</h2>
+
+        <div class="tanggal">
+          ${formatTanggal(berita.tanggal)}
+        </div>
+
+        <p>
+          Informasi terbaru mengenai kegiatan
+          dan aktivitas SDN 1 Sukamanah.
+        </p>
+
+        <a
+          href="berita/${berita.link}"
+          class="btn"
+        >
+          Baca Selengkapnya
+        </a>
+
+      `;
+
+      daftarBerita.appendChild(card);
+
+    });
+
+  })
+
+  .catch(error => {
+
+    console.error('Gagal memuat berita:', error);
+
+    document.getElementById('daftar-berita').innerHTML = `
+
+      <div class="status-berita">
+
+        <h2>Berita Belum Tersedia</h2>
+
+        <p>
+          Terjadi masalah saat memuat berita.
+        </p>
+
+      </div>
+
+    `;
+
+  });
+
+
+// ================================
+// FORMAT TANGGAL INDONESIA
+// ================================
+function formatTanggal(tanggal) {
+
+  const date = new Date(tanggal);
+
+  if (isNaN(date)) {
+    return tanggal;
+  }
+
+  return date.toLocaleDateString(
+    'id-ID',
+    {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }
+  );
+
+}
+
+</script>
 
 </body>
 </html>
