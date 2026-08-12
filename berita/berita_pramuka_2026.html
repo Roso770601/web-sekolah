@@ -7,6 +7,11 @@
 <title>Menyambut Hari Pramuka 2026 | SDN 1 Sukamanah</title>
 
 <style>
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -26,6 +31,7 @@ body {
 h1 {
   color: #1976d2;
   text-align: center;
+  line-height: 1.4;
 }
 
 .tanggal {
@@ -37,48 +43,240 @@ h1 {
 p {
   line-height: 1.8;
   text-align: justify;
+  margin-bottom: 20px;
 }
 
-.foto {
+
+/* =========================
+   FOTO UTAMA
+========================= */
+
+.foto-utama {
   width: 100%;
+  max-height: 500px;
+  object-fit: cover;
   border-radius: 12px;
-  margin: 15px 0;
+  margin: 15px 0 25px;
+  display: block;
+}
+
+
+/* =========================
+   VIDEO
+========================= */
+
+h2 {
+  color: #1976d2;
+  margin-top: 30px;
+  margin-bottom: 15px;
 }
 
 video {
   width: 100%;
+  max-height: 500px;
   border-radius: 12px;
-  margin: 20px 0;
+  margin: 10px 0 30px;
+  display: block;
+  background: #000;
 }
+
+
+/* =========================
+   GALERI FOTO GRID
+========================= */
+
+.galeri-foto {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0 30px;
+}
+
+.galeri-foto img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.galeri-foto img:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.92);
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+}
+
+.lightbox img {
+  max-width: 95%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+
+  color: white;
+  font-size: 45px;
+  font-weight: bold;
+
+  cursor: pointer;
+  line-height: 1;
+
+  z-index: 10000;
+}
+
+.lightbox-close:hover {
+  color: #ffeb3b;
+}
+
+
+/* =========================
+   TOMBOL KEMBALI
+========================= */
 
 .back {
   display: inline-block;
   margin-top: 20px;
   padding: 10px 18px;
+
   background: #1976d2;
   color: white;
+
   text-decoration: none;
   border-radius: 8px;
+
+  transition: 0.3s;
 }
 
 .back:hover {
   background: #125aa0;
 }
+
+
+/* =========================
+   RESPONSIVE HP
+========================= */
+
+@media (max-width: 600px) {
+
+  .container {
+    width: 94%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .galeri-foto {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .galeri-foto img {
+    height: 140px;
+  }
+
+  .lightbox {
+    padding: 15px;
+  }
+
+  .lightbox img {
+    max-width: 100%;
+    max-height: 85vh;
+  }
+
+  .lightbox-close {
+    top: 10px;
+    right: 18px;
+    font-size: 38px;
+  }
+
+}
+
+
+/* =========================
+   HP KECIL
+========================= */
+
+@media (max-width: 400px) {
+
+  .galeri-foto img {
+    height: 120px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
+
 <div class="container">
+
+
+  <!-- =========================
+       JUDUL BERITA
+  ========================== -->
 
   <h1>
     Menyambut Hari Pramuka 2026,
     SDN 1 Sukamanah Gelar Upacara Pembukaan Pesta Siaga
   </h1>
 
+
   <div class="tanggal">
     12 Agustus 2026
   </div>
+
+
+  <!-- =========================
+       FOTO UTAMA
+  ========================== -->
+
+  <img
+    src="../galeri/siaga-2026-1.jpg"
+    alt="Upacara Pembukaan Pesta Siaga SDN 1 Sukamanah"
+    class="foto-utama"
+  >
+
+
+  <!-- =========================
+       ISI BERITA
+  ========================== -->
 
   <p>
     SDN 1 Sukamanah melaksanakan upacara pembukaan Pesta Siaga
@@ -86,18 +284,13 @@ video {
     dengan penuh semangat dan antusiasme dari seluruh peserta.
   </p>
 
-  <!-- FOTO -->
-  <img
-    src="../galeri/siaga-2026-1.jpg"
-    alt="Upacara Pembukaan Pesta Siaga SDN 1 Sukamanah"
-    class="foto"
-  >
 
   <p>
     Upacara pembukaan dipimpin oleh Mabigus sebagai tanda dimulainya
     rangkaian kegiatan Pesta Siaga. Para peserta mengikuti kegiatan
     dengan tertib dan penuh semangat.
   </p>
+
 
   <p>
     Kegiatan Pesta Siaga menjadi sarana bagi peserta didik untuk
@@ -106,8 +299,22 @@ video {
     kepramukaan.
   </p>
 
-  <!-- VIDEO KEGIATAN -->
-  <h2>Video Kegiatan</h2>
+
+  <p>
+    Pada kegiatan hari ini, para peserta mengikuti berbagai aktivitas
+    kepramukaan yang disesuaikan dengan karakteristik Pramuka Siaga.
+    Kegiatan tidak hanya memberikan pengalaman yang menyenangkan,
+    tetapi juga menjadi sarana pembelajaran untuk menanamkan
+    nilai-nilai positif dalam kehidupan sehari-hari.
+  </p>
+
+
+  <!-- =========================
+       VIDEO KEGIATAN
+  ========================== -->
+
+  <h2>🎥 Video Kegiatan Pesta Siaga</h2>
+
 
   <video controls>
     <source
@@ -118,12 +325,59 @@ video {
     Browser Anda tidak mendukung pemutaran video.
   </video>
 
-  <!-- FOTO KEDUA -->
-  <img
-    src="../galeri/siaga-2026-2.jpg"
-    alt="Kegiatan Pesta Siaga"
-    class="foto"
-  >
+
+  <!-- =========================
+       GALERI FOTO
+  ========================== -->
+
+  <h2>📸 Dokumentasi Kegiatan</h2>
+
+
+  <div class="galeri-foto">
+
+
+    <img
+      src="../galeri/siaga-2026-2.jpg"
+      alt="Kegiatan Pesta Siaga"
+    >
+
+
+    <img
+      src="../galeri/siaga-2026-3.jpg"
+      alt="Kegiatan Pesta Siaga"
+    >
+
+
+    <img
+      src="../galeri/siaga-2026-4.jpg"
+      alt="Kegiatan Pesta Siaga"
+    >
+
+
+    <img
+      src="../galeri/siaga-2026-5.jpg"
+      alt="Kegiatan Pesta Siaga"
+    >
+
+
+    <img
+      src="../galeri/siaga-2026-6.jpg"
+      alt="Kegiatan Pesta Siaga"
+    >
+
+
+    <img
+      src="../galeri/siaga-2026-7.jpg"
+      alt="Kegiatan Pesta Siaga"
+    >
+
+
+  </div>
+
+
+  <!-- =========================
+       PENUTUP BERITA
+  ========================== -->
 
   <p>
     Seluruh rangkaian kegiatan berlangsung dalam suasana ceria,
@@ -131,11 +385,118 @@ video {
     nilai-nilai kepramukaan dapat terus tumbuh dalam diri peserta didik.
   </p>
 
+
+  <p>
+    Kegiatan Pesta Siaga diharapkan dapat memberikan pengalaman
+    yang berkesan sekaligus menanamkan nilai kedisiplinan,
+    kemandirian, kerja sama, tanggung jawab, dan kepedulian
+    kepada peserta didik.
+  </p>
+
+
   <a href="../berita.html" class="back">
     ← Kembali ke Berita
   </a>
 
+
 </div>
+
+
+<!-- =========================
+     LIGHTBOX FOTO
+========================== -->
+
+<div class="lightbox" id="lightbox">
+
+  <span
+    class="lightbox-close"
+    id="lightbox-close"
+  >
+    &times;
+  </span>
+
+
+  <img
+    id="lightbox-img"
+    src=""
+    alt="Foto Kegiatan"
+  >
+
+</div>
+
+
+<script>
+
+/* =========================
+   LIGHTBOX GALERI
+========================= */
+
+const galleryImages =
+  document.querySelectorAll(".galeri-foto img");
+
+const lightbox =
+  document.getElementById("lightbox");
+
+const lightboxImg =
+  document.getElementById("lightbox-img");
+
+const lightboxClose =
+  document.getElementById("lightbox-close");
+
+
+/* Klik foto */
+
+galleryImages.forEach(function(img) {
+
+  img.addEventListener("click", function() {
+
+    lightbox.style.display = "flex";
+
+    lightboxImg.src = img.src;
+
+    lightboxImg.alt = img.alt;
+
+  });
+
+});
+
+
+/* Klik tombol X */
+
+lightboxClose.addEventListener("click", function() {
+
+  lightbox.style.display = "none";
+
+});
+
+
+/* Klik area hitam */
+
+lightbox.addEventListener("click", function(event) {
+
+  if (event.target === lightbox) {
+
+    lightbox.style.display = "none";
+
+  }
+
+});
+
+
+/* Tekan tombol ESC */
+
+document.addEventListener("keydown", function(event) {
+
+  if (event.key === "Escape") {
+
+    lightbox.style.display = "none";
+
+  }
+
+});
+
+</script>
+
 
 </body>
 </html>
