@@ -6,54 +6,238 @@
   <title>Kegiatan Pramuka Penggalang SDN 1 Sukamanah</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f5f5;
-      color: #333;
-    }
 
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
+* {
+  box-sizing: border-box;
+}
 
-    h1 {
-      color: #1976d2;
-      text-align: center;
-    }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+  color: #333;
+}
 
-    .tanggal {
-      text-align: center;
-      color: #777;
-      margin-bottom: 25px;
-    }
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
 
-    .foto {
-      width: 100%;
-      border-radius: 12px;
-      margin: 15px 0;
-    }
+h1 {
+  color: #1976d2;
+  text-align: center;
+  line-height: 1.4;
+}
 
-    p {
-      line-height: 1.8;
-      text-align: justify;
-    }
+.tanggal {
+  text-align: center;
+  color: #777;
+  margin-bottom: 25px;
+}
 
-    .back {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 18px;
-      background: #1976d2;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-    }
-  </style>
+p {
+  line-height: 1.8;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+
+/* =========================
+   FOTO UTAMA
+========================= */
+
+.foto-utama {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 15px 0 25px;
+  display: block;
+}
+
+
+/* =========================
+   VIDEO
+========================= */
+
+h2 {
+  color: #1976d2;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+video {
+  width: 100%;
+  max-height: 500px;
+  border-radius: 12px;
+  margin: 10px 0 30px;
+  display: block;
+  background: #000;
+}
+
+
+/* =========================
+   GALERI FOTO GRID
+========================= */
+
+.galeri-foto {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0 30px;
+}
+
+.galeri-foto img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.galeri-foto img:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.92);
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+}
+
+.lightbox img {
+  max-width: 95%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+
+  color: white;
+  font-size: 45px;
+  font-weight: bold;
+
+  cursor: pointer;
+  line-height: 1;
+
+  z-index: 10000;
+}
+
+.lightbox-close:hover {
+  color: #ffeb3b;
+}
+
+
+/* =========================
+   TOMBOL KEMBALI
+========================= */
+
+.back {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 18px;
+
+  background: #1976d2;
+  color: white;
+
+  text-decoration: none;
+  border-radius: 8px;
+
+  transition: 0.3s;
+}
+
+.back:hover {
+  background: #125aa0;
+}
+
+
+/* =========================
+   RESPONSIVE HP
+========================= */
+
+@media (max-width: 600px) {
+
+  .container {
+    width: 94%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .galeri-foto {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .galeri-foto img {
+    height: 140px;
+  }
+
+  .lightbox {
+    padding: 15px;
+  }
+
+  .lightbox img {
+    max-width: 100%;
+    max-height: 85vh;
+  }
+
+  .lightbox-close {
+    top: 10px;
+    right: 18px;
+    font-size: 38px;
+  }
+
+}
+
+
+/* =========================
+   HP KECIL
+========================= */
+
+@media (max-width: 400px) {
+
+  .galeri-foto img {
+    height: 120px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
@@ -68,7 +252,7 @@
 
   <img src="../galeri/pramuka-penggalang-2026.jpg"
        alt="Kegiatan Pramuka Penggalang SDN 1 Sukamanah"
-       class="foto">
+       class="foto-utama"
 
   <p>
     SDN 1 Sukamanah melaksanakan kegiatan Pramuka Penggalang
@@ -88,12 +272,66 @@
     bermanfaat dalam kehidupan sehari-hari.
   </p>
 
-  <!-- Tambahkan foto lain jika diperlukan -->
+  <h2>🎥 Video Kegiatan Pramuka Penggalang </h2>
 
-  <img src="../galeri/pramuka-penggalang-2026-2.jpg"
-       alt="Kegiatan Pramuka Penggalang"
-       class="foto">
 
+  <video controls>
+    <source
+      src="../galeri/pramuka-penggalang-2026.mp4"
+      type="video/mp4"
+    >
+
+    Browser Anda tidak mendukung pemutaran video.
+  </video>
+
+
+  <!-- =========================
+       GALERI FOTO
+  ========================== -->
+
+  <h2>📸 Dokumentasi Kegiatan</h2>
+
+
+  <div class="galeri-foto">
+
+
+    <img
+      src="../galeri/pramuka-penggalang-2026-6.jpg"
+      alt="Kegiatan Pesta Siaga"
+    >
+
+
+    <img
+      src="../galeri/pramuka-penggalang-2026-3.jpg"
+      alt="Kegiatan Pesta Siaga"
+    >
+
+
+    <img
+      src="../galeri/pramuka-penggalang-2026-4.jpg"
+      alt="Kegiatan Pesta Siaga"
+    >
+
+
+    <img
+      src="../galeri/pramuka-penggalang-2026-5.jpg"
+      alt="Kegiatan Pesta Siaga"
+    >
+
+
+    <img
+      src="../galeri/pramuka-penggalang-2026-1.jpg"
+      alt="Kegiatan Pesta Siaga"
+    >
+
+
+    <img
+      src="../galeri/pramuka-penggalang-2026-2.jpg"
+      alt="Kegiatan Pesta Siaga"
+    >
+
+
+  </div>
   <p>
     Kegiatan berlangsung dalam suasana tertib, aktif, dan menyenangkan.
     Seluruh peserta mengikuti kegiatan sesuai arahan pembina.
