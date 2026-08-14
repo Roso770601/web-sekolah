@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
-<loc>https://sdn1sukamanah.my.id/</loc>
-</url>
+  <url>
+    <loc>https://sdn1sukamanah.my.id/</loc>
+  </url>
 
-<url>
-<loc>https://sdn1sukamanah.my.id/galeri.html</loc>
-</url>
+  <url>
+    <loc>https://sdn1sukamanah.my.id/profil.html</loc>
+  </url>
+
+  <url>
+    <loc>https://sdn1sukamanah.my.id/profil-guru.html</loc>
+  </url>
+
+  <url>
+    <loc>https://sdn1sukamanah.my.id/ppdb.html</loc>
+  </url>
+
+  <url>
+    <loc>https://sdn1sukamanah.my.id/galeri.html</loc>
+  </url>
+
+  <url>
+    <loc>https://sdn1sukamanah.my.id/berita.html</loc>
+  </url>
+
+  <url>
+    <loc>https://sdn1sukamanah.my.id/berita_kegiatan.html</loc>
+  </url>
+
+  <url>
+    <loc>https://sdn1sukamanah.my.id/berita_pengumuman.html</loc>
+  </url>
+
+  <url>
+    <loc>https://sdn1sukamanah.my.id/berita_pramuka_2026.html</loc>
+  </url>
+
+  <url>
+    <loc>https://sdn1sukamanah.my.id/berita_prestasi.html</loc>
+  </url>
 
 </urlset>
-<url>
-<loc>https://sdn1sukamanah.my.id/profil-guru.html</loc>
-</url>
-
-<url>
-<loc>https://sdn1sukamanah.my.id/galeri.html</loc>
-</url>
