@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Perlombaan Meriah Menjadi Penutup Rangkaian HUT Pramuka ke-65 dan HUT RI ke-81 | SDN 1 Sukamanah</title>
+
+<meta name="description" content="Perlombaan meriah menjadi penutup rangkaian kegiatan HUT Pramuka ke-65 dan HUT Kemerdekaan Republik Indonesia ke-81 di SDN 1 Sukamanah.">
+
+<style>
+
+/* =========================
+   DASAR
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    color: #333;
+
+    background:
+        linear-gradient(
+            180deg,
+            #d90000 0px,
+            #d90000 170px,
+            #ffffff 170px,
+            #f5f5f5 100%
+        );
+
+    min-height: 100vh;
+}
+
+body::before {
+    content: " 🎈 🎊  🎉 🤲  🎊 🎈";
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 5px;
+    padding-top: 18px;
+    height: 70px;
+    overflow: hidden;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+    max-width: 950px;
+    margin: 25px auto 50px;
+    background: white;
+    padding: 35px;
+    border-radius: 22px;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.18);
+
+    border-top: 10px solid #d40000;
+    position: relative;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: -32px;
+    left: 25px;
+    font-size: 45px;
+    transform: rotate(-8deg);
+}
+
+.container::after {
+    content: "";
+    position: absolute;
+    top: -32px;
+    right: 25px;
+    font-size: 45px;
+    transform: rotate(8deg);
+}
+
+/* =========================
+   JUDUL
+========================= */
+
+h1 {
+    color: #c90000;
+    text-align: center;
+    line-height: 1.4;
+    font-size: 38px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.subjudul {
+    color: #c90000;
+    text-align: center;
+    line-height: 1.4;
+    font-size: 38px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.tanggal {
+    text-align: center;
+    color: #b00000;
+    font-weight: bold;
+    margin-bottom: 28px;
+}
+
+/* =========================
+   GARIS MERAH PUTIH
+========================= */
+
+.garis-merah-putih {
+    height: 12px;
+    margin: 20px 0 28px;
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #d90000 50%,
+            #ffffff 50%
+        );
+
+    border: 1px solid #ddd;
+}
+
+/* =========================
+   ISI BERITA
+========================= */
+
+p {
+    line-height: 1.9;
+    text-align: justify;
+    margin-bottom: 20px;
+    font-size: 17px;
+}
+
+.paragraf-awal::first-letter {
+    font-size: 55px;
+    font-weight: bold;
+    color: #d00000;
+    float: left;
+    line-height: .8;
+    padding-right: 8px;
+}
+
+/* =========================
+   FOTO UTAMA
+========================= */
+
+.foto-utama {
+    width: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: 15px 0 10px;
+    display: block;
+
+    border: 5px solid #d00000;
+
+    box-shadow:
+        0 6px 20px rgba(0,0,0,.15);
+}
+
+.caption {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* =========================
+   HIGHLIGHT
+========================= */
+
+.highlight {
+    background:
+        linear-gradient(
+            135deg,
+            #fff0f0,
+            #ffffff
+        );
+
+    border-left: 7px solid #d00000;
+    padding: 22px;
+    margin: 30px 0;
+    border-radius: 12px;
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,.05);
+}
+
+.highlight strong {
+    color: #c00000;
+    font-size: 19px;
+}
+
+/* =========================
+   JUDUL BAGIAN
+========================= */
+
+h2 {
+    color: #c90000;
+    margin-top: 35px;
+    margin-bottom: 18px;
+}
+
+/* =========================
+   VIDEO
+========================= */
+
+.video-box {
+    background: #fff5f5;
+    padding: 18px;
+    border-radius: 16px;
+    border: 2px solid #f0cccc;
+    margin-bottom: 35px;
+}
+
+video {
+    width: 100%;
+    max-height: 520px;
+    border-radius: 12px;
+    display: block;
+    background: #000;
+}
+
+.video-keterangan {
+    text-align: center;
+    color: #777;
+    margin: 12px 0 0;
+    font-size: 14px;
+}
+
+/* =========================
+   GALERI FOTO
+========================= */
+
+.galeri-foto {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 20px 0 30px;
+}
+
+.galeri-foto img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    display: block;
+
+    border: 3px solid white;
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,.15);
+
+    transition:
+        transform .3s ease,
+        opacity .3s ease;
+}
+
+.galeri-foto img:hover {
+    transform: scale(1.04);
+    opacity: .9;
+    border-color: #d00000;
+}
+.galeri-foto video {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    border: 3px solid white;
+    box-shadow: 0 3px 10px rgba(0,0,0,.15);
+}
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        rgba(120,0,0,.94);
+
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.lightbox img {
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 4px solid white;
+
+    box-shadow:
+        0 5px 30px rgba(0,0,0,.5);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+
+    color: white;
+    font-size: 45px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10000;
+}
+
+.lightbox-close:hover {
+    color: #ffdddd;
+}
+
+/* =========================
+   UCAPAN KEPALA SEKOLAH
+========================= */
+
+.ucapan {
+    background:
+        linear-gradient(
+            135deg,
+            #fff3f3,
+            #ffffff
+        );
+
+    border-left: 7px solid #c90000;
+    padding: 28px;
+    margin: 35px 0;
+    border-radius: 16px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.08);
+}
+
+.ucapan h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.ucapan blockquote {
+    margin: 0;
+    padding: 20px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    color: #444;
+
+    font-style: italic;
+
+    line-height: 1.9;
+
+    box-shadow:
+        0 2px 10px rgba(0,0,0,.06);
+}
+
+/* =========================
+   QUOTE PENUTUP
+========================= */
+
+.quote {
+    margin: 40px 0 25px;
+    padding: 30px;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff3f3,
+            #ffffff
+        );
+
+    border-radius: 18px;
+    border: 2px solid #f0cccc;
+}
+
+.quote h2 {
+    color: #c90000;
+    text-align: center;
+    margin-top: 0;
+}
+
+.quote p {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.6;
+}
+
+/* =========================
+   TOMBOL KEMBALI
+========================= */
+
+.back-wrapper {
+    text-align: center;
+    margin-top: 35px;
+}
+
+.back {
+    display: inline-block;
+    padding: 12px 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d00000,
+            #b00000
+        );
+
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+
+    transition: .3s;
+
+    box-shadow:
+        0 4px 12px rgba(190,0,0,.25);
+}
+
+.back:hover {
+    background: #8f0000;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVE HP
+========================= */
+
+@media (max-width: 600px) {
+
+    body::before {
+        font-size: 21px;
+        letter-spacing: 2px;
+        height: 55px;
+    }
+
+    .container {
+        width: 94%;
+        margin: 15px auto 35px;
+        padding: 20px;
+        border-top-width: 7px;
+        border-radius: 16px;
+    }
+
+    .container::before,
+    .container::after {
+        font-size: 32px;
+        top: -25px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .subjudul {
+        font-size: 16px;
+    }
+
+    .foto-utama {
+        max-height: 350px;
+    }
+
+    .galeri-foto {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .galeri-foto img {
+        height: 145px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .lightbox {
+        padding: 15px;
+    }
+
+    .lightbox img {
+        max-width: 100%;
+        max-height: 85vh;
+    }
+
+    .lightbox-close {
+        top: 10px;
+        right: 18px;
+        font-size: 38px;
+    }
+
+    .ucapan {
+        padding: 18px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+         Perlombaan Meriah Menjadi Penutup Rangkaian HUT Pramuka ke-65 dan HUT RI ke-81
+    </h1>
+
+    <div class="subjudul">
+        SDN 1 SUKAMANAH
+    </div>
+
+    <div class="tanggal">
+        19 Agustus 2026
+    </div>
+
+    <div class="garis-merah-putih"></div>
+
+    <!-- FOTO UTAMA -->
+
+    <img
+        src="../galeri/perlombaan-hut-ri-81-2026.jpg"
+        alt="Perlombaan penutup rangkaian HUT Pramuka ke-65 dan HUT RI ke-81 SDN 1 Sukamanah"
+        class="foto-utama"
+        loading="eager"
+    >
+
+    <div class="caption">
+        Kegiatan perlombaan menjadi penutup rangkaian HUT Pramuka ke-65 dan HUT RI ke-81 SDN 1 Sukamanah
+    </div>
+
+    <!-- ISI BERITA -->
+
+    <p class="paragraf-awal">
+
+        SDN 1 Sukamanah menutup seluruh rangkaian kegiatan dalam rangka memperingati
+        <strong>Hari Pramuka ke-65 dan Hari Ulang Tahun Kemerdekaan Republik Indonesia ke-81 Tahun 2026</strong>
+        dengan kegiatan perlombaan yang berlangsung meriah dan penuh kebersamaan.
+
+    </p>
+
+    <p>
+
+        Kegiatan perlombaan ini menjadi <strong>rangkaian terakhir sekaligus penutup</strong>
+        dari seluruh kegiatan yang telah dilaksanakan sebelumnya. Berbagai kegiatan telah
+        berlangsung secara bertahap, dimulai dari <strong>Pesta Siaga</strong>, dilanjutkan
+        dengan <strong>Kegiatan Pramuka Penggalang</strong>, kemudian
+        <strong>Upacara Peringatan Hari Pramuka</strong>, <strong>Karnaval Kemerdekaan</strong>,
+        serta <strong>Upacara Peringatan HUT Kemerdekaan Republik Indonesia ke-81</strong>.
+
+    </p>
+
+    <div class="highlight">
+
+        <strong>
+             Rangkaian Penutup Kegiatan
+        </strong>
+
+        <br><br>
+
+        Sebagai penutup seluruh rangkaian kegiatan tersebut, SDN 1 Sukamanah
+        menyelenggarakan berbagai perlombaan yang diikuti dengan penuh antusias
+        oleh peserta didik, Bapak dan Ibu Guru, serta para orang tua/wali murid.
+
+    </div>
+
+    <p>
+
+        Berbagai perlombaan berlangsung dalam suasana yang ceria, meriah, dan penuh
+        keakraban. Sorak-sorai serta dukungan dari para peserta dan penonton turut
+        menambah semangat sepanjang kegiatan berlangsung. Kebersamaan antara siswa,
+        guru, dan orang tua/wali murid menjadi salah satu hal yang membuat kegiatan
+        ini semakin berkesan.
+
+    </p>
+
+    <p>
+
+        Kegiatan perlombaan bukan hanya menjadi ajang untuk meraih kemenangan,
+        tetapi juga menjadi sarana untuk mempererat <strong>silaturahmi, kekompakan,
+        gotong royong, dan kebersamaan</strong> seluruh warga SDN 1 Sukamanah.
+        Melalui kegiatan ini, semangat kebersamaan yang telah terjalin selama seluruh
+        rangkaian peringatan semakin terasa kuat.
+
+    </p>
+
+    <p>
+
+        Dengan terlaksananya kegiatan perlombaan tersebut, maka seluruh rangkaian
+        kegiatan peringatan <strong>HUT Pramuka ke-65 dan HUT Kemerdekaan Republik
+        Indonesia ke-81 Tahun 2026 di SDN 1 Sukamanah secara resmi telah ditutup</strong>.
+
+    </p>
+
+    <p>
+
+        Seluruh kegiatan, mulai dari <strong>Pesta Siaga, Kegiatan Pramuka Penggalang,
+        Upacara Peringatan Hari Pramuka, Karnaval Kemerdekaan, Upacara HUT RI ke-81,
+        hingga kegiatan perlombaan</strong>, dapat terlaksana dengan baik.
+
+    </p>
+
+    <!-- VIDEO -->
+
+    <h2>
+        🎥 Video Kegiatan Perlombaan
+    </h2>
+
+    <div class="video-box">
+
+        <video controls>
+
+            <source
+                src="../galeri/perlombaan-hut-ri-81-2026.mp4"
+                type="video/mp4"
+            >
+
+            Browser Anda tidak mendukung pemutaran video.
+
+        </video>
+
+        <p class="video-keterangan">
+
+            Dokumentasi video kegiatan perlombaan sebagai penutup rangkaian
+            HUT Pramuka ke-65 dan HUT RI ke-81 SDN 1 Sukamanah.
+
+        </p>
+
+    </div>
+
+    <!-- GALERI -->
+
+    <h2>
+        📸 Dokumentasi Kegiatan
+    </h2>
+
+    <div class="galeri-foto">
+
+        <img
+            src="../galeri/perlombaan-hut-ri-81-2026-1.jpg"
+            alt="Kegiatan perlombaan HUT RI SDN 1 Sukamanah"
+            loading="lazy"
+        >
+
+         <video controls preload="metadata">
+        <source
+            src="../galeri/perlombaan-hut-ri-81-2026-1.mp4"
+            type="video/mp4"
+        >
+        Browser Anda tidak mendukung pemutaran video.
+        </video>
+
+        <img
+            src="../galeri/perlombaan-hut-ri-81-2026-3.jpg"
+            alt="Kegiatan perlombaan guru SDN 1 Sukamanah"
+            loading="lazy"
+        >
+
+        <video controls preload="metadata">
+        <source
+            src="../galeri/perlombaan-hut-ri-81-2026-3.mp4"
+            type="video/mp4"
+        >
+        Browser Anda tidak mendukung pemutaran video.
+        </video>
+
+        <img
+            src="../galeri/perlombaan-hut-ri-81-2026-5.jpg"
+            alt="Kemeriahan perlombaan SDN 1 Sukamanah"
+            loading="lazy"
+        >
+
+        <img
+            src="../galeri/perlombaan-hut-ri-81-2026-6.jpg"
+            alt="Penutup rangkaian HUT RI SDN 1 Sukamanah"
+            loading="lazy"
+        >
+
+        <img
+            src="../galeri/perlombaan-hut-ri-81-2026-7.jpg"
+            alt="Penutup rangkaian HUT RI SDN 1 Sukamanah"
+            loading="lazy"
+        >
+
+        <img
+            src="../galeri/perlombaan-hut-ri-81-2026-8.jpg"
+            alt="Penutup rangkaian HUT RI SDN 1 Sukamanah"
+            loading="lazy"
+        >
+
+        <img
+            src="../galeri/perlombaan-hut-ri-81-2026-9.jpg"
+            alt="Penutup rangkaian HUT RI SDN 1 Sukamanah"
+            loading="lazy"
+        >
+
+    </div>
+
+    <!-- UCAPAN KEPALA SEKOLAH -->
+
+    <div class="ucapan">
+
+        <h2>
+            🤲 Ucapan Terima Kasih Kepala Sekolah
+        </h2>
+
+        <p>
+
+            Atas nama pribadi dan seluruh pihak yang terlibat, Kepala SDN 1 Sukamanah
+            menyampaikan rasa terima kasih yang sebesar-besarnya kepada seluruh pihak
+            yang telah bekerja sama dan berkolaborasi dalam menyukseskan seluruh
+            rangkaian kegiatan.
+
+        </p>
+
+        <blockquote>
+
+            <strong>
+
+                “Assallamuallaikum warajamatulohi wabarokatuh.
+                Bapa kalih ibu, simkuring atas nami pribadi ngahaturkeun
+                nuhun nu luar biasa ka sadaya anu parantos rempeg kolaborasi
+                sareng sepuhna murangkalih dugi ka tiasa ngameriahkeun
+                HUT Pramuka (65) sareng HUT RI (81) dugi ka tiasa
+                kalaksanakeun dina kaayaan aman, repeh, rapih, salamet,
+                sukses ti kawit dugi ka akhir, mugi janten amal ladang
+                pahala kasaean kanggo urang sadaya. Aamiin 🤲🤲🤲”
+
+            </strong>
+
+        </blockquote>
+
+    </div>
+
+    <p>
+
+        Ucapan tersebut merupakan bentuk apresiasi kepada seluruh warga
+        SDN 1 Sukamanah, Bapak dan Ibu Guru, para peserta didik, serta seluruh
+        orang tua/wali murid yang telah memberikan dukungan dan turut
+        berpartisipasi dalam setiap rangkaian kegiatan.
+
+    </p>
+
+    <p>
+
+        Semoga kebersamaan, kekompakan, dan semangat gotong royong yang telah
+        terjalin dapat terus terjaga. Semoga seluruh usaha dan kebaikan yang telah
+        diberikan menjadi amal kebaikan serta membawa manfaat bagi kita semua.
+
+    </p>
+
+    <!-- PENUTUP -->
+
+    <div class="quote">
+
+        <h2>
+             Penutup Rangkaian Kegiatan
+        </h2>
+
+        <p>
+
+            Dari semangat Pesta Siaga, kebersamaan Kegiatan Penggalang,
+            kekhidmatan Upacara Hari Pramuka, kemeriahan Karnaval Kemerdekaan,
+            semangat Upacara HUT RI ke-81, hingga kegembiraan perlombaan,
+            seluruh rangkaian kegiatan menjadi bukti nyata semangat
+            kebersamaan warga SDN 1 Sukamanah.
+
+        </p>
+
+        <strong>
+             MERDEKA! 
+            <br><br>
+            🤲 Salam Pramuka!
+        </strong>
+
+    </div>
+
+    <!-- KEMBALI -->
+
+    <div class="back-wrapper">
+
+        <a
+            href="../berita.html"
+            class="back"
+        >
+            ← Kembali ke Berita
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox">
+
+    <span class="lightbox-close">
+        ×
+    </span>
+
+    <img
+        src=""
+        alt="Foto dokumentasi kegiatan"
+    >
+
+</div>
+
+
+<!-- SCRIPT LIGHTBOX -->
+
+<script>
+
+const galeriFoto =
+    document.querySelectorAll(".galeri-foto img");
+
+const lightbox =
+    document.querySelector(".lightbox");
+
+const lightboxImage =
+    document.querySelector(".lightbox img");
+
+const lightboxClose =
+    document.querySelector(".lightbox-close");
+
+
+galeriFoto.forEach(function(foto) {
+
+    foto.addEventListener("click", function() {
+
+        lightboxImage.src = foto.src;
+
+        lightboxImage.alt = foto.alt;
+
+        lightbox.style.display = "flex";
+
+    });
+
+});
+
+
+lightboxClose.addEventListener("click", function() {
+
+    lightbox.style.display = "none";
+
+});
+
+
+lightbox.addEventListener("click", function(event) {
+
+    if (event.target === lightbox) {
+
+        lightbox.style.display = "none";
+
+    }
+
+});
+
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        lightbox.style.display = "none";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
