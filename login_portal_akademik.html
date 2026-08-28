@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Akademik | SDN 1 Sukamanah</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.58)),
+        url('gambar-sekolah.jpg') center/cover fixed no-repeat;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px 15px;
+}
+
+.home-btn{
+    position:fixed;
+    top:15px;
+    left:15px;
+    padding:10px 16px;
+    background:#e68900;
+    color:#fff;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:600;
+    box-shadow:0 3px 10px rgba(0,0,0,.25);
+    z-index:10;
+}
+
+.portal{
+    width:100%;
+    max-width:850px;
+    background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:28px;
+    padding:35px;
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+    backdrop-filter:blur(10px);
+}
+
+.header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.logo img{
+    width:72px;
+    height:72px;
+    object-fit:contain;
+}
+
+.header h1{
+    font-size:29px;
+    color:#ffeb3b;
+    text-shadow:1px 2px 8px rgba(0,0,0,.6);
+}
+
+.header p{
+    margin-top:7px;
+    font-size:14px;
+    color:#f5f5f5;
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.service{
+    background:rgba(255,255,255,.93);
+    color:#333;
+    border-radius:20px;
+    padding:25px;
+    cursor:pointer;
+    transition:.25s;
+    border:2px solid transparent;
+}
+
+.service:hover{
+    transform:translateY(-5px);
+    border-color:#ffd54f;
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+}
+
+.icon{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.service h2{
+    font-size:20px;
+    margin-bottom:8px;
+    color:#333;
+}
+
+.service p{
+    font-size:13px;
+    line-height:1.6;
+    color:#666;
+    min-height:42px;
+}
+
+.service button{
+    width:100%;
+    margin-top:18px;
+    padding:12px;
+    border:0;
+    border-radius:25px;
+    background:#e68900;
+    color:#fff;
+    font-weight:700;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.service.alumni button{
+    background:#1976d2;
+}
+
+.panel{
+    display:none;
+    margin-top:22px;
+    background:rgba(255,255,255,.96);
+    color:#333;
+    border-radius:20px;
+    padding:25px;
+}
+
+.panel.active{
+    display:block;
+}
+
+.panel h3{
+    margin-bottom:7px;
+    color:#333;
+}
+
+.panel .subtitle{
+    font-size:13px;
+    color:#666;
+    margin-bottom:18px;
+}
+
+input{
+    width:100%;
+    padding:13px 14px;
+    margin:7px 0;
+    border:1px solid #ddd;
+    border-radius:11px;
+    outline:none;
+    font-size:15px;
+}
+
+input:focus{
+    border-color:#e68900;
+    box-shadow:0 0 0 3px rgba(230,137,0,.12);
+}
+
+.action{
+    width:100%;
+    padding:13px;
+    margin-top:10px;
+    border:0;
+    border-radius:25px;
+    background:#e68900;
+    color:#fff;
+    font-weight:700;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.alumni-action{
+    background:#1976d2;
+}
+
+.back{
+    display:block;
+    text-align:center;
+    margin-top:13px;
+    color:#666;
+    font-size:13px;
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+.note{
+    margin-top:12px;
+    text-align:center;
+    font-size:11px;
+    color:#777;
+}
+
+.footer{
+    text-align:center;
+    margin-top:25px;
+    font-size:11px;
+    color:rgba(255,255,255,.8);
+}
+
+@media(max-width:650px){
+    .portal{
+        padding:23px 17px;
+        border-radius:22px;
+    }
+
+    .services{
+        grid-template-columns:1fr;
+    }
+
+    .header h1{
+        font-size:23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="home-btn">← Home</a>
+
+<div class="portal">
+
+    <div class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Logo SDN 1 Sukamanah">
+        <h1>Portal Akademik</h1>
+        <p>SDN 1 Sukamanah</p>
+        <p>Akses layanan akademik untuk siswa aktif dan alumni</p>
+    </div>
+
+    <div class="services">
+
+        <div class="service" onclick="showPanel('siswaPanel')">
+            <div class="icon">👨‍👩‍👧</div>
+            <h2>Siswa Aktif / Wali Murid</h2>
+            <p>
+                Login untuk melihat nilai dan informasi akademik siswa
+                yang masih aktif di sekolah.
+            </p>
+            <button>Login Siswa Aktif</button>
+        </div>
+
+        <div class="service alumni" onclick="showPanel('alumniPanel')">
+            <div class="icon">🎓</div>
+            <h2>Alumni / Lulusan</h2>
+            <p>
+                Verifikasi dan akses Ijazah Elektronik bagi siswa
+                yang telah dinyatakan lulus.
+            </p>
+            <button>Verifikasi Ijazah</button>
+        </div>
+
+    </div>
+
+    <!-- LOGIN SISWA AKTIF -->
+    <div id="siswaPanel" class="panel">
+        <h3>Login Siswa Aktif / Wali Murid</h3>
+        <div class="subtitle">
+            Masukkan NISN siswa dan PIN untuk mengakses data akademik.
+        </div>
+
+        <form id="loginForm">
+            <input
+                type="text"
+                name="nisn"
+                placeholder="Masukkan NISN"
+                inputmode="numeric"
+                required
+            >
+
+            <input
+                type="password"
+                name="pin"
+                placeholder="Masukkan PIN"
+                required
+            >
+
+            <button type="submit" class="action">
+                Lihat Nilai
+            </button>
+        </form>
+
+        <div class="note">
+            * Untuk mendapatkan PIN, silakan hubungi wali kelas.
+        </div>
+
+        <span class="back" onclick="backToServices()">← Kembali ke pilihan layanan</span>
+    </div>
+
+    <!-- VERIFIKASI IJAZAH -->
+    <div id="alumniPanel" class="panel">
+        <h3>Verifikasi Ijazah Elektronik</h3>
+        <div class="subtitle">
+            Masukkan NISN atau nomor ijazah untuk memeriksa keabsahan dokumen.
+        </div>
+
+        <form id="ijazahForm">
+            <input
+                type="text"
+                name="identitas"
+                placeholder="NISN / Nomor Ijazah"
+                required
+            >
+
+            <button type="submit" class="action alumni-action">
+                🔍 Verifikasi Ijazah
+            </button>
+        </form>
+
+        <div class="note">
+            Setelah data terverifikasi, halaman dapat menampilkan
+            ijazah elektronik dan menyediakan tombol download PDF.
+        </div>
+
+        <span class="back" onclick="backToServices()">← Kembali ke pilihan layanan</span>
+    </div>
+
+    <div class="footer">
+        © SDN 1 Sukamanah · Portal Akademik
+    </div>
+
+</div>
+
+<script>
+function showPanel(panelId){
+    document.querySelector('.services').style.display = 'none';
+    document.getElementById(panelId).classList.add('active');
+}
+
+function backToServices(){
+    document.querySelector('.services').style.display = 'grid';
+    document.querySelectorAll('.panel').forEach(function(panel){
+        panel.classList.remove('active');
+    });
+}
+
+/*
+ * LOGIN SISWA AKTIF
+ * Logika lama tetap dipertahankan:
+ * PIN benar = 4 digit terakhir NISN.
+ */
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const nisn = document.querySelector("#loginForm input[name='nisn']").value.trim();
+    const pin = document.querySelector("#loginForm input[name='pin']").value.trim();
+
+    const pinBenar = nisn.slice(-4);
+
+    if(pin !== pinBenar){
+        alert("PIN salah!");
+        return;
+    }
+
+    localStorage.setItem("nisn", nisn);
+    localStorage.setItem("pin", pin);
+
+    window.location.href = "nilai/nilai.html";
+});
+
+/*
+ * VERIFIKASI IJAZAH
+ * Saat ini hanya menampilkan pemberitahuan.
+ * Bagian ini siap dihubungkan ke halaman/database ijazah elektronik.
+ */
+document.getElementById("ijazahForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const identitas = document
+        .querySelector("#ijazahForm input[name='identitas']")
+        .value.trim();
+
+    if(!identitas){
+        alert("Silakan masukkan NISN atau Nomor Ijazah.");
+        return;
+    }
+
+    alert(
+        "Fitur Verifikasi Ijazah Elektronik siap dihubungkan " +
+        "ke database ijazah sekolah."
+    );
+});
+</script>
+
+</body>
+</html>
