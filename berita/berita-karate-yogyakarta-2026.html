@@ -26,10 +26,33 @@
       box-shadow: 0 2px 8px rgba(0,0,0,.12);
     }
     header .brand {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: .2px;
-    }
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+header .brand img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+header .brand div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+header .brand strong {
+  font-size: 1.15rem;
+  letter-spacing: .4px;
+}
+
+header .brand span {
+  font-size: .82rem;
+  opacity: .85;
+  margin-top: 3px;
+}
     main {
       padding: 34px 0 48px;
     }
@@ -142,7 +165,13 @@
 
 <header>
   <div class="container">
-    <div class="brand">SDN 1 Sukamanah</div>
+    <div class="brand">
+      <img src="../logo.png" alt="Logo SDN 1 Sukamanah">
+      <div>
+        <strong>SDN 1 SUKAMANAH</strong>
+        
+      </div>
+    </div>
   </div>
 </header>
 
