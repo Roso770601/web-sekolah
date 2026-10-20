@@ -1,0 +1,111 @@
+name: Deploy validated public website to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: 'Ketik TERBITKAN. Hanya branch main yang diizinkan.'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: school-pages-production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'push' ||
+      (github.event_name == 'workflow_dispatch' && inputs.confirmation == 'TERBITKAN'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      index_sha: ${{ steps.package.outputs.index_sha }}
+    steps:
+      - name: Checkout exact approved revision
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Run public package rejection tests
+        run: python3 scripts/test_public_build.py
+      - name: Run offline deployment verification tests
+        run: python3 scripts/test_check_deployment.py
+      - name: Build and revalidate explicit public package
+        id: package
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_public_site.py --output "$RUNNER_TEMP/public-site"
+          python3 scripts/build_public_site.py --check-only --output "$RUNNER_TEMP/public-site"
+          python3 -c 'import hashlib,os,pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"])/"public-site/index.html"; print("index_sha="+hashlib.sha256(p.read_bytes()).hexdigest())' >> "$GITHUB_OUTPUT"
+      - name: Upload only validated Pages directory
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/public-site
+          retention-days: 7
+
+  deploy:
+    needs: build
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'push' ||
+      (github.event_name == 'workflow_dispatch' && inputs.confirmation == 'TERBITKAN'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Require Actions source, approved domain, and HTTPS before deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          request = urllib.request.Request(
+              'https://api.github.com/repos/' + os.environ['GH_REPOSITORY'] + '/pages',
+              headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
+                       'Accept': 'application/vnd.github+json',
+                       'User-Agent': 'School-Pages-Preflight'})
+          with urllib.request.urlopen(request, timeout=30) as response:
+              pages = json.load(response)
+          if (pages.get('build_type') != 'workflow'
+                  or pages.get('cname') != 'sdn1sukamanah.my.id'
+                  or pages.get('https_enforced') is not True):
+              raise SystemExit('STOP: Pages source/domain/HTTPS must be confirmed by the operator.')
+          print('PASS: Pages uses Actions, the approved domain, and enforced HTTPS.')
+          PY
+      - name: Deploy validated artifact from this workflow run
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+        with:
+          artifact_name: github-pages
+
+  verify:
+    needs: [build, deploy]
+    if: github.ref == 'refs/heads/main' && needs.deploy.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout verification script only
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+          sparse-checkout: scripts
+      - name: Verify custom domain and blocked academic endpoints
+        env:
+          EXPECTED_INDEX_SHA: ${{ needs.build.outputs.index_sha }}
+        run: python3 scripts/check_deployment.py --expected-index-sha "$EXPECTED_INDEX_SHA"

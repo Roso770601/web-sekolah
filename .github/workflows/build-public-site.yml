@@ -24,6 +24,8 @@ jobs:
           --report "${{ runner.temp }}/public-site-manifest.json"
       - name: Run rejection tests
         run: python3 scripts/test_public_build.py
+      - name: Run offline post-deployment verification tests
+        run: python3 scripts/test_check_deployment.py
       - name: Revalidate the artifact before upload
         run: python3 scripts/build_public_site.py --check-only --output "${{ runner.temp }}/public-site"
       - name: Upload preview only (not a Pages deployment)

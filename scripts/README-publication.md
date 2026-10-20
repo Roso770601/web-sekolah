@@ -1,6 +1,7 @@
 # Paket publik SDN 1 Sukamanah
 
-Status: persiapan lokal / artefak pratinjau saja. Tidak ada deployment.
+Status: workflow deployment sudah disiapkan lokal, belum diaktifkan atau
+dipublikasikan. PR #1 tetap Draft. Tidak ada deployment pada tahap persiapan.
 
 ## Build lokal
 
@@ -45,7 +46,8 @@ resmi; checkout tidak menyimpan kredensial. Hasil unggahan:
 - `public-site-preview`: website saja, kedaluwarsa tujuh hari.
 - `public-site-inventory`: daftar berkas dan checksum, terpisah dari website.
 
-Workflow ini belum dijalankan di GitHub. Artefak pada repository publik
+Workflow pratinjau pada commit `5f9ef2c` sudah berhasil melalui PR #1;
+workflow deployment baru belum dijalankan di GitHub. Artefak pada repository publik
 harus dianggap dapat diakses pihak lain, sehingga pemeriksaan dijalankan
 sebelum upload. Pemeriksaan tidak membuktikan asal-usul setiap konten publik.
 
@@ -60,11 +62,67 @@ sebelum upload. Pemeriksaan tidak membuktikan asal-usul setiap konten publik.
    pembaruan main yang akan memicu publikasi lama, pada waktu yang disetujui.
    Pengaturan domain dan HTTPS diverifikasi tanpa mengubah DNS sembarangan.
 4. Jalankan build pratinjau, tinjau inventaris/artefak dan halaman pemberitahuan.
-5. Tambahkan/alihkan workflow deployment tersendiri setelah persetujuan, dengan
-   validasi yang sama dan hanya artefak publik tersebut. Workflow sekarang
-   sengaja tidak menyediakan deployment.
+5. Setelah persetujuan, aktifkan workflow `deploy-public-site.yml` yang sudah
+   disiapkan. Jangan menggabungkan PR sebelum siap: push/merge ke main akan
+   memicu workflow deployment. Workflow pratinjau tetap tidak menerbitkan situs.
 6. Verifikasi domain resmi, tautan, gambar, layanan publik, pemberitahuan nilai,
    dan bahwa kedua URL JSON akademik tidak dilayani oleh Pages.
 
 Mengeluarkan dataset dari Pages tidak menghapusnya dari repository publik
 atau riwayat Git. Penanganan itu terpisah dan belum dilakukan.
+
+## Pengalihan Pages melalui akun pengelola
+
+Lakukan hanya setelah workflow dan jadwal publikasi mendapat persetujuan baru:
+
+1. Buka repository > Settings > Pages > Build and deployment.
+2. Ganti Source dari `Deploy from a branch` menjadi `GitHub Actions`.
+   Jangan mengganti domain, menghapus DNS, atau memakai tombol wizard untuk
+   membuat workflow yang menerbitkan root repository.
+3. Pastikan Custom domain tetap `sdn1sukamanah.my.id`, DNS check berhasil,
+   dan Enforce HTTPS tetap aktif. Bila tidak sesuai, hentikan proses.
+4. Pada Settings > Environments > github-pages, batasi deployment ke `main`
+   dan aktifkan required reviewer bila tersedia. Jangan mengizinkan semua branch.
+5. Baru setelah persetujuan akhir: ubah PR menjadi Ready, merge ke main,
+   pantau build -> deploy -> verify. Jangan menjalankan `update.bat` untuk ini.
+
+Workflow deployment hanya menerima push ke main atau workflow_dispatch pada
+main dengan konfirmasi `TERBITKAN`. Kedua job build/deploy memeriksa ref dan
+event. Build hanya memiliki contents:read; deploy hanya pages:write dan
+id-token:write. Pemeriksaan Pages sebelum deploy adalah GET baca-saja dan
+menolak sumber legacy, domain berbeda, atau HTTPS yang belum aktif.
+Tidak ada langkah yang mengubah Settings/Pages/DNS.
+
+## Pemeriksaan setelah deployment
+
+Job verify otomatis memeriksa domain HTTPS tanpa mengikuti redirect, checksum
+beranda yang sama dengan hasil build, pemberitahuan nilai, dan status halaman/
+aset publik penting. Kedua URL JSON akademik hanya diperiksa dengan HEAD;
+isi responsnya tidak dibaca. Harus 404 atau 410; 200/redirect dianggap gagal.
+Jika pemeriksaan gagal, deployment yang sudah sukses tidak otomatis dibatalkan.
+
+Pemeriksaan manual tambahan: buka 320/390/768/1366 px, menu sentuh/keyboard,
+foto/galeri, berita, peta, dan tautan PPDB/WhatsApp tanpa mengirim pendaftaran
+atau pesan. Jangan membuka stream CCTV atau mengaktifkannya. Verifikasi
+download dokumen dan halaman pemberitahuan nilai. Status HEAD saja tidak
+membuktikan seluruh interaksi JavaScript atau layanan eksternal berfungsi.
+
+## Pemulihan bila gagal (memerlukan persetujuan operator)
+
+- Build atau preflight gagal: tidak ada langkah deploy yang dijalankan.
+  Tinjau nama tahap gagal; perbaiki lewat PR tanpa melonggarkan daftar izin.
+- Deploy gagal: jangan menganggap situs otomatis kembali ke versi sebelumnya.
+  Periksa Pages/deployment aktif dan domain terlebih dahulu; jangan hapus DNS.
+- Deploy sukses tetapi verify gagal: periksa cache/checksum/domain. Hentikan
+  publikasi lanjutan dan evaluasi paparan tanpa GET berkas akademik.
+- Jika perlu rollback, buat commit pemulihan melalui PR ke main, hanya untuk
+  perubahan publik yang bermasalah. Pertahankan builder, daftar izin, dan
+  halaman pemberitahuan, lalu bangun dan validasi ulang sebelum deployment.
+- Jangan force push, reset main, memilih ulang legacy main/root, atau menerbitkan
+  artefak lama yang belum lolos penyaringan. Versi legacy berisi jalur akademik.
+  Pratinjau lama bukan artefak Pages siap-deploy; harus dibangun ulang melalui
+  builder yang telah disetujui. Artefak kedaluwarsa juga harus dibangun ulang.
+- Jika belum ada rilis tersaring yang diketahui baik, gunakan halaman pemeliharaan
+  publik yang disetujui, tanpa dataset, bukan seluruh repository.
+
+Tidak ada rollback otomatis, penghapusan data, atau perubahan riwayat Git.
