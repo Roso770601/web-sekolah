@@ -15,9 +15,25 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
 function Git-Checked {
-    param([string[]]$GitArgs)
-    $result = @(& git -c core.quotepath=false @GitArgs 2>$null)
-    if ($LASTEXITCODE -ne 0) { throw ('Git gagal pada langkah ' + $GitArgs[0] + '. Tidak dilanjutkan; periksa autentikasi/status Git secara manual.') }
+    param([string[]]$GitArgs, [string]$InputText)
+    $git = Get-Command git -CommandType Application -ErrorAction Stop | Select-Object -First 1
+    $previousErrorAction = $ErrorActionPreference
+    try {
+        # Windows PowerShell 5.1 can turn native stderr into a terminating
+        # NativeCommandError under Stop, even with 2>$null and exit code 0.
+        # Keep stderr private (credential helpers may include sensitive data),
+        # return stdout only, and decide success from the captured exit code.
+        $ErrorActionPreference = 'Continue'
+        if ($PSBoundParameters.ContainsKey('InputText')) {
+            $result = @($InputText | & $git.Source -c core.quotepath=false @GitArgs 2>$null)
+        } else {
+            $result = @(& $git.Source -c core.quotepath=false @GitArgs 2>$null)
+        }
+        $gitExitCode = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $previousErrorAction
+    }
+    if ($gitExitCode -ne 0) { throw ('Git gagal pada langkah ' + $GitArgs[0] + ' (exit code ' + $gitExitCode + '). Tidak dilanjutkan; periksa autentikasi/status Git secara manual.') }
     return $result
 }
 function Assert-SafeName {
@@ -118,8 +134,9 @@ function Assert-PagesSettings {
     # Credential is consumed in memory only. Do not print it or write it to disk.
     $env:GIT_TERMINAL_PROMPT = '0'
     $env:GCM_INTERACTIVE = 'never'
-    $lines = @("protocol=https`nhost=github.com`n`n" | & git credential fill 2>$null)
-    if ($LASTEXITCODE -ne 0) { throw 'Autentikasi GitHub diperlukan. Selesaikan login GitHub di VS Code terlebih dahulu.' }
+    try {
+        $lines = @(Git-Checked -GitArgs @('credential','fill') -InputText "protocol=https`nhost=github.com`n`n")
+    } catch { throw 'Autentikasi GitHub diperlukan. Selesaikan login GitHub di VS Code terlebih dahulu.' }
     $credentials = @{}
     foreach ($line in $lines) {
         $pair = $line -split '=',2
