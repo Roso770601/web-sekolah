@@ -64,7 +64,10 @@
 * { margin:0; padding:0; }
 html { scroll-behavior:smooth; scroll-padding-top:100px; }
 body { font-family:Arial, sans-serif; color:#fff; line-height:1.65;
-  background:linear-gradient(rgba(10,30,53,.78),rgba(10,30,53,.84)),url('gambar-sekolah.webp') center/cover fixed; }
+  background:url('gambar-sekolah.webp') center/cover fixed; }
+/* Bayangan hanya pada teks di atas foto; tidak memberi lapisan pada foto. */
+.hero h2, .hero > p, .hero-btn p, .section-title, .galeri-item p, #kontak > p {
+  text-shadow:0 1px 3px rgba(0,0,0,.85),0 0 6px rgba(0,0,0,.65); }
 img { max-width:100%; }
 a { overflow-wrap:anywhere; }
 button { font:inherit; cursor:pointer; }
@@ -162,6 +165,12 @@ footer p + p { margin-top:8px; }
   #fasilitas .cards { grid-template-columns:repeat(4,minmax(0,1fr)); }
   .galeri-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
   #testimonial-text { min-height:6.6em; }
+}
+/* Latar fixed terpisah untuk browser HP yang mengabaikan background-attachment. */
+@media (max-width:1099px), (hover:none) and (pointer:coarse) {
+  body { background:none; isolation:isolate; }
+  body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:url('gambar-sekolah.webp') center/cover no-repeat; }
 }
 @media (prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto; }
