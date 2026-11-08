@@ -64,7 +64,7 @@
 * { margin:0; padding:0; }
 html { scroll-behavior:smooth; scroll-padding-top:100px; }
 body { font-family:Arial, sans-serif; color:#fff; line-height:1.65;
-  background:url('gambar-sekolah.webp') center/cover fixed; }
+  background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('gambar-sekolah.webp') center/cover fixed; }
 /* Bayangan hanya pada teks di atas foto; tidak memberi lapisan pada foto. */
 .hero h2, .hero > p, .hero-btn p, .section-title, .galeri-item p, #kontak > p {
   text-shadow:0 1px 3px rgba(0,0,0,.85),0 0 6px rgba(0,0,0,.65); }
@@ -92,7 +92,7 @@ header.nav-enhanced .menu-toggle { display:inline-flex; }
 header.nav-enhanced nav { display:none; }
 header.nav-enhanced .menu-toggle[aria-expanded="true"] + nav { display:grid; max-height:65vh; overflow-y:auto; }
 section { width:100%; max-width:1200px; margin-inline:auto; padding:40px var(--space); scroll-margin-top:12px; }
-.hero { padding-block:48px 40px; text-align:center; }
+.hero { max-width:none; padding-block:48px 40px; text-align:center; }
 .hero h2 { max-width:900px; margin:0 auto 18px; font-size:clamp(1.65rem,3.5vw,2.8rem); line-height:1.25; text-wrap:balance; }
 .hero > p { max-width:700px; margin:0 auto 24px; font-size:1rem; color:#e4ecf5; }
 .hero-btn { display:grid; gap:0; max-width:380px; margin:24px auto 0; }
@@ -170,7 +170,7 @@ footer p + p { margin-top:8px; }
 @media (max-width:1099px), (hover:none) and (pointer:coarse) {
   body { background:none; isolation:isolate; }
   body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:url('gambar-sekolah.webp') center/cover no-repeat; }
+    background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('gambar-sekolah.webp') center/cover no-repeat; }
 }
 @media (prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto; }
