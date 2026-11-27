@@ -159,3 +159,15 @@ guru/tatun.jpeg
 guru/tia.jpeg
 guru/tuti.jpeg
 dokumen/kurikulum/kurikulum-sdn1-sukamanah-2026-2027.pdf
+berita/hari-guru-2026.html
+galeri/hgn-2026.webp
+galeri/hgn-2026.mp4
+galeri/hgn-2026-01.webp
+galeri/hgn-2026-02.webp
+galeri/hgn-2026-03.webp
+galeri/hgn-2026-04.webp
+galeri/hgn-2026-05.webp
+galeri/hgn-2026-06.webp
+galeri/hgn-2026-07.webp
+galeri/hgn-2026-08.webp
+galeri/hgn-2026-09.webp
